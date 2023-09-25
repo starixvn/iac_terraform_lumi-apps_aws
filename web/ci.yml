@@ -1,0 +1,40 @@
+.web:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "web/**/*"
+    DIR_PATH: "web"
+    TF_COMMAND: "apply"
+
+web-validate-syntax:
+  extends: [.web, .validate_syntax]
+
+web-validate-security:
+  extends: [.web, .validate_security]
+
+web-validate-security-checkov:
+  extends: [.web, .validate_security_checkov]
+
+web-build:
+  rules:
+    - if: $RULES_CHANGES_PATH != "web/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.web, .plan]
+  needs: []
+
+web-deploy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "web/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.web, .apply]
+  needs: ["web-build"]
+
+web-destroy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "web/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.web, .destroy]
+  needs: ["web-build"]
