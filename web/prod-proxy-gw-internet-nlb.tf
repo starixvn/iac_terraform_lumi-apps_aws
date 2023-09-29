@@ -1,16 +1,13 @@
 # Terraform AWS Application Load Balancer (ALB)
 module "nlb_proxy_gw" {
-  #source  = "terraform-aws-modules/alb/aws"
-  #version = "8.6.0" #"5.16.0"
   source = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
   name               = "${var.org}-${local.environment}-nlb-proxy-gw"
   load_balancer_type = "network" #network application
-  vpc_id = var.vpc_id
+  vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
-    var.vpc_private_subnets[0],
-    var.vpc_private_subnets[1],
+    data.terraform_remote_state.vpc.outputs.private_subnets[0],
   ]
   internal        = true
   # Listeners
@@ -49,12 +46,8 @@ module "nlb_proxy_gw" {
       }
       # App1 Target Group - Targets
       targets = {
-        my_hap_core1 = {
-          target_id = "10.77.15.4"
-          port      = 80
-        },
-        my_hap_core2 = {
-          target_id = "10.77.15.9"
+        my_proxy_gw1 = {
+          target_id = module.proxy_gw_linux.proxy-gw-1.id
           port      = 80
         },
       }
@@ -73,12 +66,8 @@ module "nlb_proxy_gw" {
         type    = "source_ip"
       }
       targets = {
-        my_hap_core1 = {
-          target_id = "10.77.15.4"
-          port      = 8080
-        },
-        my_hap_core2 = {
-          target_id = "10.77.15.9"
+        my_proxy_gw1 = {
+          target_id = module.proxy_gw_linux.proxy-gw-1.id
           port      = 8080
         },
       }
@@ -97,17 +86,12 @@ module "nlb_proxy_gw" {
         type    = "source_ip"
       }
       targets = {
-       my_hap_core1 = {
-          target_id = "10.77.15.4"
-          port      = 8088
-        },
-        my_hap_core2 = {
-          target_id = "10.77.15.9"
+       my_proxy_gw1 = {
+          target_id = module.proxy_gw_linux.proxy-gw-1.id
           port      = 8088
         },
       }
       tags = local.common_tags # Target Group Tags
     }
   ]
-  #tags = local.common_tags # ALB Tags
 }
