@@ -1,0 +1,113 @@
+# Terraform AWS Application Load Balancer (ALB)
+module "nlb_proxy_gw" {
+  #source  = "terraform-aws-modules/alb/aws"
+  #version = "8.6.0" #"5.16.0"
+  source = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
+  version = "8.6.1"
+
+  name               = "${var.org}-${local.environment}-nlb-proxy-gw"
+  load_balancer_type = "network" #network application
+  vpc_id = var.vpc_id
+  subnets = [
+    var.vpc_private_subnets[0],
+    var.vpc_private_subnets[1],
+  ]
+  internal        = true
+  # Listeners
+  http_tcp_listeners = [
+    {
+      port               = 80
+      protocol           = "TCP"
+      target_group_index = 0
+    },
+    {
+      port               = 8080
+      protocol           = "TCP"
+      target_group_index = 1
+    },
+    {
+      port               = 8088
+      protocol           = "TCP"
+      target_group_index = 2
+    }
+  ]
+
+  # Target Groups
+  target_groups = [
+    # App1 Target Group - TG Index = 0
+    {
+      name                 = "${var.org}-${local.environment}-gw-80"
+      backend_protocol     = "TCP"
+      backend_port         = 80
+      target_type          = "ip"
+      deregistration_delay = 10
+      protocol_version     = "HTTP1"
+      preserve_client_ip     = true
+      stickiness = {
+        enabled = true
+        type    = "source_ip"
+      }
+      # App1 Target Group - Targets
+      targets = {
+        my_hap_core1 = {
+          target_id = "10.77.15.4"
+          port      = 80
+        },
+        my_hap_core2 = {
+          target_id = "10.77.15.9"
+          port      = 80
+        },
+      }
+      tags = local.common_tags # Target Group Tags
+    },
+    {
+      name                 = "${var.org}-${local.environment}-gw-8080"
+      backend_protocol     = "TCP"
+      backend_port         = 8080
+      target_type          = "ip"
+      deregistration_delay = 10
+      protocol_version     = "HTTP1"
+      preserve_client_ip     = true
+      stickiness = {
+        enabled = true
+        type    = "source_ip"
+      }
+      targets = {
+        my_hap_core1 = {
+          target_id = "10.77.15.4"
+          port      = 8080
+        },
+        my_hap_core2 = {
+          target_id = "10.77.15.9"
+          port      = 8080
+        },
+      }
+      tags = local.common_tags # Target Group Tags
+    },
+    {
+      name                 = "${var.org}-${local.environment}-gw-8088"
+      backend_protocol     = "TCP"
+      backend_port         = 8088
+      target_type          = "ip"
+      deregistration_delay = 10
+      protocol_version     = "HTTP1"
+      preserve_client_ip     = true
+      stickiness = {
+        enabled = true
+        type    = "source_ip"
+      }
+      targets = {
+       my_hap_core1 = {
+          target_id = "10.77.15.4"
+          port      = 8088
+        },
+        my_hap_core2 = {
+          target_id = "10.77.15.9"
+          port      = 8088
+        },
+      }
+      tags = local.common_tags # Target Group Tags
+    }
+  ]
+  #tags = local.common_tags # ALB Tags
+}

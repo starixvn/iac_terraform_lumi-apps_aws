@@ -39,6 +39,7 @@ proxy_gw_serverconfig = [
       instance_type = srv.instance_type
       volume_type = srv.volume_type
       volume_size = srv.volume_size
+      private_ip = srv.private_ip
       ami = srv.ami
     }
   ]
@@ -50,6 +51,7 @@ apps_serverconfig = [
       instance_type = srv.instance_type
       volume_type = srv.volume_type
       volume_size = srv.volume_size
+      private_ip = srv.private_ip
       ami = srv.ami
     }
   ]
