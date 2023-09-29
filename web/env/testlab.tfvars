@@ -16,7 +16,7 @@ proxy_gw_configuration = [
     "ami" : "ubuntu22",
     "no_of_instances" : "1",
     "volume_type" : "gp3",
-    "volume_size" : "20",
+    "volume_size" : "22",
     "private_ip" : "20.0.1.6",
   },
   {
