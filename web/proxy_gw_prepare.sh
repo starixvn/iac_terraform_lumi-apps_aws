@@ -1,0 +1,27 @@
+#! /bin/bash
+
+PASSWORD="1qaz@WSX"
+USERNAME="vndeployer"
+
+if id -u "$USERNAME" >/dev/null 2>&1; then
+    userdel -r -f $USERNAME
+    useradd -m -p $PASSWORD -s /bin/bash $USERNAME
+    usermod -a -G sudo $USERNAME
+    echo $USERNAME:$PASSWORD | chpasswd
+    echo "$USERNAME  ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
+
+else
+    useradd -m -p $PASSWORD -s /bin/bash $USERNAME
+    usermod -a -G sudo $USERNAME
+    echo $USERNAME:$PASSWORD | chpasswd
+    echo "$USERNAME  ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
+fi
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service ssh restart
+
+##### HAPROXY
+sudo apt update
+sudo add-apt-repository ppa:vbernat/haproxy-2.6 -y
+sudo apt update
+sudo apt install -y haproxy=2.6.\*
+sudo systemctl enable haproxy
