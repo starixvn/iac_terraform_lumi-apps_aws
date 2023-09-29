@@ -9,6 +9,7 @@ module "proxy_gw_linux" {
   subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets[0]
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.private_web_sg]
   private_ip = each.value.private_ip
+  hibernation = false
   root_block_device = [{
   volume_type = each.value.volume_type
   volume_size = each.value.volume_size
