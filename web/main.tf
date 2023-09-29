@@ -1,6 +1,6 @@
 /* Proxy GW */
 module "proxy_gw_linux" {
-  source = "glitab.nexdev.net/iac-terraform/ec2-instance/aws"
+  source = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
   version = "5.1.0"
   for_each = {for server in local.proxy_gw_nstances: server.instance_name =>  server}
   instance_type = each.value.instance_type
