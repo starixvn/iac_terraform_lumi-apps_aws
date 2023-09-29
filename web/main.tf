@@ -8,6 +8,7 @@ module "proxy_gw_linux" {
   ami           = data.aws_ami.os[each.value.ami].id
   subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets[0]
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.private_web_sg]
+  private_ip = each.value.private_ip
   root_block_device = [{
   volume_type = each.value.volume_type
   volume_size = each.value.volume_size
