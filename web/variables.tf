@@ -52,3 +52,8 @@ variable "ami_name" {
     error_message = "Invalid ami name, allowed_values = [amazon suse RHEL ubuntu]."
   }
 }
+
+variable "nlb_proxy_gw" {
+  type        = string
+  description = "NLB type"
+}
