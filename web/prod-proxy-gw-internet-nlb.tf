@@ -7,7 +7,7 @@ module "nlb_proxy_gw" {
   load_balancer_type = "network" #network application
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
-    data.terraform_remote_state.vpc.outputs.private_subnets[0],
+    data.terraform_remote_state.vpc.outputs.public_subnets[0],
   ]
   internal        = true
   # Listeners
@@ -29,12 +29,11 @@ module "nlb_proxy_gw" {
       target_type          = "ip" #"ip" instance
       deregistration_delay = 10
       protocol_version     = "HTTP1"
-      /*
       preserve_client_ip     = true
       stickiness = {
         enabled = true
         type    = "source_ip"
-      }*/
+      }
       # App1 Target Group - Targets
       targets = {
         /*my_proxy_gw1 = {
