@@ -30,7 +30,7 @@ module "proxy_gw_linux" {
 /* Docker Swarm */
 module "private_app_linux" {
   source = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
-  version = "5.1.0"
+  version = "5.2.1"
   for_each = {for server in local.apps_instances: server.instance_name =>  server}
   instance_type = each.value.instance_type
   name = "${local.project}-${var.environment}-${each.key}"
