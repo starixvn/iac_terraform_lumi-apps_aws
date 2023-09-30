@@ -19,7 +19,7 @@ proxy_gw_configuration = [
     "no_of_instances" : "1",
     "volume_type" : "gp3",
     "volume_size" : "22",
-    "private_ip" : "20.0.101.6",
+    "private_ip" : "20.0.1.6",
   },
   {
     "application_name" : "proxy-gw-02",
@@ -28,7 +28,7 @@ proxy_gw_configuration = [
     "no_of_instances" : "0",
     "volume_type" : "gp3",
     "volume_size" : "20",
-    "private_ip" : "20.0.101.7",
+    "private_ip" : "20.0.1.7",
   },
 ]
 apps_configuration = [
