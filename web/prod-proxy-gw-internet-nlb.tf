@@ -9,7 +9,7 @@ module "nlb_proxy_gw" {
   subnets = [
     data.terraform_remote_state.vpc.outputs.public_subnets[0],
   ]
-  internal        = true
+  internal        = var.nlb_proxy_gw
   # Listeners
   http_tcp_listeners = [
     {
