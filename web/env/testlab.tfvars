@@ -23,7 +23,7 @@ proxy_gw_configuration = [
     "application_name" : "proxy-gw-02",
     "instance_type" : "t2.micro",
     "ami" : "ubuntu22",
-    "no_of_instances" : "1",
+    "no_of_instances" : "0",
     "volume_type" : "gp3",
     "volume_size" : "20",
     "private_ip" : "20.0.1.7",
