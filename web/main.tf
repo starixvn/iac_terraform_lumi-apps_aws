@@ -1,8 +1,8 @@
 /* Proxy GW */
 module "proxy_gw_linux" {
   source = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
-  version = "5.1.0"
-  for_each = {for server in local.proxy_gw_nstances: server.instance_name =>  server}
+  version = "5.2.1"
+  for_each = {for server in local.proxy_gw_instances: server.instance_name =>  server}
   instance_type = each.value.instance_type
   name = "${local.project}-${var.environment}-${each.key}"
   ami           = data.aws_ami.os[each.value.ami].id
@@ -21,6 +21,10 @@ module "proxy_gw_linux" {
     http_put_response_hop_limit = 8
   }
   user_data      = file("${path.module}/linux_prepare.sh")
+  instance_tags = { 
+                OS = "09:00-18:00",
+                TEST = "TEST",
+                }
   tags = local.common_tags
 }
 

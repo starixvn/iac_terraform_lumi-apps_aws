@@ -59,6 +59,6 @@ apps_serverconfig = [
 }
 // We need to Flatten it before using it
 locals {
-  proxy_gw_nstances = flatten(local.proxy_gw_serverconfig)
+  proxy_gw_instances = flatten(local.proxy_gw_serverconfig)
   apps_instances = flatten(local.apps_serverconfig)
 }
