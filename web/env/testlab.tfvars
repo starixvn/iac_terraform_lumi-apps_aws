@@ -11,7 +11,7 @@ public_key_location = "key/id_rsa.pub"
 private_key_location = "key/id_rsa"
 proxy_gw_configuration = [
   {
-    "application_name" : "proxy-gw-1",
+    "application_name" : "proxy-gw-01",
     "instance_type" : "t2.micro",
     "ami" : "ubuntu22",
     "no_of_instances" : "1",

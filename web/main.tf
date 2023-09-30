@@ -22,8 +22,7 @@ module "proxy_gw_linux" {
   }
   user_data      = file("${path.module}/linux_prepare.sh")
   instance_tags = { 
-                OS = "09:00-18:00",
-                TEST = "TEST",
+                OS = each.value.ami,
                 }
   tags = local.common_tags
 }
