@@ -36,10 +36,6 @@ module "nlb_proxy_gw" {
       }
       # App1 Target Group - Targets
       targets = {
-        /*my_proxy_gw1 = {
-          target_id = module.proxy_gw_linux["proxy-gw-1"].private_ip
-          port      = 80
-        },*/
         for server in local.proxy_gw_instances: 
         server.instance_name => {
           target_id = module.proxy_gw_linux[server.instance_name].private_ip

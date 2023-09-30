@@ -55,4 +55,5 @@ variable "ami_name" {
 
 variable "nlb_proxy_gw" {
   type        = string
+  description = "NLB type"
 }
