@@ -3,7 +3,7 @@ module "nlb_proxy_gw" {
   source = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
-  name               = "${var.org}-${local.environment}-nlb-proxy-gw"
+  name               = "${local.project}-${var.environment}-nlb-proxy-gw"
   load_balancer_type = "network" #network application
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
@@ -17,81 +17,37 @@ module "nlb_proxy_gw" {
       protocol           = "TCP"
       target_group_index = 0
     },
-    {
-      port               = 8080
-      protocol           = "TCP"
-      target_group_index = 1
-    },
-    {
-      port               = 8088
-      protocol           = "TCP"
-      target_group_index = 2
-    }
   ]
 
   # Target Groups
   target_groups = [
     # App1 Target Group - TG Index = 0
     {
-      name                 = "${var.org}-${local.environment}-gw-80"
+      name                 = "${local.project}-${var.environment}-gw-80"
       backend_protocol     = "TCP"
       backend_port         = 80
-      target_type          = "ip"
+      target_type          = "ip" #"ip" instance
       deregistration_delay = 10
       protocol_version     = "HTTP1"
+      /*
       preserve_client_ip     = true
       stickiness = {
         enabled = true
         type    = "source_ip"
-      }
+      }*/
       # App1 Target Group - Targets
       targets = {
-        my_proxy_gw1 = {
-          target_id = module.proxy_gw_linux.proxy-gw-1.id
+        /*my_proxy_gw1 = {
+          target_id = module.proxy_gw_linux["proxy-gw-1"].private_ip
           port      = 80
-        },
+        },*/
+        for server in local.proxy_gw_instances: 
+        server.instance_name => {
+          target_id = module.proxy_gw_linux[server.instance_name].private_ip
+          port      = 80
+        }
       }
       tags = local.common_tags # Target Group Tags
     },
-    {
-      name                 = "${var.org}-${local.environment}-gw-8080"
-      backend_protocol     = "TCP"
-      backend_port         = 8080
-      target_type          = "ip"
-      deregistration_delay = 10
-      protocol_version     = "HTTP1"
-      preserve_client_ip     = true
-      stickiness = {
-        enabled = true
-        type    = "source_ip"
-      }
-      targets = {
-        my_proxy_gw1 = {
-          target_id = module.proxy_gw_linux.proxy-gw-1.id
-          port      = 8080
-        },
-      }
-      tags = local.common_tags # Target Group Tags
-    },
-    {
-      name                 = "${var.org}-${local.environment}-gw-8088"
-      backend_protocol     = "TCP"
-      backend_port         = 8088
-      target_type          = "ip"
-      deregistration_delay = 10
-      protocol_version     = "HTTP1"
-      preserve_client_ip     = true
-      stickiness = {
-        enabled = true
-        type    = "source_ip"
-      }
-      targets = {
-       my_proxy_gw1 = {
-          target_id = module.proxy_gw_linux.proxy-gw-1.id
-          port      = 8088
-        },
-      }
-      tags = local.common_tags # Target Group Tags
-    }
   ]
 }
