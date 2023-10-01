@@ -2,6 +2,7 @@
 
 PASSWORD="1qaz@WSX"
 USERNAME="vndeployer"
+SV="$(hostname)"
 
 if id -u "$USERNAME" >/dev/null 2>&1; then
     userdel -r -f $USERNAME
@@ -25,7 +26,8 @@ sudo add-apt-repository ppa:vbernat/haproxy-2.6 -y
 sudo apt update
 sudo apt install -y haproxy=2.6.\*
 sudo systemctl enable haproxy
-echo 'global
+sudo rm -f /etc/haproxy/haproxy.cfg
+echo "global
   log 127.0.0.1:514 local0 
   stats socket /var/run/haproxy.sock mode 600 expose-fd listeners level user
   server-state-file /var/lib/haproxy/server-state
@@ -119,8 +121,9 @@ default_backend empty_backend_nodes
 
 backend default_backend_nodes from http_defaults
   mode http
-  http-request return status 503 content-type "text/plain" lf-string "503 Service Unavailable ! Pls contact NexOps if you think this is a mistake..."
+  http-request return status 503 content-type 'text/plain' lf-string '503 Service Unavailable ! Pls contact NexOps if you think this is a mistake...'
 
 backend empty_backend_nodes from http_defaults
-  http-request return status 200 content-type "text/plain"  lf-string "I'm Testing..."
-' >> /etc/sudoers
+  http-request return status 200 content-type 'text/plain'  lf-string 'I am Testing... $SV'
+" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
