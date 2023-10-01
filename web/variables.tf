@@ -26,15 +26,15 @@ variable "aws_region_key_remote_state" {
 }
 
 variable "team" {
-  type        = string
+  type = string
 }
-variable "proxy_gw_configuration" {
+variable "proxy_gw_vm" {
   description = "EC2 configuration"
-  default = [{}]
+  default     = [{}]
 }
-variable "apps_configuration" {
+variable "apps_vm" {
   description = "EC2 configuration"
-  default = [{}]
+  default     = [{}]
 }
 
 variable "private_key_location" {

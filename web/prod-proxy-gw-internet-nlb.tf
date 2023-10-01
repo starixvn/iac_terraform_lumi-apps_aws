@@ -1,15 +1,15 @@
 # Terraform AWS Application Load Balancer (ALB)
 module "nlb_proxy_gw" {
-  source = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
+  source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
   name               = "${local.project}-${var.environment}-nlb-proxy-gw"
   load_balancer_type = "network" #network application
-  vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
     data.terraform_remote_state.vpc.outputs.public_subnets[0],
   ]
-  internal        = var.nlb_proxy_gw
+  internal = var.nlb_proxy_gw
   # Listeners
   http_tcp_listeners = [
     {
@@ -29,14 +29,14 @@ module "nlb_proxy_gw" {
       target_type          = "ip" #"ip" instance
       deregistration_delay = 10
       protocol_version     = "HTTP1"
-      preserve_client_ip     = true
+      preserve_client_ip   = true
       stickiness = {
         enabled = true
         type    = "source_ip"
       }
       # App1 Target Group - Targets
       targets = {
-        for server in local.proxy_gw_instances: 
+        for server in local.proxy_gw_instances :
         server.instance_name => {
           target_id = module.proxy_gw_linux[server.instance_name].private_ip
           port      = 80

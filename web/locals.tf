@@ -23,42 +23,38 @@ data "aws_ami" "os" {
 
 locals {
   allowed_os = {
-        "amazon": {owner: "amazon",       filter: "amzn2-ami-hvm*"},
-        "suse":   {owner: "amazon",       filter: "*suse*"},
-        "RHEL":   {owner: "amazon",       filter: "*RHEL*"},
-        "ubuntu20": {owner: "amazon", filter: "*ubuntu-focal-20.04-amd64-server-20230328"},
-        "ubuntu22": {owner: "amazon", filter: "*ubuntu-jammy-22.04-amd64-server-20230728"},
-        "windows2019": {owner: "amazon", filter: "Windows_Server-2019-English-Full-Base*"},
-        "windows2022": {owner: "amazon", filter: "Windows_Server-2022-English-Full-Base*"},
-    }
-##  
-proxy_gw_serverconfig = [
-  for srv in var.proxy_gw_configuration : [
-    for i in range(1, srv.no_of_instances+1) : {
+    "amazon" : { owner : "amazon", filter : "amzn2-ami-hvm*" },
+    "suse" : { owner : "amazon", filter : "*suse*" },
+    "RHEL" : { owner : "amazon", filter : "*RHEL*" },
+    "ubuntu20" : { owner : "amazon", filter : "*ubuntu-focal-20.04-amd64-server-20230328" },
+    "ubuntu22" : { owner : "amazon", filter : "*ubuntu-jammy-22.04-amd64-server-20230728" },
+    "windows2019" : { owner : "amazon", filter : "Windows_Server-2019-English-Full-Base*" },
+    "windows2022" : { owner : "amazon", filter : "Windows_Server-2022-English-Full-Base*" },
+  }
+  ##  
+  proxy_gw_serverconfig = [
+    for srv in var.proxy_gw_vm : {
+        instance_name = "${srv.application_name}" #-${i}
+        instance_type = srv.instance_type
+        volume_type   = srv.volume_type
+        volume_size   = srv.volume_size
+        private_ip    = srv.private_ip
+        ami           = srv.ami
+      }
+  ]
+  apps_serverconfig = [
+    for srv in var.apps_vm : {
       instance_name = "${srv.application_name}" #-${i}
       instance_type = srv.instance_type
-      volume_type = srv.volume_type
-      volume_size = srv.volume_size
-      private_ip = srv.private_ip
-      ami = srv.ami
+      volume_type   = srv.volume_type
+      volume_size   = srv.volume_size
+      private_ip    = srv.private_ip
+      ami           = srv.ami
     }
   ]
-]
-apps_serverconfig = [
-  for srv in var.apps_configuration : [
-    for i in range(1, srv.no_of_instances+1) : {
-      instance_name = "${srv.application_name}" #-${i}
-      instance_type = srv.instance_type
-      volume_type = srv.volume_type
-      volume_size = srv.volume_size
-      private_ip = srv.private_ip
-      ami = srv.ami
-    }
-  ]
-]
 }
 // We need to Flatten it before using it
 locals {
   proxy_gw_instances = flatten(local.proxy_gw_serverconfig)
-  apps_instances = flatten(local.apps_serverconfig)
+  apps_instances     = flatten(local.apps_serverconfig)
 }
