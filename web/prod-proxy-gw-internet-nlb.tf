@@ -45,7 +45,7 @@ module "nlb_proxy_gw" {
       */
       preserve_client_ip   = true
       stickiness = {
-        enabled = true
+        enabled = false
         type    = "source_ip"
       }
       # App1 Target Group - Targets
