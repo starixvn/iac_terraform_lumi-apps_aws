@@ -1,0 +1,40 @@
+.eks:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "eks/**/*"
+    DIR_PATH: "eks"
+    TF_COMMAND: "apply"
+
+eks-validate-syntax:
+  extends: [.eks, .validate_syntax]
+
+eks-validate-security:
+  extends: [.eks, .validate_security]
+
+eks-validate-security-checkov:
+  extends: [.eks, .validate_security_checkov]
+
+eks-build:
+  rules:
+    - if: $RULES_CHANGES_PATH != "eks/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.eks, .plan]
+  needs: []
+
+eks-deploy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "eks/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.eks, .apply]
+  needs: ["eks-build"]
+
+eks-destroy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "eks/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.eks, .destroy]
+  needs: ["eks-build"]
