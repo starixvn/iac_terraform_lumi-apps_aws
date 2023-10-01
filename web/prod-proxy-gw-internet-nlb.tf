@@ -33,9 +33,16 @@ module "nlb_proxy_gw" {
         protocol            = "TCP"
         healthy_threshold   = 2
         unhealthy_threshold = 2
-        interval            = 3
+        interval            = 5
         timeout             = 3
       }
+      /*
+      health_check {
+        protocol = "TCP"
+        matcher = ""
+        path = ""
+      }
+      */
       preserve_client_ip   = true
       stickiness = {
         enabled = true
