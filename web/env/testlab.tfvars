@@ -20,7 +20,7 @@ proxy_gw_vm = [
     "volume_size" : "20",
     "private_ip" : "20.0.1.6",
   },
-  /*{
+  {
     "application_name" : "proxy-gw-02",
     "instance_type" : "t2.micro",
     "ami" : "ubuntu22",
@@ -28,7 +28,7 @@ proxy_gw_vm = [
     "volume_size" : "20",
     "private_ip" : "20.0.1.7",
   },
-  {
+  /*{
     "application_name" : "proxy-gw-03",
     "instance_type" : "t3.micro",
     "ami" : "ubuntu22",
