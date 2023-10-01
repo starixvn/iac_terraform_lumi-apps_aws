@@ -29,12 +29,12 @@ proxy_gw_vm = [
     "private_ip" : "20.0.1.7",
   },
   {
-    "application_name" : "proxy-gw-02",
+    "application_name" : "proxy-gw-03",
     "instance_type" : "t2.micro",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "20",
-    "private_ip" : "20.0.1.7",
+    "private_ip" : "20.0.1.8",
   },
 ]
 apps_vm = [
@@ -54,9 +54,20 @@ apps_vm = [
     "volume_size" : "20",
     "private_ip" : "20.0.2.7",
   },
+  {
+    "application_name" : "app-03",
+    "instance_type" : "t2.micro",
+    "ami" : "ubuntu22",
+    "volume_type" : "gp3",
+    "volume_size" : "20",
+    "private_ip" : "20.0.2.8",
+  },
+  {
+    "application_name" : "app-04",
+    "instance_type" : "t2.micro",
+    "ami" : "ubuntu22",
+    "volume_type" : "gp3",
+    "volume_size" : "20",
+    "private_ip" : "20.0.2.9",
+  },
 ]
-
-#sc_web_ec2_private_ips = ["20.0.1.42","20.0.1.43","20.0.1.44","20.0.1.45"]
-#sc_hap_ec2_private_ips = ["20.0.1.102","20.0.1.103"]
-#private_subnets  = ["20.0.1.0/24", "20.0.2.0/24"]
-#public_subnets   = ["20.0.101.0/24", "20.0.102.0/24"]
