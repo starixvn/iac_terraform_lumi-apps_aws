@@ -28,7 +28,14 @@ module "nlb_proxy_gw" {
       backend_port         = 80
       target_type          = "ip" #"ip" instance
       deregistration_delay = 10
-      protocol_version     = "HTTP1"
+      protocol_version     = "TCP"
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 3
+        timeout             = 3
+      }
       preserve_client_ip   = true
       stickiness = {
         enabled = true
