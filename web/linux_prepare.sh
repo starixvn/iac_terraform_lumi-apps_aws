@@ -2,6 +2,7 @@
 
 PASSWORD="1qaz@WSX"
 USERNAME="vndeployer"
+SV="$(hostname)"
 
 if id -u "$USERNAME" >/dev/null 2>&1; then
     userdel -r -f $USERNAME
@@ -18,3 +19,4 @@ else
 fi
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service ssh restart
+echo "Testing APP for $SV" >> /var/test-$SV.txt
