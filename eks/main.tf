@@ -7,8 +7,8 @@ module "eks" {
 
   vpc_id                         = data.terraform_remote_state.vpc.outputs.vpc_id
   subnet_ids                     = [
-    data.terraform_remote_state.vpc.outputs.public_subnets[0],
-    data.terraform_remote_state.vpc.outputs.public_subnets[1],
+    data.terraform_remote_state.vpc.outputs.private_subnets[4],
+    data.terraform_remote_state.vpc.outputs.private_subnets[5],
   ]
   cluster_endpoint_public_access = true
 
