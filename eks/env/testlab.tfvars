@@ -1,5 +1,5 @@
 project = "clouddemo"
-team = "Lumi"
+team = "lumi"
 aws_region = "ap-northeast-1"
 environment = "testlab"
 aws_profile = "test-iac-terraform-ci"
