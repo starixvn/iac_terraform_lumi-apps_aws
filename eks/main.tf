@@ -19,7 +19,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "${var.team}-worker-node"
+      name = "${var.team}-eks-worker-gr1"
 
       instance_types = ["t3.micro"]
 
@@ -29,7 +29,7 @@ module "eks" {
     }
 
     two = {
-      name = "${var.team}-worker-node"
+      name = "${var.team}-eks-worker-gr2"
 
       instance_types = ["t3.micro"]
 
