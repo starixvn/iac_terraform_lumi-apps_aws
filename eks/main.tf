@@ -6,10 +6,7 @@ module "eks" {
   cluster_version = "1.27"
 
   vpc_id                         = data.terraform_remote_state.vpc.outputs.vpc_id
-  subnet_ids                     = [
-    data.terraform_remote_state.vpc.outputs.private_subnets[4],
-    data.terraform_remote_state.vpc.outputs.private_subnets[5],
-  ]
+  subnet_ids                     = data.terraform_remote_state.vpc.outputs.private_subnets
   cluster_endpoint_public_access = true
 
   eks_managed_node_group_defaults = {

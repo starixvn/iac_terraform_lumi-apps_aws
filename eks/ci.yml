@@ -1,3 +1,4 @@
+---
 .eks:
   extends: .base-rules
   variables:
@@ -5,16 +6,25 @@
     DIR_PATH: "eks"
     TF_COMMAND: "apply"
 
-eks-validate-syntax:
+code-quality-eks-terraform-lint:
+  extends: [.eks, .terraform_lint]
+
+code-quality-eks-terraform-fmt:
+  extends: [.eks, .terraform_fmt]
+
+code-quality-eks-yaml-lint:
+  extends: [.eks, .yaml_lint]
+
+validate-syntax-eks:
   extends: [.eks, .validate_syntax]
 
-eks-validate-security:
+validate-security-eks:
   extends: [.eks, .validate_security]
 
-eks-validate-security-checkov:
+validate-security-checkov:
   extends: [.eks, .validate_security_checkov]
 
-eks-build:
+build-eks:
   rules:
     - if: $RULES_CHANGES_PATH != "eks/**/*"
       when: never
@@ -22,19 +32,19 @@ eks-build:
   extends: [.eks, .plan]
   needs: []
 
-eks-deploy:
+deploy-eks:
   rules:
     - if: $RULES_CHANGES_PATH != "eks/**/*"
       when: never
     - !reference [.base-rules, rules]
   extends: [.eks, .apply]
-  needs: ["eks-build"]
+  needs: ["build-eks"]
 
-eks-destroy:
+destroy-eks:
   rules:
     - if: $RULES_CHANGES_PATH != "eks/**/*"
       when: never
     - !reference [.destroy, rules]
     - !reference [.base-rules, rules]
   extends: [.eks, .destroy]
-  needs: ["eks-build"]
+  needs: ["build-eks"]
