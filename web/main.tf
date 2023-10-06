@@ -24,7 +24,12 @@ module "proxy_gw_linux" {
   instance_tags = {
     OS = each.value.ami,
   }
-  tags = local.common_tags
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "proxy_gw_linux"
+    },
+  )
 }
 
 /* Docker Swarm */
@@ -53,5 +58,10 @@ module "private_app_linux" {
   instance_tags = {
     OS = each.value.ami,
   }
-  tags = local.common_tags
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "private_app_linux"
+    },
+  )
 }

@@ -12,6 +12,12 @@ module "eks" {
   eks_managed_node_group_defaults = {
     ami_type = "AL2_x86_64"
 
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "EKS"
+    },
+  )
   }
 
   eks_managed_node_groups = {
@@ -35,6 +41,13 @@ module "eks" {
       desired_size = 1
     }
   }
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "EKS"
+    },
+  )
+    
 }
 
 
