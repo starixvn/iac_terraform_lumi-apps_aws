@@ -20,3 +20,7 @@ fi
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service ssh restart
 echo "Testing APP for $SV" >> /var/test-$SV.txt
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo "Testing APP for $SV" >> /var/www/index.html
+sudo service nginx start

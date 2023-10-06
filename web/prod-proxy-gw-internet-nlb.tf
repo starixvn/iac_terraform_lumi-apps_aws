@@ -21,7 +21,6 @@ module "nlb_proxy_gw" {
 
   # Target Groups
   target_groups = [
-    # App1 Target Group - TG Index = 0
     {
       name                 = "${local.project}-${var.environment}-gw-80"
       backend_protocol     = "TCP"
@@ -36,19 +35,12 @@ module "nlb_proxy_gw" {
         interval            = 5
         timeout             = 3
       }
-      /*
-      health_check {
-        protocol = "TCP"
-        matcher = ""
-        path = ""
-      }
-      */
       preserve_client_ip   = true
       stickiness = {
         enabled = false
         type    = "source_ip"
       }
-      # App1 Target Group - Targets
+      # Target Group - Targets
       targets = {
         for server in local.proxy_gw_instances :
         server.instance_name => {
