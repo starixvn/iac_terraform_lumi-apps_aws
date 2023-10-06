@@ -1,11 +1,12 @@
 # Define Local Values in Terraform
 locals {
   project     = var.project
-  team        = var.team
   environment = var.environment
+  team = var.team
   common_tags = {
     Dept        = "VNTeam"
     Team        = local.team
+    ManageBy = "Terraform"
     Environment = local.environment
   }
 }
