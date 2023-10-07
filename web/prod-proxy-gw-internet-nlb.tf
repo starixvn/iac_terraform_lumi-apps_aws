@@ -35,7 +35,7 @@ module "nlb_proxy_gw" {
         interval            = 5
         timeout             = 3
       }
-      preserve_client_ip   = true
+      preserve_client_ip = true
       stickiness = {
         enabled = false
         type    = "source_ip"

@@ -5,6 +5,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    acme = {
+      source  = "vancluever/acme"
+      version = "2.18.0"
+    }
   }
   # Adding Backend as S3 for Remote State Storage
   backend "s3" {

@@ -6,7 +6,7 @@ module "proxy_gw_linux" {
   instance_type          = each.value.instance_type
   name                   = "${local.project}-${var.environment}-${each.key}"
   ami                    = data.aws_ami.os[each.value.ami].id
-  subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets
+  subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets[0]
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.proxy_gw_sg]
   private_ip             = each.value.private_ip
   hibernation            = false
@@ -27,7 +27,7 @@ module "proxy_gw_linux" {
   tags = merge(
     local.common_tags,
     {
-     Resource = "proxy_gw_linux"
+      Resource = "proxy_gw_linux"
     },
   )
 }
@@ -40,7 +40,7 @@ module "private_app_linux" {
   instance_type          = each.value.instance_type
   name                   = "${local.project}-${var.environment}-${each.key}"
   ami                    = data.aws_ami.os[each.value.ami].id
-  subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets
+  subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets[0]
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.private_web_sg]
   private_ip             = each.value.private_ip
   hibernation            = false
@@ -61,7 +61,7 @@ module "private_app_linux" {
   tags = merge(
     local.common_tags,
     {
-     Resource = "private_app_linux"
+      Resource = "private_app_linux"
     },
   )
 }

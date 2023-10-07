@@ -2,11 +2,11 @@
 locals {
   project     = var.project
   environment = var.environment
-  team = var.team
+  team        = var.team
   common_tags = {
     Dept        = "VNTeam"
     Team        = local.team
-    ManageBy = "Terraform"
+    ManageBy    = "Terraform"
     Environment = local.environment
   }
 }

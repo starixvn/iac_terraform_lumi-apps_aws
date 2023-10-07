@@ -18,7 +18,7 @@ proxy_gw_vm = [
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "20",
-    "private_ip" : "20.0.1.6",
+    "private_ip" : "10.6.32.10",
   },
   {
     "application_name" : "proxy-gw-02",
@@ -26,7 +26,7 @@ proxy_gw_vm = [
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "20",
-    "private_ip" : "20.0.1.7",
+    "private_ip" : "10.6.32.11",
   },
   /*{
     "application_name" : "proxy-gw-03",
@@ -44,7 +44,7 @@ apps_vm = [
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "20",
-    "private_ip" : "20.0.2.6",
+    "private_ip" : "10.6.32.100",
   },
   /*{
     "application_name" : "app-02",
