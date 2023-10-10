@@ -4,7 +4,6 @@
   variables:
     RULES_CHANGES_PATH: "eks/**/*"
     DIR_PATH: "eks"
-    TF_COMMAND: "apply"
 
 code-quality-eks-terraform-lint:
   extends: [.eks, .terraform_lint]

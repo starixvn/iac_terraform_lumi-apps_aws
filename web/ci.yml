@@ -3,7 +3,6 @@
   variables:
     RULES_CHANGES_PATH: "web/**/*"
     DIR_PATH: "web"
-    TF_COMMAND: "apply"
 
 web-validate-syntax:
   extends: [.web, .validate_syntax]
