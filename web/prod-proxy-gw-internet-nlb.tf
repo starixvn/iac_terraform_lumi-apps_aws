@@ -59,22 +59,8 @@ module "nlb_proxy_gw" {
     {
       name                 = "${local.project}-${var.environment}-gw-443"
       backend_protocol     = "TLS"
-      backend_port         = 80
+      backend_port         = 443
       target_type          = "ip" #"ip" instance
-      deregistration_delay = 10
-      protocol_version     = "HTTP1"
-      health_check = {
-        protocol            = "TCP"
-        healthy_threshold   = 2
-        unhealthy_threshold = 2
-        interval            = 5
-        timeout             = 3
-      }
-      preserve_client_ip = true
-      stickiness = {
-        enabled = false
-        type    = "source_ip"
-      }
       # Target Group - Targets
       targets = {
         for server in local.proxy_gw_instances :
