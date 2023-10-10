@@ -9,3 +9,7 @@ output "issuer_pem" {
 output "private_key_pem" {
   value = nonsensitive(lookup(acme_certificate.certificate, "private_key_pem"))
 }
+
+output "acm_certificate_arn" {
+  value = aws_acm_certificate.certificate.arn
+}
