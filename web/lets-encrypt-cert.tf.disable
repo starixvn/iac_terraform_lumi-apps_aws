@@ -1,7 +1,3 @@
-provider "acme" {
-  server_url = "https://acme-staging-v02.api.letsencrypt.org/directory" #Staging Testing
-  #server_url = "https://acme-v02.api.letsencrypt.org/directory"
-}
 
 data "aws_route53_zone" "base_domain" {
   name = ".disableluminetsoft.com" # TODO put your own DNS in here!
