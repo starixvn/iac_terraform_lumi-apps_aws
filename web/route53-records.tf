@@ -30,23 +30,21 @@ module "records" {
 
   ]
 }
-/*
 ###########################  for A record
 module "alias" {
   source   = "gitlab.nexdev.net/iac-terraform/aws-route53/aws//modules/records"
   version  = "2.10.2"
   for_each = { for zone, record in local.domain_a_config : zone => record }
-  zone_id  = data.terraform_remote_state.route53_zone.outputs.route53_zone[each.value.domain_zone].route53_zone_zone_id[each.value.domain_zone]
+  zone_id  = data.terraform_remote_state.route53_zone.outputs.route53_zone[each.value.domain_zone_a].route53_zone_zone_id[each.value.domain_zone_a]
   records = [
     {
-      name = each.value.record_name
-      type = each.value.record_type
-      ttl  = each.value.record_ttl
+      name = each.value.record_name_a
+      type = each.value.record_type_a
+      ttl  = each.value.record_ttl_a
       records = [
-        each.value.record_value,
+        each.value.record_value_a,
       ]
     },
   ]
 
 }
-*/
