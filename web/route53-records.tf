@@ -27,7 +27,7 @@ module "records" {
         zone_id = module.nlb_proxy_gw.lb_zone_id
       }
     },
-    
+
   ]
 }
 /*
