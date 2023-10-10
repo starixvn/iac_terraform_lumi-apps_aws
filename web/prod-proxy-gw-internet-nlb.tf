@@ -17,7 +17,7 @@ module "nlb_proxy_gw" {
       protocol           = "TCP"
       target_group_index = 0
     },
-    /*{
+    {
       port               = 443
       protocol           = "HTTPS"
       certificate_arn    = aws_acm_certificate.certificate.arn
@@ -27,7 +27,7 @@ module "nlb_proxy_gw" {
         message_body = "Fixed Static message - for Root Context"
         status_code  = "200"
       }
-    }*/
+    }
   ]
 
   # Target Groups
