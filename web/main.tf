@@ -27,7 +27,8 @@ module "proxy_gw_linux" {
   tags = merge(
     local.common_tags,
     {
-      Resource = "proxy_gw_linux"
+      Resource  = "proxy_gw_linux"
+      Workspace = "${terraform.workspace}"
     },
   )
 }
