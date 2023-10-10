@@ -1,4 +1,5 @@
 # Terraform Remote State Datasource
+/*
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
@@ -7,7 +8,7 @@ data "terraform_remote_state" "vpc" {
     region = "${var.aws_region}"
   }
 }
-
+*/
 data "terraform_remote_state" "route53_zone" {
   backend = "s3"
   config = {
