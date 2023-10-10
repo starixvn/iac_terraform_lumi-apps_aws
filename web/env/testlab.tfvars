@@ -50,33 +50,44 @@ domain_ns_records = [
     "ttl" : "86400",
   },
 ]
-domain_records = {
+
+domain_a_records = {
+  "luminetsoft.com" = [
+    {
+          "name" : "*",
+          "type" : "A",
+          "ttl" : "3600",
+          "record" : "10.10.50.69",
+    },
+    {
+          "name" : "nexops",
+          "type" : "A",
+          "ttl" : "3600",
+          "record" : "202.78.231.55",
+    },
+  ],  
+}
+
+
+domain_alias_records = {
   "luminetsoft.com" = [
     {
         "name" : "api",
         "type" : "A",
-        "ttl" : "3600",
-        "record" : "202.78.231.55",
     },
     {
         "name" : "games",
         "type" : "A",
-        "ttl" : "3600",
-        "record" : "202.78.231.54",
     },
   ],
   "staging.luminetsoft.com" = [
     {
         "name" : "api",
         "type" : "A",
-        "ttl" : "3600",
-        "record" : "202.78.231.57",
     },
     {
         "name" : "games",
         "type" : "A",
-        "ttl" : "3600",
-        "record" : "202.78.231.58",
     },
   ],
 }

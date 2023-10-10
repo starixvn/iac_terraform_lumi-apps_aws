@@ -73,16 +73,27 @@ locals {
       ttl          = ns_records.ttl
     }
   ])
-  # Define A, Alias,...
-  domain_record_config = flatten([
-    for domain_zone, domain_info_record in var.domain_records : [
-      for info_record in domain_info_record : {
+  # Define Alias
+  domain_alias_config = flatten([
+    for domain_alias_zone, domain_alias_info_record in var.domain_alias_records : [
+      for info_alias_record in domain_alias_info_record : {
         #info_record  = info_record
-        domain_zone  = domain_zone
-        record_name  = info_record.name
-        record_value = info_record.record
-        record_ttl   = info_record.ttl
-        record_type  = info_record.type
+        domain_zone_alias  = domain_alias_zone
+        record_name_alias  = info_alias_record.name
+        record_type_alias  = info_alias_record.type
+      }
+    ]
+  ])
+  # Define A Record
+  domain_a_config = flatten([
+    for domain_zone_a, domain_a_info_record in var.domain_a_records : [
+      for info_record_a in domain_a_info_record : {
+        #info_record  = info_record
+        domain_zone_a  = domain_zone_a
+        record_name_a  = info_record_a.name
+        record_value_a = info_record_a.record
+        record_ttl_a   = info_record_a.ttl
+        record_type_a  = info_record_a.type
       }
     ]
   ])
