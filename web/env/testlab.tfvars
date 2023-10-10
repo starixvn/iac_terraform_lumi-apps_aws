@@ -72,21 +72,21 @@ domain_a_records = {
 domain_alias_records = {
   "luminetsoft.com" = [
     {
-        "name" : "api",
+        "name" : "w1",
         "type" : "A",
     },
     {
-        "name" : "games",
+        "name" : "w2",
         "type" : "A",
     },
   ],
   "staging.luminetsoft.com" = [
     {
-        "name" : "api",
+        "name" : "w1",
         "type" : "A",
     },
     {
-        "name" : "games",
+        "name" : "w2",
         "type" : "A",
     },
   ],
