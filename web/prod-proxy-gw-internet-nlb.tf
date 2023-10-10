@@ -17,12 +17,16 @@ module "nlb_proxy_gw" {
       protocol           = "TCP"
       target_group_index = 0
     },
+  ]
+
+  #  TLS
+  https_listeners = [
     {
       port               = 443
       protocol           = "TLS"
       certificate_arn    = aws_acm_certificate.certificate.arn
       target_group_index = 1
-    }
+    },
   ]
 
   # Target Groups
@@ -59,7 +63,7 @@ module "nlb_proxy_gw" {
     {
       name                 = "${local.project}-${var.environment}-gw-443"
       backend_protocol     = "TLS"
-      backend_port         = 443
+      backend_port         = 80
       target_type          = "ip" #"ip" instance
       # Target Group - Targets
       targets = {
