@@ -63,8 +63,12 @@ variable "nlb_proxy_gw" {
 }
 
 #######ROUTE 53
-variable "domain_records" {
-  description = "domain_records"
+variable "domain_a_records" {
+  description = "A records"
+  default     = [{}]
+}
+variable "domain_alias_records" {
+  description = "Alias records"
   default     = [{}]
 }
 variable "domain_ns_records" {
