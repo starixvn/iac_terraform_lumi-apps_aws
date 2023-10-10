@@ -1,0 +1,49 @@
+---
+.route53:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "route53/**/*"
+    DIR_PATH: "route53"
+
+code-quality-route53-terraform-lint:
+  extends: [.route53, .terraform_lint]
+
+code-quality-route53-terraform-fmt:
+  extends: [.route53, .terraform_fmt]
+
+code-quality-route53-yaml-lint:
+  extends: [.route53, .yaml_lint]
+
+validate-syntax-route53:
+  extends: [.route53, .validate_syntax]
+
+validate-security-route53:
+  extends: [.route53, .validate_security]
+
+validate-security-checkov-route53:
+  extends: [.route53, .validate_security_checkov]
+
+build-route53:
+  rules:
+    - if: $RULES_CHANGES_PATH != "route53/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.route53, .plan]
+  needs: []
+
+deploy-route53:
+  rules:
+    - if: $RULES_CHANGES_PATH != "route53/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.route53, .apply]
+  needs: ["build-route53"]
+
+destroy-route53:
+  rules:
+    - if: $RULES_CHANGES_PATH != "route53/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.route53, .destroy]
+  needs: ["build-route53"]
