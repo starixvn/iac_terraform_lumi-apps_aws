@@ -19,7 +19,7 @@ module "nlb_proxy_gw" {
     },
   ]
 
-  #  TLS
+  ##  TLS
   https_listeners = [
     {
       port               = 443
