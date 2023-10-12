@@ -7,3 +7,12 @@ data "terraform_remote_state" "route53_zone" {
     region = "${var.aws_region}"
   }
 }
+
+data "terraform_remote_state" "nlb" {
+  backend = "s3"
+  config = {
+    bucket = "${var.aws_region_bucket_remote_state}"
+    key    = "${var.aws_region_key_remote_state_nlb}"
+    region = "${var.aws_region}"
+  }
+}

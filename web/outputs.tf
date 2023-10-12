@@ -1,6 +1,6 @@
 output "output_nlb" {
     value = {
-    lb_id   = module.nlb_proxy_gw.lb_id
+    lb_zone_id   = module.nlb_proxy_gw.lb_zone_id
     lb_dns_name   = module.nlb_proxy_gw.lb_dns_name
   }
 }
