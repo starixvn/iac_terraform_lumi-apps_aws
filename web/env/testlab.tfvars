@@ -8,7 +8,7 @@ aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 aws_region_key_remote_state_zone    = "env:/testlab/route53-tf.tfstate"
 aws_region_key_remote_state_acm    = "env:/testlab/route53-acme-certificate-tf.tfstate"
 
-################Proxy GW
+#################Proxy GW
 nlb_proxy_gw = "false" # set true if Internal LB
 ################  EC2
 public_key_location = "key/id_rsa.pub"
