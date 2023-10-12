@@ -26,9 +26,9 @@ locals {
   domain_alias_config = flatten([
     for domain_alias_zone, domain_alias_info_record in var.domain_alias_records : [
       for info_alias_record in domain_alias_info_record : {
-        domain_zone_alias  = domain_alias_zone
-        record_name_alias  = info_alias_record.name
-        record_type_alias  = info_alias_record.type
+        domain_zone_alias = domain_alias_zone
+        record_name_alias = info_alias_record.name
+        record_type_alias = info_alias_record.type
       }
     ]
   ])

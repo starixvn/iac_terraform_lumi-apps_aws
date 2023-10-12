@@ -24,7 +24,7 @@ module "nlb_proxy_gw" {
     {
       port               = 443
       protocol           = "TLS"
-      certificate_arn    = aws_acm_certificate.certificate.arn
+      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
       target_group_index = 1
     },
   ]

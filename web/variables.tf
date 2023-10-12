@@ -29,6 +29,10 @@ variable "aws_region_key_remote_state_zone" {
   type = string
 }
 
+variable "aws_region_key_remote_state_acm" {
+  type = string
+}
+
 variable "team" {
   type = string
 }
@@ -60,18 +64,4 @@ variable "ami_name" {
 variable "nlb_proxy_gw" {
   type        = string
   description = "NLB type"
-}
-
-#######ROUTE 53
-variable "domain_a_records" {
-  description = "A records"
-  default     = [{}]
-}
-variable "domain_alias_records" {
-  description = "Alias records"
-  default     = [{}]
-}
-variable "domain_ns_records" {
-  description = "domain ns records"
-  default     = [{}]
 }

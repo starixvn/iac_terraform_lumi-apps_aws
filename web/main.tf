@@ -1,5 +1,4 @@
 /* Proxy GW */
-/*
 module "proxy_gw_linux" {
   source                 = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
   version                = "5.2.1"
@@ -33,7 +32,7 @@ module "proxy_gw_linux" {
     },
   )
 }
-*/
+
 /* Docker Swarm */
 /*
 module "private_app_linux" {
