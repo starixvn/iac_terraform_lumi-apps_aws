@@ -35,6 +35,10 @@ variable "aws_region_key_remote_state" {
 variable "aws_region_key_remote_state_zone" {
   type = string
 }
+variable "aws_region_key_remote_state_nlb" {
+  type = string
+}
+
 #######ROUTE 53
 variable "domain_a_records" {
   description = "A records"
