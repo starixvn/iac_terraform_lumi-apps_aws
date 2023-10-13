@@ -38,7 +38,7 @@ module "alb_proxy_gw" {
     {
       port               = 8443
       protocol           = "HTTPS"
-      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
+      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_staging
       action_type = "fixed-response"
       fixed_response = {
         content_type = "text/plain"
@@ -47,7 +47,12 @@ module "alb_proxy_gw" {
       }
     }, 
   ]
-  
+  extra_ssl_certs = [
+    {
+      https_listener_index = 0
+      certificate_arn      = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_staging
+    }
+  ]
   # Target Groups
   target_groups = [
     {
