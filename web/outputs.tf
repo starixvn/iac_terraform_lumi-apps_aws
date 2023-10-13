@@ -4,6 +4,13 @@ output "output_nlb" {
     lb_dns_name   = module.nlb_proxy_gw.lb_dns_name
   }
 }
+
+output "output_alb" {
+    value = {
+    lb_zone_id   = module.nlb_proxy_gw.lb_zone_id
+    lb_dns_name   = module.nlb_proxy_gw.lb_dns_name
+  }
+}
 /*
 output "output_ec2" {
   value = {
