@@ -22,19 +22,27 @@ validate-security-web:
 validate-security-checkov-web:
   extends: [.web, .validate_security_checkov]
 
-web-deploy:
+build-web:
+  rules:
+    - if: $RULES_CHANGES_PATH != "web/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.web, .plan]
+  needs: []
+
+deploy-web:
   rules:
     - if: $RULES_CHANGES_PATH != "web/**/*"
       when: never
     - !reference [.base-rules, rules]
   extends: [.web, .apply]
-  needs: ["web-build"]
+  needs: ["build-web"]
 
-web-destroy:
+destroy-web:
   rules:
     - if: $RULES_CHANGES_PATH != "web/**/*"
       when: never
     - !reference [.destroy, rules]
     - !reference [.base-rules, rules]
   extends: [.web, .destroy]
-  needs: ["web-build"]
+  needs: ["build-web"]
