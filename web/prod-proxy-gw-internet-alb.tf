@@ -15,7 +15,7 @@ module "alb_proxy_gw" {
   http_tcp_listeners = [
     {
       port               = 80
-      protocol           = "TCP"
+      protocol           = "HTTP"
       target_group_index = 0
     },
   ]
