@@ -3,7 +3,7 @@ module "alb_proxy_gw" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
-  name               = "${local.project}-${var.environment}-nlb-proxy-gw"
+  name               = "${local.project}-${var.environment}-alb-proxy-gw"
   load_balancer_type = "application" #network application
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
