@@ -47,6 +47,10 @@ domain_alias_records = {
         "name" : "w2",
         "type" : "A",
     },
+    {
+        "name" : "w8-api",
+        "type" : "A",
+    },
   ],
   "staging.luminetsoft.com" = [
     {
@@ -55,6 +59,10 @@ domain_alias_records = {
     },
     {
         "name" : "w2",
+        "type" : "A",
+    },
+    {
+        "name" : "w1-api",
         "type" : "A",
     },
   ],
