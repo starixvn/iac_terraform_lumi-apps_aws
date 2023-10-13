@@ -11,6 +11,7 @@ module "alb_proxy_gw" {
     data.terraform_remote_state.vpc.outputs.public_subnets[1],
   ]
   internal = var.nlb_proxy_gw
+  security_groups = [data.terraform_remote_state.vpc.outputs.loadbalancer_sg]
   # HTTP Listeners
   http_tcp_listeners = [
     {
