@@ -4,22 +4,23 @@
     RULES_CHANGES_PATH: "web/**/*"
     DIR_PATH: "web"
 
-web-validate-syntax:
-  extends: [.web, .validate_syntax]
+code-quality-app-terraform-lint:
+  extends: [.app, .terraform_lint]
 
-web-validate-security:
-  extends: [.web, .validate_security]
+code-quality-app-terraform-fmt:
+  extends: [.app, .terraform_fmt]
 
-web-validate-security-checkov:
-  extends: [.web, .validate_security_checkov]
+code-quality-app-yaml-lint:
+  extends: [.app, .yaml_lint]
 
-web-build:
-  rules:
-    - if: $RULES_CHANGES_PATH != "web/**/*"
-      when: never
-    - !reference [.base-rules, rules]
-  extends: [.web, .plan]
-  needs: []
+validate-syntax-app:
+  extends: [.app, .validate_syntax]
+
+validate-security-app:
+  extends: [.app, .validate_security]
+
+validate-security-checkov-app:
+  extends: [.app, .validate_security_checkov]
 
 web-deploy:
   rules:
