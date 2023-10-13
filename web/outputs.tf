@@ -7,8 +7,8 @@ output "output_nlb" {
 
 output "output_alb" {
     value = {
-    lb_zone_id   = module.nlb_proxy_gw.lb_zone_id
-    lb_dns_name   = module.nlb_proxy_gw.lb_dns_name
+    lb_zone_id   = module.alb_proxy_gw.lb_zone_id
+    lb_dns_name   = module.alb_proxy_gw.lb_dns_name
   }
 }
 /*
