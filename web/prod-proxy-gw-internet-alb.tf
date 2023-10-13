@@ -8,6 +8,7 @@ module "alb_proxy_gw" {
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
     data.terraform_remote_state.vpc.outputs.public_subnets[0],
+    data.terraform_remote_state.vpc.outputs.public_subnets[1],
   ]
   internal = var.nlb_proxy_gw
   # HTTP Listeners
