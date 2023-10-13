@@ -24,8 +24,8 @@ module "records" {
       name = each.value.record_name_alias
       type = each.value.record_type_alias
       alias = {
-        name    = data.terraform_remote_state.nlb.outputs.output_nlb.lb_dns_name
-        zone_id = data.terraform_remote_state.nlb.outputs.output_nlb.lb_zone_id
+        name    = data.terraform_remote_state.nlb.outputs.output_alb.lb_dns_name
+        zone_id = data.terraform_remote_state.nlb.outputs.output_alb.lb_zone_id
       }
     },
 
