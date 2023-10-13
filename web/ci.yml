@@ -4,23 +4,23 @@
     RULES_CHANGES_PATH: "web/**/*"
     DIR_PATH: "web"
 
-code-quality-app-terraform-lint:
-  extends: [.app, .terraform_lint]
+code-quality-web-terraform-lint:
+  extends: [.web, .terraform_lint]
 
-code-quality-app-terraform-fmt:
-  extends: [.app, .terraform_fmt]
+code-quality-web-terraform-fmt:
+  extends: [.web, .terraform_fmt]
 
-code-quality-app-yaml-lint:
-  extends: [.app, .yaml_lint]
+code-quality-web-yaml-lint:
+  extends: [.web, .yaml_lint]
 
-validate-syntax-app:
-  extends: [.app, .validate_syntax]
+validate-syntax-web:
+  extends: [.web, .validate_syntax]
 
-validate-security-app:
-  extends: [.app, .validate_security]
+validate-security-web:
+  extends: [.web, .validate_security]
 
-validate-security-checkov-app:
-  extends: [.app, .validate_security_checkov]
+validate-security-checkov-web:
+  extends: [.web, .validate_security_checkov]
 
 web-deploy:
   rules:
