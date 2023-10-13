@@ -17,7 +17,12 @@ module "alb_proxy_gw" {
     {
       port               = 80
       protocol           = "HTTP"
-      target_group_index = 0
+      action_type = "redirect"
+      redirect = {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
     },
   ]
 
