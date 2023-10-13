@@ -38,7 +38,7 @@ module "alb_proxy_gw" {
   # Target Groups
   target_groups = [
     {
-      name                 = "${local.project}-${var.environment}-gw-80"
+      name                 = "${local.project}-${var.environment}-gw-alb-80"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "ip" #"ip" instance
