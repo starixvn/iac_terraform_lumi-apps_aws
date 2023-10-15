@@ -1,0 +1,27 @@
+aws ec2 describe-instance-types --filters Name=processor-info.supported-architecture,Values=arm64 --query "InstanceTypes[*].InstanceType" --output text
+https://aws.amazon.com/ec2/instance-types/
+
+##########
+curl.exe -LO "https://dl.k8s.io/release/v1.28.2/bin/windows/amd64/kubectl.exe"
+kubectl version --client
+
+aws eks update-kubeconfig --name testlab-Lumi-eks --region ap-northeast-1
+kubectl get nodes
+kubectl get pods -n kube-system
+
+kubectl logs -f -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller
+##
+Let's check if we can access the cluster using the eks-admin role.
+kubectl auth can-i "*" "*"
+
+##########
+https://antonputra.com/amazon/create-eks-cluster-using-terraform-modules/#deploy-cluster-autoscaler
+
+Now let's apply nginx Kubernetes deployment.
+
+kubectl apply -f k8s/nginx.yaml
+
+In a few seconds, you should get a few more nodes.
+watch -n 1 -t kubectl get nodes
+
+kubectl get ingress

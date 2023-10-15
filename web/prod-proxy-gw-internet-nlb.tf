@@ -9,7 +9,7 @@ module "nlb_proxy_gw" {
   subnets = [
     data.terraform_remote_state.vpc.outputs.public_subnets[0],
   ]
-  internal = true
+  internal = false
   # Listeners
   http_tcp_listeners = [
     {
@@ -35,7 +35,7 @@ module "nlb_proxy_gw" {
       name                 = "${local.project}-${var.environment}-gw-80"
       backend_protocol     = "TCP"
       backend_port         = 80
-      target_type          = "ip" #"ip" instance
+      target_type          = "ip" #"ip" instance alb
       deregistration_delay = 10
       protocol_version     = "HTTP1"
       health_check = {
@@ -62,9 +62,16 @@ module "nlb_proxy_gw" {
     },
     {
       name                 = "${local.project}-${var.environment}-gw-443"
-      backend_protocol     = "TLS"
+      backend_protocol     = "TCP"
       backend_port         = 80
       target_type          = "ip" #"ip" instance
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
       # Target Group - Targets
       targets = {
         for server in local.proxy_gw_instances :
@@ -75,6 +82,21 @@ module "nlb_proxy_gw" {
       }
       tags = local.common_tags # Target Group Tags
     },
-    
+    ##################
+    {
+      name                 = "${local.project}-${var.environment}-gw-fwd-alb"
+      backend_protocol     = "TCP"
+      backend_port         = 80
+      target_type          = "alb" #"ip" instance
+      # Target Group - Targets
+      #target_group_arn = module.alb_proxy_gw.target_group_arns
+      target_id = module.alb_proxy_gw.lb_arn
+          #port      = 80
+      
+      tags = local.common_tags # Target Group Tags
+    },
   ]
+
+  #############################
+  
 }

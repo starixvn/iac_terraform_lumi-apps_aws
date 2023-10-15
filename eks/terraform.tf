@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.4.6"
+  required_version = ">= 1.4"
 
   backend "s3" {}
 
@@ -26,9 +26,4 @@ terraform {
 data "aws_caller_identity" "current" {} # used for accesing Account ID and ARN
 
 provider "aws" {
-  default_tags {
-    tags = {
-      iac_environment = var.iac_environment_tag
-    }
-  }
 }
