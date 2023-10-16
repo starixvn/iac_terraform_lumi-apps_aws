@@ -33,6 +33,7 @@ resource "aws_security_group" "alb" {
     local.common_tags,
     {
       Resource = "EKS"
+      Name   = "${var.environment}-${var.project}-eks-alb"
     },
   )
 }

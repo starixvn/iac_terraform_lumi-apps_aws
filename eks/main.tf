@@ -17,6 +17,7 @@ module "cluster" {
       Resource = "EKS"
     },
   )
+/*
   node_security_group_additional_rules = {
     # allow connections from ALB security group
     ingress_allow_access_from_alb_sg = {
@@ -26,6 +27,7 @@ module "cluster" {
       to_port                  = 0
       source_security_group_id = aws_security_group.alb.id
     }
+    
     # allow connections from EKS to the internet
     egress_all = {
       protocol         = "-1"
@@ -43,7 +45,9 @@ module "cluster" {
       type      = "ingress"
       self      = true
     }
-  }
+    
+  }*/
+
 }
 output "cluster_endpoint" {
   value = module.cluster.cluster_endpoint
@@ -52,6 +56,7 @@ output "cluster_certificate_authority_data" {
   value = module.cluster.cluster_certificate_authority_data
 }
 
+/*
 # create IAM role for AWS Load Balancer Controller, and attach to EKS OIDC
 module "eks_ingress_iam" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
@@ -96,7 +101,7 @@ module "eks_external_dns_iam" {
     },
   )
 }
-
+*/
 # set spot fleet Autoscaling policy
 resource "aws_autoscaling_policy" "eks_autoscaling_policy" {
   count = length(var.eks_managed_node_groups)
