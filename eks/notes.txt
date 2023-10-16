@@ -1,11 +1,16 @@
 aws ec2 describe-instance-types --filters Name=processor-info.supported-architecture,Values=arm64 --query "InstanceTypes[*].InstanceType" --output text
 https://aws.amazon.com/ec2/instance-types/
-
+ap-northeast-1
 ##########
+aws configure
+aws s3api list-buckets
+
 curl.exe -LO "https://dl.k8s.io/release/v1.28.2/bin/windows/amd64/kubectl.exe"
 kubectl version --client
 
-aws eks update-kubeconfig --name testlab-Lumi-eks --region ap-northeast-1
+aws 
+/usr/local/bin/aws eks update-kubeconfig --name testlab-Lumi-eks --region ap-northeast-1
+
 kubectl get nodes
 kubectl get pods -n kube-system
 
@@ -21,7 +26,16 @@ Now let's apply nginx Kubernetes deployment.
 
 kubectl apply -f k8s/nginx.yaml
 
+kubectl delete -f k8s/nginx.yaml
+
 In a few seconds, you should get a few more nodes.
 watch -n 1 -t kubectl get nodes
 
 kubectl get ingress
+
+##############
+kubectl get namespace sample-apps -o json > tempfile.json
+
+kubectl replace --raw "/api/v1/namespaces/sample-apps/finalize" -f tempfile.json
+
+Foreach($x in (kubectl api-resources --verbs=list --namespaced -o name)){ kubectl get --show-kind --ignore-not-found -n sample-apps $x }

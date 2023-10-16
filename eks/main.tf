@@ -1,4 +1,5 @@
 # create EKS cluster
+
 module "cluster" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.13.1"
@@ -16,7 +17,6 @@ module "cluster" {
       Resource = "EKS"
     },
   )
-  /*
   node_security_group_additional_rules = {
     # allow connections from ALB security group
     ingress_allow_access_from_alb_sg = {
@@ -24,7 +24,7 @@ module "cluster" {
       protocol                 = "-1"
       from_port                = 0
       to_port                  = 0
-      source_security_group_id = [data.terraform_remote_state.vpc.outputs.loadbalancer_sg]
+      source_security_group_id = aws_security_group.alb.id
     }
     # allow connections from EKS to the internet
     egress_all = {
@@ -43,7 +43,7 @@ module "cluster" {
       type      = "ingress"
       self      = true
     }
-  }*/
+  }
 }
 output "cluster_endpoint" {
   value = module.cluster.cluster_endpoint

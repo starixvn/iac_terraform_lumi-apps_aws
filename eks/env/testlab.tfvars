@@ -47,8 +47,8 @@ spot_termination_handler_chart_version   = "0.21.0"
 spot_termination_handler_chart_namespace = "kube-system"
 
 ###############
+/*
 dns_base_domain               = "staging.luminetsoft.com"
-
 external_dns_iam_role      = "external-dns"
 external_dns_chart_name    = "external-dns"
 external_dns_chart_repo    = "https://kubernetes-sigs.github.io/external-dns/"
@@ -70,10 +70,10 @@ ingress_gateway_iam_role      = "load-balancer-controller"
 ingress_gateway_chart_name    = "aws-load-balancer-controller"
 ingress_gateway_chart_repo    = "https://aws.github.io/eks-charts"
 ingress_gateway_chart_version = "1.4.1"
-
+*/
 ###############
-namespaces = ["sample-apps"]
+namespaces = ["sample-apps","nexops-apps"]
 name_prefix             = "my-app"
 ###############
-admin_users     = ["thomas-gray", "ursula-williams"]
-developer_users = ["melissa-oliver", "lex-oneil"]
+admin_users     = ["admin1", "admin2"]
+developer_users = ["dev1", "dev2"]
