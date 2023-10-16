@@ -24,7 +24,7 @@ variable "spot_termination_handler_chart_namespace" {
   type        = string
   description = "Kubernetes namespace to deploy EKS Spot termination handler Helm chart."
 }
-
+/*
 variable "ingress_gateway_name" {
   type        = string
   description = "Load-balancer service name."
@@ -71,7 +71,7 @@ variable "dns_base_domain" {
   type        = string
   description = "DNS Zone name to be used from EKS Ingress."
 }
-
+*/
 variable "name_prefix" {
   type        = string
   description = "Prefix to be used on each infrastructure object Name created in AWS."
