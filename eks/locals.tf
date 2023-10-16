@@ -6,7 +6,7 @@ locals {
   common_tags = {
     Dept        = "VNTeam"
     Team        = local.team
-    ManageBy    = "Terraform"
+    ManageBy    = "vnTerraform"
     Environment = local.environment
   }
 }
