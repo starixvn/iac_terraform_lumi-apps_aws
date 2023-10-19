@@ -403,7 +403,7 @@ controller:
     ## Service ports to use for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
     ports:
-      http: 8080
+      http: 80
       https: 443
       stat: 1024
       prometheus: 6060
@@ -414,9 +414,9 @@ controller:
     ## Note: At least one port (http, https, stat or from tcpPorts) has to be enabled
     enablePorts:
       http: true
-      https: false
+      https: true
       stat: true
-      prometheus: false
+      prometheus: true
 
     ## Target port mappings for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
