@@ -31,6 +31,7 @@ sudo mkdir -p /etc/haproxy/maps/
 sudo echo "
 echo.luminetsoft.com echo_be
 echo2.luminetsoft.com echo2_be
+haproxy.luminetsoft.com haproxystats_be
 " >> /etc/haproxy/maps/hosts.map
 echo "global
   log 127.0.0.1:514 local0 
@@ -122,6 +123,7 @@ frontend cluster_fe from http_defaults
   capture request header Referer len 800
   capture request header X-Forwarded-For len 20
   option http-keep-alive
+  use_backend %[req.hdr(host),lower,map_dom(/etc/haproxy/maps/hosts.map)]
 default_backend empty_backend_nodes
 
 backend default_backend_nodes from http_defaults
@@ -129,10 +131,17 @@ backend default_backend_nodes from http_defaults
   http-request return status 503 content-type 'text/plain' lf-string '503 Service Unavailable ! Pls contact NexOps if you think this is a mistake...'
 
 backend echo_be from http_defaults
-  http-request return status 200 content-type "text/plain"  lf-string "echo_be. LOCAL AWS"
+  http-request set-header X-Forwarded-For %[src]
+  http-check expect status 200
+  server cluster_eks afcea63b1fb6b431f96cf4ae1f30e3d3-0f04c6e13a5dae35.elb.ap-northeast-1.amazonaws.com:80 check
+
+backend haproxystats_be from http_defaults
+  http-request set-header X-Forwarded-For %[src]
+  http-check expect status 200
+  server cluster_eks afcea63b1fb6b431f96cf4ae1f30e3d3-0f04c6e13a5dae35.elb.ap-northeast-1.amazonaws.com:1024 check
 
 backend echo2_be from http_defaults
-  http-request return status 200 content-type "text/plain"  lf-string "echo2_be. LOCAL AWS"
+  http-request return status 200 content-type 'text/plain'  lf-string 'echo2_be. LOCAL AWS $SV'
 
 backend empty_backend_nodes from http_defaults
   http-request return status 200 content-type 'text/plain'  lf-string 'I am Testing... $SV'
