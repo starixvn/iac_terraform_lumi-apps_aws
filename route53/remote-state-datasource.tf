@@ -12,7 +12,7 @@ data "terraform_remote_state" "nlb" {
   backend = "s3"
   config = {
     bucket = "${var.aws_region_bucket_remote_state}"
-    key    = "${var.aws_region_key_remote_state_nlb}"
+    key    = "${var.aws_region_key_remote_state_lb}"
     region = "${var.aws_region}"
   }
 }

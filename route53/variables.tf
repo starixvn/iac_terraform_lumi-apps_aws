@@ -35,7 +35,7 @@ variable "aws_region_key_remote_state" {
 variable "aws_region_key_remote_state_zone" {
   type = string
 }
-variable "aws_region_key_remote_state_nlb" {
+variable "aws_region_key_remote_state_lb" {
   type = string
 }
 

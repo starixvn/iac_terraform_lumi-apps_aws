@@ -6,7 +6,7 @@ aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 aws_region_key_remote_state_zone    = "env:/testlab/route53-tf.tfstate"
-aws_region_key_remote_state_nlb    = "env:/testlab/lumi-web-tf.tfstate"
+aws_region_key_remote_state_lb    = "env:/testlab/lumi-web-tf.tfstate"
 
 ############### Route53
 domain_ns_records = [
@@ -48,7 +48,11 @@ domain_alias_records = {
         "type" : "A",
     },
     {
-        "name" : "w8-api",
+        "name" : "echo",
+        "type" : "A",
+    },
+    {
+        "name" : "echo2",
         "type" : "A",
     },
   ],
