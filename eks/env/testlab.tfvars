@@ -30,10 +30,9 @@ eks_managed_node_groups = {
   "my-app-eks-arm" = {
     ami_type     = "AL2_ARM_64"
     min_size     = 1
-    max_size     = 16
+    max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.small",
       "t4g.medium"
     ]
     capacity_type = "ON_DEMAND"
