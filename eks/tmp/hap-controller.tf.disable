@@ -1,119 +1,62 @@
 resource "helm_release" "haproxy-ingress-controller" {
+  depends_on = [
+    module.cluster
+  ]
   name       = "haproxy-ingress-controller"
+  namespace  = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
   chart      = "kubernetes-ingress"
-
-
+  values = [
+    "${file("values.yaml")}"
+  ]
   set {
-    name  = "service.type"
+    name  = "controller.service.type"
     value = "LoadBalancer"
   }
 
+  set {
+    name  = "controller.ingressClass"
+    value = "haproxy"
+  }
+  /*
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-cert"
+    value = "${data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main}"
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"
+    value = "443"
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"
+    value = "TCP"
+  }*/
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
+    value = "nlb"
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-internal"
+    value = "0.0.0.0/0"
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-name"
+    value = "${local.environment}-${local.team}-eks-lb"
+  }
+  /*
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
+    value = "Dept=VNTeam,Team=${local.team},ManageBy=vnTerraform,Environment=${local.environment}"
+  }
+  */
 }
-###############
-
-############
-resource "kubernetes_pod_v1" "app1" {
-  metadata {
-    name = "my-app1"
-    labels = {
-      "app" = "app1"
-    }
-  }
-
-  spec {
-    container {
-      image = "hashicorp/http-echo"
-      name  = "my-app1"
-      args  = ["-text=Hello from my app 1"]
-    }
-  }
-}
-
-resource "kubernetes_pod_v1" "app2" {
-  metadata {
-    name = "my-app2"
-    labels = {
-      "app" = "app2"
-    }
-  }
-
-  spec {
-    container {
-      image = "hashicorp/http-echo"
-      name  = "my-app2"
-      args  = ["-text=Hello from my app 2"]
-    }
-  }
-}
-
-#################
-resource "kubernetes_service_v1" "app1_service" {
-  metadata {
-    name = "my-app1-service"
-  }
-  spec {
-    selector = {
-      app = kubernetes_pod_v1.app1.metadata.0.labels.app
-    }
-    port {
-      port = 5678
-    }
-  }
-}
-
-resource "kubernetes_service_v1" "app2_service" {
-  metadata {
-    name = "my-app2-service"
-  }
-  spec {
-    selector = {
-      app = kubernetes_pod_v1.app2.metadata.0.labels.app
-    }
-    port {
-      port = 5678
-    }
-  }
-}
-#################
-resource "kubernetes_ingress_v1" "ingress" {
-  wait_for_load_balancer = true
-  metadata {
-    name = "simple-fanout-ingress"
-  }
-
-  spec {
-    ingress_class_name = "haproxy"
-
-    rule {
-      http {
-        path {
-          backend {
-            service {
-              name = "my-app1-service"
-              port {
-                number = 5678
-              }
-            }
-          }
-
-          path = "/app1"
-        }
-
-        path {
-          backend {
-            service {
-              name = "my-app2-service"
-              port {
-                number = 5678
-              }
-            }
-          }
-
-          path = "/app2"
-        }
-      }
-    }
-
-  }
-}
+/*
+"service.beta.kubernetes.io/aws-load-balancer-name": "eks-lb"
+"service.beta.kubernetes.io/aws-load-balancer-type": "nlb"
+"service.beta.kubernetes.io/aws-load-balancer-scheme": "internet-facing"
+"service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout": 360
+"service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags": "Dept=VNTeam, Team=${local.team}, ManageBy=vnTerraform, Environment=${local.environment}"
+  #service.beta.kubernetes.io/aws-load-balancer-backend-protocol:
+  #https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.3/guide/service/annotations/#backend-protocol
+  #
+*/
