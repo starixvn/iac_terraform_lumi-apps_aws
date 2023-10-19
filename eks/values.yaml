@@ -117,7 +117,7 @@ controller:
   livenessProbe:
     failureThreshold: 3
     initialDelaySeconds: 0
-    periodSeconds: 10
+    periodSeconds: 3
     successThreshold: 1
     timeoutSeconds: 1
     httpGet:
@@ -128,7 +128,7 @@ controller:
   readinessProbe:
     failureThreshold: 3
     initialDelaySeconds: 0
-    periodSeconds: 10
+    periodSeconds: 3
     successThreshold: 1
     timeoutSeconds: 1
     httpGet:
@@ -338,7 +338,7 @@ controller:
   ## ref: https://github.com/haproxytech/kubernetes-ingress/tree/master/documentation
   config: #{}
     timeout-connect: "5s"
-    ssl-redirect: "true"
+    #ssl-redirect: "true"
   #   servers-increment: "10"
   #   servers-increment-max-disabled: "10"
   #   rate-limit: "ON"
@@ -403,7 +403,7 @@ controller:
     ## Service ports to use for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
     ports:
-      http: 80
+      http: 8080
       https: 443
       stat: 1024
       prometheus: 6060
@@ -414,7 +414,7 @@ controller:
     ## Note: At least one port (http, https, stat or from tcpPorts) has to be enabled
     enablePorts:
       http: true
-      https: true
+      https: false
       stat: true
       prometheus: false
 
