@@ -1,3 +1,9 @@
+output "output_vn_alb" {
+    value = {
+    lb_zone_id   = module.alb_proxy_gw.lb_zone_id
+    lb_dns_name   = module.alb_proxy_gw.lb_dns_name
+  }
+}
 /*
 output "output_nlb" {
     value = {
@@ -5,15 +11,6 @@ output "output_nlb" {
     lb_dns_name   = module.nlb_proxy_gw.lb_dns_name
   }
 }
-
-output "output_alb" {
-    value = {
-    lb_zone_id   = module.alb_proxy_gw.lb_zone_id
-    lb_dns_name   = module.alb_proxy_gw.lb_dns_name
-  }
-}
-*/
-/*
 output "output_ec2" {
   value = {
     proxy_gw_private_ip   = module.proxy_gw_linux["proxy-gw-1"].private_ip
