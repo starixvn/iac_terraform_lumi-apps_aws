@@ -1,5 +1,5 @@
 # Terraform AWS Application Load Balancer (ALB)
-module "alb_proxy_gw" {
+module "external_proxy_gw" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
@@ -74,7 +74,7 @@ module "alb_proxy_gw" {
       targets = {
         for server in local.proxy_gw_instances :
         server.instance_name => {
-          target_id = module.proxy_gw_linux[server.instance_name].private_ip
+          target_id = server.private_ip
           port      = 80
         }
       }
