@@ -26,7 +26,7 @@ autoscaling_average_cpu = 30
   }
 */
 eks_managed_node_groups = {
-  "my-app-eks-arm" = {
+  "lumi-eks-arm" = {
     ami_type     = "AL2_ARM_64"
     min_size     = 1
     max_size     = 1
