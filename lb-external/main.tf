@@ -4,7 +4,7 @@ module "alb_proxy_gw" {
   version = "8.6.1"
 
   name               = "${local.project}-${var.environment}-alb-proxy-gw"
-  load_balancer_type = "application" #network application
+  load_balancer_type = "application"
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
     data.terraform_remote_state.vpc.outputs.public_subnets[0],
@@ -78,7 +78,12 @@ module "alb_proxy_gw" {
           port      = 80
         }
       }
-      tags = local.common_tags # Target Group Tags
-    },
+    }
   ]
+  tags = merge(
+          local.common_tags,
+          {
+            Resource = "LB"
+          },
+        )
 }

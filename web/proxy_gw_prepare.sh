@@ -133,9 +133,7 @@ backend default_backend_nodes from http_defaults
 backend echo_be from http_defaults
   http-request set-header Host echo.luminetsoft.com
   http-check send meth GET uri / hdr Host "echo.luminetsoft.com"
-  server cluster_eks 10.6.8.198:8080 check
-  #http-check send meth GET uri / hdr Host "haproxy.luminetsoft.com"
-  #server cluster_eks 10.6.8.198:1024 check
+  server cluster_eks 10.6.8.198:80 check
 
 backend haproxystats_be from http_defaults
   http-request set-header Host haproxy.luminetsoft.com
