@@ -22,14 +22,6 @@ proxy_gw_vm = [
     "volume_size" : "20",
     "private_ip" : "10.6.32.10",
   },
-  {
-    "application_name" : "proxy-gw-02",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
-    "private_ip" : "10.6.32.11",
-  },
 ]
 apps_vm = [
   {
