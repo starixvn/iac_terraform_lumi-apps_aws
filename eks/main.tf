@@ -17,36 +17,6 @@ module "cluster" {
       Resource = "EKS"
     },
   )
-/*
-  node_security_group_additional_rules = {
-    # allow connections from ALB security group
-    ingress_allow_access_from_alb_sg = {
-      type                     = "ingress"
-      protocol                 = "-1"
-      from_port                = 0
-      to_port                  = 0
-      source_security_group_id = aws_security_group.alb.id
-    }
-    
-    # allow connections from EKS to the internet
-    egress_all = {
-      protocol         = "-1"
-      from_port        = 0
-      to_port          = 0
-      type             = "egress"
-      cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-    }
-    # allow connections from EKS to EKS (internal calls)
-    ingress_self_all = {
-      protocol  = "-1"
-      from_port = 0
-      to_port   = 0
-      type      = "ingress"
-      self      = true
-    }
-    
-  }*/
 
 }
 output "cluster_endpoint" {
@@ -56,52 +26,6 @@ output "cluster_certificate_authority_data" {
   value = module.cluster.cluster_certificate_authority_data
 }
 
-/*
-# create IAM role for AWS Load Balancer Controller, and attach to EKS OIDC
-module "eks_ingress_iam" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.17.1"
-
-  role_name                              = "load-balancer-controller"
-  attach_load_balancer_controller_policy = true
-
-  oidc_providers = {
-    ex = {
-      provider_arn               = module.cluster.oidc_provider_arn
-      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
-    }
-  }
-  tags = merge(
-    local.common_tags,
-    {
-      Resource = "EKS"
-    },
-  )
-}
-
-# create IAM role for External DNS, and attach to EKS OIDC
-module "eks_external_dns_iam" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.17.1"
-
-  role_name                     = "external-dns"
-  attach_external_dns_policy    = true
-  external_dns_hosted_zone_arns = ["arn:aws:route53:::hostedzone/*"]
-
-  oidc_providers = {
-    ex = {
-      provider_arn               = module.cluster.oidc_provider_arn
-      namespace_service_accounts = ["kube-system:external-dns"]
-    }
-  }
-  tags = merge(
-    local.common_tags,
-    {
-      Resource = "EKS"
-    },
-  )
-}
-*/
 # set spot fleet Autoscaling policy
 resource "aws_autoscaling_policy" "eks_autoscaling_policy" {
   count = length(var.eks_managed_node_groups)
