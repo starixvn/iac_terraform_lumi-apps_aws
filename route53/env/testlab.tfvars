@@ -55,6 +55,10 @@ domain_alias_records = {
         "name" : "echo2",
         "type" : "A",
     },
+    {
+        "name" : "haproxy",
+        "type" : "A",
+    },
   ],
   "staging.luminetsoft.com" = [
     {
