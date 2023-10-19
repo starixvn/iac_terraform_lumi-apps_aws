@@ -18,16 +18,6 @@ module "internal_proxy_gw" {
     },
   ]
 
-  ##  TLS
-  https_listeners = [
-    {
-      port               = 443
-      protocol           = "TLS"
-      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
-      target_group_index = 1
-    },
-  ]
-
   # Target Groups
   target_groups = [
     {
