@@ -27,6 +27,11 @@ sudo apt update
 sudo apt install -y haproxy=2.6.\*
 sudo systemctl enable haproxy
 sudo rm -f /etc/haproxy/haproxy.cfg
+sudo mkdir -p /etc/haproxy/maps/
+sudo echo "
+echo.luminetsoft.com echo_be
+echo2.luminetsoft.com echo2_be
+" >> /etc/haproxy/maps/hosts.map
 echo "global
   log 127.0.0.1:514 local0 
   stats socket /var/run/haproxy.sock mode 600 expose-fd listeners level user
@@ -122,6 +127,12 @@ default_backend empty_backend_nodes
 backend default_backend_nodes from http_defaults
   mode http
   http-request return status 503 content-type 'text/plain' lf-string '503 Service Unavailable ! Pls contact NexOps if you think this is a mistake...'
+
+backend echo_be from http_defaults
+  http-request return status 200 content-type "text/plain"  lf-string "echo_be. LOCAL AWS"
+
+backend echo2_be from http_defaults
+  http-request return status 200 content-type "text/plain"  lf-string "echo2_be. LOCAL AWS"
 
 backend empty_backend_nodes from http_defaults
   http-request return status 200 content-type 'text/plain'  lf-string 'I am Testing... $SV'

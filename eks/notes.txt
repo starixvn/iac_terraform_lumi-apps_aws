@@ -4,11 +4,12 @@ ap-northeast-1
 ##########
 aws configure
 aws s3api list-buckets
+/usr/local/bin/aws s3api list-buckets
 
 curl.exe -LO "https://dl.k8s.io/release/v1.28.2/bin/windows/amd64/kubectl.exe"
 kubectl version --client
 
-aws 
+aws eks update-kubeconfig --name testlab-Lumi-eks --region ap-northeast-1
 /usr/local/bin/aws eks update-kubeconfig --name testlab-Lumi-eks --region ap-northeast-1
 
 kubectl get nodes
@@ -33,9 +34,33 @@ watch -n 1 -t kubectl get nodes
 
 kubectl get ingress
 
+
+#########
+alias k=kubectl
+k -n haproxy logs deployments/haproxy-ingress-controller-kubernetes-ingress -f
+
 ##############
 kubectl get namespace sample-apps -o json > tempfile.json
 
 kubectl replace --raw "/api/v1/namespaces/sample-apps/finalize" -f tempfile.json
 
 Foreach($x in (kubectl api-resources --verbs=list --namespaced -o name)){ kubectl get --show-kind --ignore-not-found -n sample-apps $x }
+
+k port-forward services/sample-app 9999:80
+
+
+###DELETE 
+k delete -f demo.yaml -n sample-apps
+##############
+helm repo add haproxy-ingress https://haproxy-ingress.github.io/charts
+
+kubectl exec -i -t nginx-deployment-57886874db-54j6k --container nginx -- /bin/bash
+
+kubectl exec -i -t haproxy-ingress-54884d799c-d7f56 --container haproxy-ingress -- /bin/bash
+
+kubectl exec -i -t haproxy-ingress-54884d799c-d7f56 -- /bin/bash
+
+
+https://gist.github.com/mgoodness/1a2926f3b02d8e8149c224d25cc57dc1?permalink_comment_id=3506098
+
+https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/
