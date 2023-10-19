@@ -143,9 +143,6 @@ backend haproxystats_be from http_defaults
   server cluster_eks 10.6.8.198:1024 check
 
 backend echo2_be from http_defaults
-  http-request return status 200 content-type 'text/plain'  lf-string 'echo2_be. LOCAL AWS'
-
-backend echo2_be from http_defaults
   http-request return status 200 content-type 'text/plain'  lf-string 'echo2_be. LOCAL AWS $SV'
 
 backend empty_backend_nodes from http_defaults
