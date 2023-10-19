@@ -1,5 +1,5 @@
 # Terraform AWS Application Load Balancer (ALB)
-module "nlb_proxy_gw" {
+module "internal_proxy_gw" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
   name               = "${local.project}-${var.environment}-nlb-proxy-gw"
