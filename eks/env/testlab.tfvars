@@ -8,7 +8,7 @@ aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 aws_region_key_remote_state_acm    = "env:/testlab/route53-acme-certificate-tf.tfstate"
 ####
 autoscaling_average_cpu = 30
-eks_managed_node_groups = {
+/*
   "my-app-eks-x86" = {
     ami_type     = "AL2_x86_64"
     min_size     = 1
@@ -25,6 +25,8 @@ eks_managed_node_groups = {
       associate_public_ip_address = false
     }]
   }
+*/
+eks_managed_node_groups = {
   "my-app-eks-arm" = {
     ami_type     = "AL2_ARM_64"
     min_size     = 1

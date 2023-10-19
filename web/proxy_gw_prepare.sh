@@ -131,14 +131,16 @@ backend default_backend_nodes from http_defaults
   http-request return status 503 content-type 'text/plain' lf-string '503 Service Unavailable ! Pls contact NexOps if you think this is a mistake...'
 
 backend echo_be from http_defaults
-  http-request set-header X-Forwarded-For %[src]
-  http-check expect status 200
-  server cluster_eks afcea63b1fb6b431f96cf4ae1f30e3d3-0f04c6e13a5dae35.elb.ap-northeast-1.amazonaws.com:80 check
+  http-request set-header Host echo.luminetsoft.com
+  http-check send meth GET uri / hdr Host "echo.luminetsoft.com"
+  server cluster_eks 10.6.8.198:8080 check
+  #http-check send meth GET uri / hdr Host "haproxy.luminetsoft.com"
+  #server cluster_eks 10.6.8.198:1024 check
 
 backend haproxystats_be from http_defaults
-  http-request set-header X-Forwarded-For %[src]
-  http-check expect status 200
-  server cluster_eks afcea63b1fb6b431f96cf4ae1f30e3d3-0f04c6e13a5dae35.elb.ap-northeast-1.amazonaws.com:1024 check
+  http-request set-header Host haproxy.luminetsoft.com
+  http-check send meth GET uri / hdr Host "haproxy.luminetsoft.com"
+  server cluster_eks 10.6.8.198:1024 check
 
 backend echo2_be from http_defaults
   http-request return status 200 content-type 'text/plain'  lf-string 'echo2_be. LOCAL AWS $SV'

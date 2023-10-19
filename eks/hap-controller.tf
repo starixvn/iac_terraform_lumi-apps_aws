@@ -18,19 +18,7 @@ resource "helm_release" "haproxy-ingress-controller" {
     name  = "controller.ingressClass"
     value = "haproxy"
   }
-  /*
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-cert"
-    value = "${data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main}"
-  }
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"
-    value = "443"
-  }
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"
-    value = "TCP"
-  }*/
+
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
     value = "nlb"
@@ -43,12 +31,12 @@ resource "helm_release" "haproxy-ingress-controller" {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-name"
     value = "${local.environment}-${local.team}-eks-lb"
   }
-  /*
+
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "Dept=VNTeam,Team=${local.team},ManageBy=vnTerraform,Environment=${local.environment}"
+    value = "Dept=VNTeam , Team=${local.team} , ManageBy=vnTerraform , Environment=${local.environment}"
   }
-  */
+
 }
 /*
 "service.beta.kubernetes.io/aws-load-balancer-name": "eks-lb"
