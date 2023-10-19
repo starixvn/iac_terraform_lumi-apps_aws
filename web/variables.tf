@@ -25,16 +25,24 @@ variable "aws_region_key_remote_state" {
   type        = string
 }
 
+variable "aws_region_key_remote_state_zone" {
+  type = string
+}
+
+variable "aws_region_key_remote_state_acm" {
+  type = string
+}
+
 variable "team" {
-  type        = string
+  type = string
 }
-variable "proxy_gw_configuration" {
+variable "proxy_gw_vm" {
   description = "EC2 configuration"
-  default = [{}]
+  default     = [{}]
 }
-variable "apps_configuration" {
+variable "apps_vm" {
   description = "EC2 configuration"
-  default = [{}]
+  default     = [{}]
 }
 
 variable "private_key_location" {
@@ -51,4 +59,9 @@ variable "ami_name" {
     condition     = can(regex("amazon|suse|RHEL|ubuntu|windows", var.ami_name))
     error_message = "Invalid ami name, allowed_values = [amazon suse RHEL ubuntu]."
   }
+}
+
+variable "nlb_proxy_gw" {
+  type        = string
+  description = "NLB type"
 }
