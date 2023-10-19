@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  labels:
+    name: color-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  #ingressClassName: nginx
+  rules:
+  - host: green.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: green-svc
+            port: 
+              number: 80
+  - host: blue.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: blue-svc
+            port: 
+              number: 80

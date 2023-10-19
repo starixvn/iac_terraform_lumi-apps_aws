@@ -5,6 +5,7 @@ environment = "testlab"
 aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
+aws_region_key_remote_state_acm    = "env:/testlab/route53-acme-certificate-tf.tfstate"
 ####
 autoscaling_average_cpu = 30
 eks_managed_node_groups = {
@@ -72,7 +73,7 @@ ingress_gateway_chart_repo    = "https://aws.github.io/eks-charts"
 ingress_gateway_chart_version = "1.4.1"
 */
 ###############
-namespaces = ["sample-apps","nexops-apps"]
+namespaces = ["haproxy","sample-apps","nexops-apps"]
 name_prefix             = "my-app"
 ###############
 admin_users     = ["admin1", "admin2"]

@@ -1,8 +1,10 @@
 # create EKS cluster
 
 module "cluster" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "19.13.1"
+  #source  = "terraform-aws-modules/eks/aws"
+  #version = "19.13.1"
+  source = "gitlab.nexdev.net/iac-terraform/aws-eks/aws"
+  version = "19.15.3"
 
   cluster_name                    = "${var.environment}-${var.team}-eks"
   cluster_version                 = "1.26"
