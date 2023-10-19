@@ -1,0 +1,48 @@
+.lb-external:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "lb-external/**/*"
+    DIR_PATH: "lb-external"
+
+code-quality-lb-external-terraform-lint:
+  extends: [.lb-external, .terraform_lint]
+
+code-quality-lb-external-terraform-fmt:
+  extends: [.lb-external, .terraform_fmt]
+
+code-quality-lb-external-yaml-lint:
+  extends: [.lb-external, .yaml_lint]
+
+validate-syntax-lb-external:
+  extends: [.lb-external, .validate_syntax]
+
+validate-security-lb-external:
+  extends: [.lb-external, .validate_security]
+
+validate-security-checkov-lb-external:
+  extends: [.lb-external, .validate_security_checkov]
+
+build-lb-external:
+  rules:
+    - if: $RULES_CHANGES_PATH != "lb-external/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.lb-external, .plan]
+  needs: []
+
+deploy-lb-external:
+  rules:
+    - if: $RULES_CHANGES_PATH != "lb-external/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.lb-external, .apply]
+  needs: ["build-lb-external"]
+
+destroy-lb-external:
+  rules:
+    - if: $RULES_CHANGES_PATH != "lb-external/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.lb-external, .destroy]
+  needs: ["build-lb-external"]
