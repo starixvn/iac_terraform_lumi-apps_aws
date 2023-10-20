@@ -4,7 +4,7 @@ module "cluster" {
   source = "gitlab.nexdev.net/iac-terraform/aws-eks/aws"
   version = "19.15.3"
 
-  cluster_name                    = "${var.environment}-${var.team}-eks"
+  cluster_name                    = "${var.team}-${var.environment}-eks"
   cluster_version                 = "1.26"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
