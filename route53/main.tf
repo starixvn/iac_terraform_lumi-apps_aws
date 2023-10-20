@@ -14,7 +14,6 @@ module "ns_records" {
 }
 ########################### create Alias - Proxy GW LB
 
-/*
 module "records" {
   source   = "gitlab.nexdev.net/iac-terraform/aws-route53/aws//modules/records"
   version  = "2.10.2"
@@ -32,7 +31,7 @@ module "records" {
 
   ]
 }
-*/
+
 ###########################  for A record
 module "alias" {
   source   = "gitlab.nexdev.net/iac-terraform/aws-route53/aws//modules/records"
