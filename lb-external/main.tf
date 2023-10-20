@@ -3,7 +3,7 @@ module "external_proxy_gw" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
-  name               = "${local.project}-${var.environment}-alb-proxy-gw"
+  name               = "${var.team}-${var.environment}-alb-proxy-gw"
   load_balancer_type = "application"
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
@@ -23,6 +23,11 @@ module "external_proxy_gw" {
         protocol    = "HTTPS"
         status_code = "HTTP_301"
       }
+    },
+    {
+      port               = 2210
+      protocol           = "TCP"
+      target_group_index = 1
     },
   ]
 
@@ -56,7 +61,7 @@ module "external_proxy_gw" {
   # Target Groups
   target_groups = [
     {
-      name                 = "${local.project}-${var.environment}-gw-alb-80"
+      name                 = "${var.team}-${var.environment}-gw-alb-80"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "ip" #"ip" instance
@@ -76,6 +81,23 @@ module "external_proxy_gw" {
         server.instance_name => {
           target_id = server.private_ip
           port      = 80
+        }
+      }
+    },
+    {
+      name                 = "${var.team}-${var.environment}-ssh-2210"
+      backend_protocol     = "TCP"
+      backend_port         = 22
+      target_type          = "ip" #"ip" instance
+      deregistration_delay = 10
+      protocol_version     = "TCP"
+
+      # Target Group - Targets
+      targets = {
+        for server in local.proxy_gw_instances :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 22
         }
       }
     }

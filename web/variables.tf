@@ -25,14 +25,6 @@ variable "aws_region_key_remote_state" {
   type        = string
 }
 
-variable "aws_region_key_remote_state_zone" {
-  type = string
-}
-
-variable "aws_region_key_remote_state_acm" {
-  type = string
-}
-
 variable "team" {
   type = string
 }
@@ -59,9 +51,4 @@ variable "ami_name" {
     condition     = can(regex("amazon|suse|RHEL|ubuntu|windows", var.ami_name))
     error_message = "Invalid ami name, allowed_values = [amazon suse RHEL ubuntu]."
   }
-}
-
-variable "nlb_proxy_gw" {
-  type        = string
-  description = "NLB type"
 }

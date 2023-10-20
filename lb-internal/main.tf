@@ -2,7 +2,7 @@
 module "internal_proxy_gw" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
-  name               = "${local.project}-${var.environment}-nlb-proxy-gw"
+  name               = "${var.team}-${var.environment}-nlb-proxy-gw"
   load_balancer_type = "network"
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
@@ -21,7 +21,7 @@ module "internal_proxy_gw" {
   # Target Groups
   target_groups = [
     {
-      name                 = "${local.project}-${var.environment}-gw-80"
+      name                 = "${var.team}-${var.environment}-gw-80"
       backend_protocol     = "TCP"
       backend_port         = 80
       target_type          = "ip" #"ip" instance alb
@@ -50,7 +50,7 @@ module "internal_proxy_gw" {
       tags = local.common_tags # Target Group Tags
     },
     {
-      name                 = "${local.project}-${var.environment}-gw-80"
+      name                 = "${var.team}-${var.environment}-gw-80"
       backend_protocol     = "TCP"
       backend_port         = 80
       target_type          = "ip"

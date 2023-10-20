@@ -5,7 +5,6 @@ environment = "testlab"
 aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
-aws_region_key_remote_state_acm    = "env:/testlab/route53-acme-certificate-tf.tfstate"
 ####
 autoscaling_average_cpu = 30
 /*

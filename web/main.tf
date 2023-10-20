@@ -4,7 +4,7 @@ module "proxy_gw_linux" {
   version                = "5.2.1"
   for_each               = { for server in local.proxy_gw_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
-  name                   = "${local.project}-${var.environment}-${each.key}"
+  name                   = lower("${var.team}-${var.environment}-${each.key}")
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets[0]
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.proxy_gw_sg]
@@ -27,20 +27,18 @@ module "proxy_gw_linux" {
   tags = merge(
     local.common_tags,
     {
-      Resource  = "proxy_gw_linux"
-      Workspace = "${terraform.workspace}"
+      Resource  = "EC2"
     },
   )
 }
 
 /* Docker Swarm */
-/*
 module "private_app_linux" {
   source                 = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
   version                = "5.2.1"
   for_each               = { for server in local.apps_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
-  name                   = "${local.project}-${var.environment}-${each.key}"
+  name                   = lower("${var.team}-${var.environment}-${each.key}")
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = data.terraform_remote_state.vpc.outputs.private_subnets[0]
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.private_web_sg]
@@ -63,8 +61,7 @@ module "private_app_linux" {
   tags = merge(
     local.common_tags,
     {
-      Resource = "private_app_linux"
+      Resource = "EC2"
     },
   )
 }
-*/

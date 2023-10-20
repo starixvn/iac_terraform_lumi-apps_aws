@@ -26,6 +26,3 @@ variable "aws_region_key_remote_state" {
   description = "aws_region_key"
   type        = string
 }
-variable "aws_region_key_remote_state_acm" {
-  type = string
-}
