@@ -6,7 +6,7 @@ aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 
-################  EC2
+#################  EC2
 public_key_location = "key/id_rsa.pub"
 private_key_location = "key/id_rsa"
 proxy_gw_vm = [
