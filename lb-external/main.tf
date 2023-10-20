@@ -24,11 +24,6 @@ module "external_proxy_gw" {
         status_code = "HTTP_301"
       }
     },
-    {
-      port               = 2210
-      protocol           = "TCP"
-      target_group_index = 1
-    },
   ]
 
   # HTTPS Listener
@@ -84,23 +79,6 @@ module "external_proxy_gw" {
         }
       }
     },
-    {
-      name                 = "${var.team}-${var.environment}-ssh-2210"
-      backend_protocol     = "TCP"
-      backend_port         = 22
-      target_type          = "ip" #"ip" instance
-      deregistration_delay = 10
-      protocol_version     = "TCP"
-
-      # Target Group - Targets
-      targets = {
-        for server in local.proxy_gw_instances :
-        server.instance_name => {
-          target_id = server.private_ip
-          port      = 22
-        }
-      }
-    }
   ]
   tags = merge(
           local.common_tags,
