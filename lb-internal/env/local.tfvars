@@ -1,10 +1,11 @@
-project = "clouddemo"
+project = "cloud"
 team = "Lumi"
-aws_region = "ap-northeast-1"
-environment = "prod"
-aws_profile = "test-iac-terraform-ci"
-aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
-aws_region_key_remote_state    = "env:/prod/vpc-terraform.tfstate"
+aws_region = "ap-east-1"
+environment = "local"
+aws_profile = "local-iac-terraform-ci"
+aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
+aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
+aws_region_key_remote_state_acm    = "env:/local/route53-acme-certificate-tf.tfstate"
 
 ################EC2
 public_key_location = "key/id_rsa.pub"

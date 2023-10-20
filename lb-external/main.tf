@@ -3,7 +3,7 @@ module "external_proxy_gw" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
 
-  name               = "${var.team}-${var.environment}-alb-proxy-gw"
+  name               = lower("${var.team}-${var.environment}-alb-proxy-gw")
   load_balancer_type = "application"
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
   subnets = [
@@ -56,7 +56,7 @@ module "external_proxy_gw" {
   # Target Groups
   target_groups = [
     {
-      name                 = "${var.team}-${var.environment}-gw-alb-80"
+      name                 = lower("${var.team}-${var.environment}-gw-alb-80")
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "ip" #"ip" instance
