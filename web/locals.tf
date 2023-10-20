@@ -1,4 +1,4 @@
-# Define Local Values in Terraform
+### Define Local Values in Terraform
 locals {
   project     = var.project
   environment = var.environment
