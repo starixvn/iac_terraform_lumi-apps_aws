@@ -12,7 +12,7 @@ locals {
 }
 
 locals {
-  cluster_name = "${var.environment}-${var.team}-eks" #-${random_string.suffix.result}
+  cluster_name = lower("${var.team}-${var.environment}-eks") #-${random_string.suffix.result}
 }
 
 resource "random_string" "suffix" {
