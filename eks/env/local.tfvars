@@ -8,7 +8,22 @@ aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 ####
 autoscaling_average_cpu = 30
 /*
-  "my-app-eks-x86" = {
+  "lumi-eks-on_demand-arm" = {
+    ami_type     = "AL2_ARM_64"
+    min_size     = 1
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t4g.medium"
+    ]
+    capacity_type = "ON_DEMAND"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+  }
+
+  "lumi-eks-spot-x86" = {
     ami_type     = "AL2_x86_64"
     min_size     = 1
     max_size     = 16
@@ -25,22 +40,25 @@ autoscaling_average_cpu = 30
     }]
   }
 */
+
 eks_managed_node_groups = {
-  "lumi-eks-arm" = {
-    ami_type     = "AL2_ARM_64"
-    min_size     = 0
+  "lumi-eks-spot-x86" = {
+    ami_type     = "AL2_x86_64"
+    min_size     = 1
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.medium"
+      "t3a.medium",
+      "t3a.large"
     ]
-    capacity_type = "ON_DEMAND"
+    capacity_type = "SPOT"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
   }
 }
+
 ###############
 spot_termination_handler_chart_name      = "aws-node-termination-handler"
 spot_termination_handler_chart_repo      = "https://aws.github.io/eks-charts"
