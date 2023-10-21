@@ -7,7 +7,6 @@ variable "autoscaling_average_cpu" {
   type        = number
   description = "Average CPU threshold to autoscale EKS EC2 instances."
 }
-
 variable "spot_termination_handler_chart_name" {
   type        = string
   description = "EKS Spot termination handler Helm chart name."

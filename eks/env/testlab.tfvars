@@ -7,6 +7,7 @@ aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 ####
 autoscaling_average_cpu = 30
+cluster_version = "1.26"
 /*
   "my-app-eks-x86" = {
     ami_type     = "AL2_x86_64"

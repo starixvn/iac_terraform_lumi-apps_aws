@@ -64,6 +64,7 @@ module "external_proxy_gw" {
       protocol_version     = "HTTP1"
       health_check = {
         protocol            = "HTTP"
+        path                = "/checkstatus"
         healthy_threshold   = 2
         unhealthy_threshold = 2
         interval            = 5
