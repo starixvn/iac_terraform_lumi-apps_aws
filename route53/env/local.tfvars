@@ -25,7 +25,7 @@ domain_a_records = {
           "name" : "*",
           "type" : "A",
           "ttl" : "3600",
-          "record" : "10.10.50.69",
+          "record" : "10.10.50.39",
     },
     {
           "name" : "l1-appdownload",
