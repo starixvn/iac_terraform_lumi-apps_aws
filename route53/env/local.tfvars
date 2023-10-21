@@ -27,49 +27,7 @@ domain_a_records = {
           "ttl" : "3600",
           "record" : "10.10.50.39",
     },
-    {
-          "name" : "l1-appdownload",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
-          "name" : "l1-info",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
-          "name" : "l1-keno",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
-          "name" : "l1-m",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
-          "name" : "games",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
-          "name" : "l1-mini",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
-          "name" : "l1-mongoexpress-aws",
-          "type" : "A",
-          "ttl" : "3600",
-          "record" : "16.162.141.238",
-    },
-    {
+      {
           "name" : "hub",
           "type" : "A",
           "ttl" : "3600",
@@ -81,6 +39,34 @@ domain_a_records = {
 
 domain_alias_records = {
   "lumigame.com" = [
+    {
+          "name" : "l1-appdownload",
+          "type" : "A",
+    },
+    {
+          "name" : "l1-info",
+          "type" : "A",
+    },
+    {
+          "name" : "l1-keno",
+          "type" : "A",
+    },
+    {
+          "name" : "l1-m",
+          "type" : "A",
+    },
+    {
+          "name" : "games",
+          "type" : "A",
+    },
+    {
+          "name" : "l1-mini",
+          "type" : "A",
+    },
+    {
+          "name" : "l1-mongoexpress-aws",
+          "type" : "A",
+    },
     {
         "name" : "w1",
         "type" : "A",
