@@ -58,6 +58,12 @@ module "external_proxy_gw" {
       certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
       target_group_index = 2
     },
+    {
+      port               = 8080
+      protocol           = "HTTPS"
+      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
+      target_group_index = 3
+    },
   ]
   extra_ssl_certs = [
     {
@@ -139,6 +145,31 @@ module "external_proxy_gw" {
         server.instance_name => {
           target_id = server.private_ip
           port      = 9001
+        }
+      }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-hap-gw-stats")
+      backend_protocol     = "HTTP"
+      backend_port         = 8080
+      target_type          = "ip" #"ip" instance
+      deregistration_delay = 10
+      protocol_version     = "HTTP1"
+      health_check = {
+        protocol            = "HTTP"
+        matcher             = "200-399"
+        path                = "/"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
+      # Target Group - Targets
+      targets = {
+        for server in local.proxy_gw_instances :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 8080
         }
       }
     },
