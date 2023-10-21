@@ -47,7 +47,7 @@ module "external_proxy_gw" {
       }
     },
     {
-      port               = 2222
+      port               = 22222
       protocol           = "HTTPS"
       certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
       target_group_index = 1
