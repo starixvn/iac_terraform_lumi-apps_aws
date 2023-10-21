@@ -158,7 +158,7 @@ module "external_proxy_gw" {
       health_check = {
         protocol            = "HTTP"
         matcher             = "200-399"
-        path                = "/"
+        path                = "/checkstatus"
         healthy_threshold   = 2
         unhealthy_threshold = 2
         interval            = 5
