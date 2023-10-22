@@ -48,7 +48,7 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.medium"
+      "t4g.small"
     ]
     capacity_type = "ON_DEMAND"
     network_interfaces = [{

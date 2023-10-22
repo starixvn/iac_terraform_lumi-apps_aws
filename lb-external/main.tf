@@ -24,6 +24,16 @@ module "external_proxy_gw" {
         status_code = "HTTP_301"
       }
     },
+    {
+      port               = 22222
+      protocol           = "HTTP"
+      target_group_index = 1
+    },
+    {
+      port               = 9001
+      protocol           = "HTTP"
+      target_group_index = 2
+    },
   ]
 
   # HTTPS Listener
@@ -45,18 +55,6 @@ module "external_proxy_gw" {
         message_body = "Fixed Static message - for Root Context"
         status_code  = "200"
       }
-    },
-    {
-      port               = 22222
-      protocol           = "HTTPS"
-      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
-      target_group_index = 1
-    },
-    {
-      port               = 9000
-      protocol           = "HTTPS"
-      certificate_arn    = data.terraform_remote_state.acm_cert.outputs.aws_acm_certificate_main
-      target_group_index = 2
     },
     {
       port               = 8080
