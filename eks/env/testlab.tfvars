@@ -7,6 +7,7 @@ aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 ####
 autoscaling_average_cpu = 30
+cluster_version = "1.26"
 /*
   "my-app-eks-x86" = {
     ami_type     = "AL2_x86_64"
@@ -28,11 +29,11 @@ autoscaling_average_cpu = 30
 eks_managed_node_groups = {
   "my-app-eks-arm" = {
     ami_type     = "AL2_ARM_64"
-    min_size     = 1
+    min_size     = 0
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.medium"
+      "t4g.small"
     ]
     capacity_type = "ON_DEMAND"
     network_interfaces = [{

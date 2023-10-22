@@ -31,7 +31,8 @@ resource "helm_release" "haproxy-ingress-controller" {
 
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "Dept=VNTeam , Team=${local.team} , ManageBy=vnTerraform , Environment=${local.environment}"
+    value = "owner=gvh-ram,environment=dev,type=istio-gateway"
+    #"Dept=VNTeam, Team=${local.team}, ManageBy=vnTerraform, Environment=${local.environment}"
   }
 
 }

@@ -6,6 +6,7 @@ aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 ####
+cluster_version = "1.27"
 autoscaling_average_cpu = 30
 /*
   "lumi-eks-on_demand-arm" = {
@@ -47,7 +48,7 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.medium"
+      "t4g.small"
     ]
     capacity_type = "ON_DEMAND"
     network_interfaces = [{

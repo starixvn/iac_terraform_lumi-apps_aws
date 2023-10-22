@@ -5,7 +5,7 @@ module "cluster" {
   version = "19.15.3"
 
   cluster_name                    = lower("${var.team}-${var.environment}-eks")
-  cluster_version                 = "1.26"
+  cluster_version                 = "${var.cluster_version}"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   vpc_id                          = data.terraform_remote_state.vpc.outputs.vpc_id
