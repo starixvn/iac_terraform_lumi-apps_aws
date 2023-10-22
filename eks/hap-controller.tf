@@ -31,12 +31,24 @@ resource "helm_release" "haproxy-ingress-controller" {
 
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "owner=gvh-ram,environment=dev,type=istio-gateway"
-    #"Dept=VNTeam, Team=${local.team}, ManageBy=vnTerraform, Environment=${local.environment}"
+    value = "Dept=VNTeam" 
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
+    value = "Team=${local.team}" 
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
+    value = "ManageBy=vnTerraform" 
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
+    value = "Environment=${local.environment}" 
   }
 
 }
 /*
+#"Dept=VNTeam, Team=${local.team}, ManageBy=vnTerraform, Environment=${local.environment}"
 "service.beta.kubernetes.io/aws-load-balancer-name": "eks-lb"
 "service.beta.kubernetes.io/aws-load-balancer-type": "nlb"
 "service.beta.kubernetes.io/aws-load-balancer-scheme": "internet-facing"

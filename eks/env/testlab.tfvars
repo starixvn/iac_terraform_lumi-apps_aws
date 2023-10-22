@@ -29,12 +29,32 @@ cluster_version = "1.26"
 eks_managed_node_groups = {
   "my-app-eks-arm" = {
     ami_type     = "AL2_ARM_64"
-    min_size     = 0
+    min_size     = 1
     max_size     = 1
     desired_size = 1
     instance_types = [
       "t4g.small"
     ]
+    update_config = {
+        max_unavailable_percentage = 100
+      }
+      labels = {
+        role = "group2"
+      }
+    taints = [
+        {
+          key    = "dedicated"
+          value  = "group2"
+          effect = "NO_SCHEDULE"
+        }
+      ]
+      tags = {
+        "k8s.io/cluster-autoscaler/enabled"                       = "true"
+        "k8s.io/cluster-autoscaler/lumi-testlab-eks"                 = "owned"
+        "k8s.io/cluster-autoscaler/node-template/taint/dedicated" = "group2:NoSchedule"
+        "k8s.io/cluster-autoscaler/node-template/label/role"      = "group2"
+      }
+
     capacity_type = "ON_DEMAND"
     network_interfaces = [{
       delete_on_termination       = true
