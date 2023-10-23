@@ -29,8 +29,7 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.medium",
-      "t4g.large"
+      "t4g.medium"
     ]
     capacity_type = "SPOT"
     network_interfaces = [{
