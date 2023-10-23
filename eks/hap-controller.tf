@@ -24,37 +24,9 @@ resource "helm_release" "haproxy-ingress-controller" {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-internal"
     value = "0.0.0.0/0"
   }
+
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-name"
-    value = "${local.environment}-${local.team}-eks-lb"
+    value = lower("${var.team}-${var.environment}-eks-lb")
   }
-
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "Dept=VNTeam" 
-  }
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "Team=${local.team}" 
-  }
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "ManageBy=vnTerraform" 
-  }
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-additional-resource-tags"
-    value = "Environment=${local.environment}" 
-  }
-
 }
-/*
-#"Dept=VNTeam, Team=${local.team}, ManageBy=vnTerraform, Environment=${local.environment}"
-"service.beta.kubernetes.io/aws-load-balancer-name": "eks-lb"
-"service.beta.kubernetes.io/aws-load-balancer-type": "nlb"
-"service.beta.kubernetes.io/aws-load-balancer-scheme": "internet-facing"
-"service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout": 360
-"service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags": "Dept=VNTeam, Team=${local.team}, ManageBy=vnTerraform, Environment=${local.environment}"
-  #service.beta.kubernetes.io/aws-load-balancer-backend-protocol:
-  #https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.3/guide/service/annotations/#backend-protocol
-  #
-*/

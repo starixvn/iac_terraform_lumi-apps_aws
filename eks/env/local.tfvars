@@ -8,7 +8,7 @@ aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 ####
 cluster_version = "1.27"
 autoscaling_average_cpu = 30
-/*
+eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
     ami_type     = "AL2_ARM_64"
     min_size     = 1
@@ -23,34 +23,16 @@ autoscaling_average_cpu = 30
       associate_public_ip_address = false
     }]
   }
-
   "lumi-eks-spot-x86" = {
     ami_type     = "AL2_x86_64"
-    min_size     = 0
+    min_size     = 1
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3.medium",
-      "t3.large"
+      "t4g.medium",
+      "t4g.large"
     ]
     capacity_type = "SPOT"
-    network_interfaces = [{
-      delete_on_termination       = true
-      associate_public_ip_address = false
-    }]
-  }
-*/
-
-eks_managed_node_groups = {
-  "lumi-eks-on_demand-arm" = {
-    ami_type     = "AL2_ARM_64"
-    min_size     = 0
-    max_size     = 1
-    desired_size = 1
-    instance_types = [
-      "t4g.small"
-    ]
-    capacity_type = "ON_DEMAND"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false
@@ -66,7 +48,6 @@ spot_termination_handler_chart_namespace = "kube-system"
 
 ###############
 namespaces = ["haproxy","sample-apps","nexops-apps"]
-name_prefix             = "my-app"
 ###############
 admin_users     = ["admin1", "admin2"]
 developer_users = ["dev1", "dev2"]

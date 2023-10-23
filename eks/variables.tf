@@ -23,10 +23,7 @@ variable "spot_termination_handler_chart_namespace" {
   type        = string
   description = "Kubernetes namespace to deploy EKS Spot termination handler Helm chart."
 }
-variable "name_prefix" {
-  type        = string
-  description = "Prefix to be used on each infrastructure object Name created in AWS."
-}
+
 variable "namespaces" {
   type        = list(string)
   description = "List of namespaces to be created in our EKS Cluster."
