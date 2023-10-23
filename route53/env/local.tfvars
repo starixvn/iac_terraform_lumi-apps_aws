@@ -87,6 +87,14 @@ domain_alias_records = {
         "name" : "deployapi-aws",
         "type" : "A",
     },
+    {
+        "name" : "eks-ingress",
+        "type" : "A",
+    },
+    {
+        "name" : "deployapi-k8s",
+        "type" : "A",
+    },
   ],
   "staging.lumigame.com" = [
     {
