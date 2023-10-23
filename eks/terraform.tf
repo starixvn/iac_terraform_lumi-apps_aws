@@ -26,4 +26,11 @@ terraform {
 data "aws_caller_identity" "current" {} # used for accesing Account ID and ARN
 
 provider "aws" {
+/*  default_tags {
+    tags = {
+      Dept = "VNTeam"
+      Team = local.team
+    }
+  }
+*/
 }

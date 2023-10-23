@@ -64,10 +64,6 @@ domain_alias_records = {
           "type" : "A",
     },
     {
-          "name" : "l1-mongoexpress-aws",
-          "type" : "A",
-    },
-    {
         "name" : "w1",
         "type" : "A",
     },
@@ -85,6 +81,10 @@ domain_alias_records = {
     },
     {
         "name" : "haproxy",
+        "type" : "A",
+    },
+    {
+        "name" : "deployapi-aws",
         "type" : "A",
     },
   ],
