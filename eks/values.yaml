@@ -348,7 +348,7 @@ controller:
 
   ## Extra annotation for custom configmap for Controller
   configAnnotations: {}
-  #   annotationKey: value
+  #  annotationKey: value
 
   ## Controller Logging configuration
   logging:
@@ -381,7 +381,8 @@ controller:
 
     ## Service annotations
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-    annotations: {}
+    annotations: 
+      "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags": "Dept=VNTeam,Team=Lumi,ManageBy=vnTerraform"
 
     ## Service labels
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -394,11 +395,11 @@ controller:
     ## Service nodePorts to use for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
     ## If empty, random ports will be used  #{}
-    nodePorts:
-      http: 31080
-      https: 31443
-      stat: 31024
-      prometheus: 32060
+    nodePorts: {}
+      #http: 31080
+      #https: 31443
+      #stat: 31024
+      #prometheus: 32060
 
     ## Service ports to use for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
