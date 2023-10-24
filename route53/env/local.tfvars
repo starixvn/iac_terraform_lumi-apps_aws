@@ -106,7 +106,7 @@ domain_alias_records = {
         "type" : "A",
     },
     {
-        "name" : "portaineraws",
+        "name" : "portainereks",
         "type" : "A",
     },
   ],
