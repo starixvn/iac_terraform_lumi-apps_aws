@@ -25,7 +25,7 @@ domain_a_records = {
           "name" : "*",
           "type" : "A",
           "ttl" : "3600",
-          "record" : "10.10.50.39",
+          "record" : "10.10.50.69",
     },
     {
           "name" : "hub",
@@ -95,6 +95,10 @@ domain_alias_records = {
     },
     {
         "name" : "eks-ingress",
+        "type" : "A",
+    },
+    {
+        "name" : "deployapi-eks",
         "type" : "A",
     },
   ],
