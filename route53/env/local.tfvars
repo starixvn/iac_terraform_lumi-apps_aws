@@ -105,6 +105,10 @@ domain_alias_records = {
         "name" : "t1",
         "type" : "A",
     },
+    {
+        "name" : "portaineraws",
+        "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {

@@ -19,12 +19,6 @@ module "cluster" {
   )
 
 }
-output "cluster_endpoint" {
-  value = module.cluster.cluster_endpoint
-}
-output "cluster_certificate_authority_data" {
-  value = module.cluster.cluster_certificate_authority_data
-}
 
 # set spot fleet Autoscaling policy
 resource "aws_autoscaling_policy" "eks_autoscaling_policy" {
