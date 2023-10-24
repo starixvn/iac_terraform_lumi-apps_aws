@@ -22,7 +22,7 @@ eks_managed_node_groups = {
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-  }
+  },
   "lumi-eks-spot-x86" = {
     ami_type     = "AL2_x86_64"
     min_size     = 1
@@ -51,3 +51,6 @@ namespaces = ["haproxy","sample-apps","nexops-apps"]
 ###############
 admin_users     = ["admin1", "admin2"]
 developer_users = ["dev1", "dev2"]
+  /*labels = {
+            "luminet-app" = "yes"
+          }*/
