@@ -101,6 +101,10 @@ domain_alias_records = {
         "name" : "deployapi-eks",
         "type" : "A",
     },
+    {
+        "name" : "t1",
+        "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
