@@ -12,12 +12,24 @@ eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
     labels = {
             "luminet-app" = "yes"
+            "haproxy" = "yes"
           }
     ami_type     = "AL2_ARM_64"
     min_size     = 0
     max_size     = 1
     desired_size = 1
-    disk_size = 40
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
     instance_types = [
       "t4g.medium"
     ]
@@ -35,7 +47,18 @@ eks_managed_node_groups = {
     min_size     = 0
     max_size     = 1
     desired_size = 1
-    disk_size = 40
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
     instance_types = [
       "t3.medium",
       "t3.large"
