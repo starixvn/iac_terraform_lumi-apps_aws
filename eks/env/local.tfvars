@@ -25,7 +25,7 @@ eks_managed_node_groups = {
   },
   "lumi-eks-spot-x86" = {
     ami_type     = "AL2_x86_64"
-    min_size     = 1
+    min_size     = 0
     max_size     = 1
     desired_size = 1
     instance_types = [
