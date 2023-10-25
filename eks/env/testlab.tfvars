@@ -8,34 +8,21 @@ aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 ####
 autoscaling_average_cpu = 30
 cluster_version = "1.27"
-/*
-  "my-app-eks-x86" = {
-    ami_type     = "AL2_x86_64"
-    min_size     = 1
-    max_size     = 16
-    desired_size = 1
-    instance_types = [
-      "t3a.small",
-      "t3a.medium",
-      "t3a.large"
-    ]
-    capacity_type = "SPOT"
-    network_interfaces = [{
-      delete_on_termination       = true
-      associate_public_ip_address = false
-    }]
-  }
-*/
+
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
+    labels = {
+            "luminet-app" = "yes"
+          }
+
     ami_type     = "AL2_ARM_64"
     min_size     = 1
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t4g.small"
+      "t4g.medium"
     ]
-
+    disk_size = 20
     capacity_type = "ON_DEMAND"
     network_interfaces = [{
       delete_on_termination       = true
@@ -43,14 +30,18 @@ eks_managed_node_groups = {
     }]
   }
   "lumi-eks-spot-x86" = {
+    labels = {
+            "luminet-app" = "yes"
+          }
+
     ami_type     = "AL2_x86_64"
     min_size     = 1
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3a.small",
       "t3a.medium"
     ]
+    disk_size = 20
     capacity_type = "SPOT"
     network_interfaces = [{
       delete_on_termination       = true
