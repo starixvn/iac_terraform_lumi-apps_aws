@@ -11,12 +11,24 @@ cluster_version = "1.27"
 
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
+    name            = "lumi-eks-on_demand-arm"
+    remote_access = {
+      ec2_ssh_key = "eks-terraform-key"
+    }
+    use_custom_launch_template = false
+    taints = [
+        {
+          key    = "dedicated"
+          value  = "gpuGroup"
+          effect = "NO_SCHEDULE"
+        }
+      ]
     labels = {
             "luminet-app" = "yes"
           }
 
     ami_type     = "AL2_ARM_64"
-    min_size     = 1
+    min_size     = 0
     max_size     = 1
     desired_size = 1
     instance_types = [
@@ -28,14 +40,29 @@ eks_managed_node_groups = {
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-  }
+    tags = {
+        Name = "lumi-eks-on_demand-arm"
+      }
+  },
   "lumi-eks-spot-x86" = {
+    name            = "lumi-eks-spot-x86"
+    use_custom_launch_template = false
+    taints = [
+        {
+          key    = "dedicated"
+          value  = "gpuGroup"
+          effect = "NO_SCHEDULE"
+        }
+      ]
+    remote_access = {
+      ec2_ssh_key = "eks-terraform-key"
+    }
     labels = {
             "luminet-app" = "yes"
           }
 
     ami_type     = "AL2_x86_64"
-    min_size     = 1
+    min_size     = 0
     max_size     = 1
     desired_size = 1
     instance_types = [
@@ -47,6 +74,9 @@ eks_managed_node_groups = {
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
+    tags = {
+        Name = "lumi-eks-spot-x86"
+      }
   }
 }
 ###############
