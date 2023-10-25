@@ -10,10 +10,26 @@ cluster_version = "1.27"
 autoscaling_average_cpu = 30
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
+    labels = {
+            "luminet-app" = "yes"
+            "haproxy" = "yes"
+          }
     ami_type     = "AL2_ARM_64"
-    min_size     = 1
+    min_size     = 0
     max_size     = 1
     desired_size = 1
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
     instance_types = [
       "t4g.medium"
     ]
@@ -22,12 +38,27 @@ eks_managed_node_groups = {
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-  }
+  },
   "lumi-eks-spot-x86" = {
+    labels = {
+            "luminet-app" = "yes"
+          }
     ami_type     = "AL2_x86_64"
-    min_size     = 1
+    min_size     = 0
     max_size     = 1
     desired_size = 1
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
     instance_types = [
       "t3.medium",
       "t3.large"
@@ -47,7 +78,10 @@ spot_termination_handler_chart_version   = "0.21.0"
 spot_termination_handler_chart_namespace = "kube-system"
 
 ###############
-namespaces = ["haproxy","sample-apps","nexops-apps"]
+namespaces = ["haproxy","sample","nexops"]
 ###############
 admin_users     = ["admin1", "admin2"]
 developer_users = ["dev1", "dev2"]
+  /*labels = {
+            "luminet-app" = "yes"
+          }*/

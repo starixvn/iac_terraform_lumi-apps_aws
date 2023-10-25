@@ -8,6 +8,22 @@ module "cluster" {
   cluster_version                 = "${var.cluster_version}"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
+  cluster_addons = {
+    coredns = {
+      resolve_conflicts = "OVERWRITE"
+    }
+    kube-proxy = {}
+    vpc-cni = {
+      resolve_conflicts = "OVERWRITE"
+      configuration_values = jsonencode({
+        env = {
+          # Reference docs https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+          ENABLE_PREFIX_DELEGATION = "true"
+          WARM_PREFIX_TARGET       = "1"
+        }
+      })
+    }
+  }
   vpc_id                          = data.terraform_remote_state.vpc.outputs.vpc_id
   subnet_ids                      = data.terraform_remote_state.vpc.outputs.private_subnets
   eks_managed_node_groups         = var.eks_managed_node_groups
@@ -18,12 +34,6 @@ module "cluster" {
     },
   )
 
-}
-output "cluster_endpoint" {
-  value = module.cluster.cluster_endpoint
-}
-output "cluster_certificate_authority_data" {
-  value = module.cluster.cluster_certificate_authority_data
 }
 
 # set spot fleet Autoscaling policy

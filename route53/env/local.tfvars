@@ -25,13 +25,19 @@ domain_a_records = {
           "name" : "*",
           "type" : "A",
           "ttl" : "3600",
-          "record" : "10.10.50.39",
+          "record" : "10.10.50.69",
     },
-      {
+    {
           "name" : "hub",
           "type" : "A",
           "ttl" : "3600",
           "record" : "202.78.231.54",
+    },
+    {
+          "name" : "deployapi-k8s",
+          "type" : "A",
+          "ttl" : "3600",
+          "record" : "10.10.50.169",
     },
   ],  
 }
@@ -87,8 +93,24 @@ domain_alias_records = {
         "name" : "deployapi-aws",
         "type" : "A",
     },
+    {
+        "name" : "eks-ingress",
+        "type" : "A",
+    },
+    {
+        "name" : "deployapi-eks",
+        "type" : "A",
+    },
+    {
+        "name" : "t1",
+        "type" : "A",
+    },
+    {
+        "name" : "portainereks",
+        "type" : "A",
+    },
   ],
-  "staging.lumigame.com" = [
+  /*"staging.lumigame.com" = [
     {
         "name" : "w1",
         "type" : "A",
@@ -102,4 +124,5 @@ domain_alias_records = {
         "type" : "A",
     },
   ],
+  */
 }
