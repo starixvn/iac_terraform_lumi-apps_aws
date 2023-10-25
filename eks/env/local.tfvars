@@ -78,7 +78,7 @@ spot_termination_handler_chart_version   = "0.21.0"
 spot_termination_handler_chart_namespace = "kube-system"
 
 ###############
-namespaces = ["haproxy","sample-apps","nexops-apps"]
+namespaces = ["haproxy","sample","nexops"]
 ###############
 admin_users     = ["admin1", "admin2"]
 developer_users = ["dev1", "dev2"]
