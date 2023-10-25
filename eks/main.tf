@@ -9,12 +9,9 @@ module "cluster" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   cluster_addons = {
-    coredns = {
-      resolve_conflicts = "OVERWRITE"
-    }
-    kube-proxy = {}
     vpc-cni = {
-      resolve_conflicts = "OVERWRITE"
+      most_recent              = true
+      before_compute           = true
       configuration_values = jsonencode({
         env = {
           # Reference docs https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
