@@ -9,7 +9,15 @@ module "cluster" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   cluster_addons = {
+    coredns = {
+      most_recent = true
+      resolve_conflicts = "OVERWRITE"
+    }
+    kube-proxy = {
+      most_recent = true
+    }
     vpc-cni = {
+      resolve_conflicts = "OVERWRITE"
       most_recent              = true
       before_compute           = true
       configuration_values = jsonencode({

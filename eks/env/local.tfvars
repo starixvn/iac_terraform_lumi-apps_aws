@@ -10,10 +10,15 @@ cluster_version = "1.27"
 autoscaling_average_cpu = 30
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
+    remote_access = {
+      ec2_ssh_key = "eks-terraform-key"
+    }
+    use_custom_launch_template = false
     labels = {
             "luminet-app" = "yes"
-            "haproxy" = "yes"
+            "nexops" = "yes"
           }
+
     ami_type     = "AL2_ARM_64"
     min_size     = 0
     max_size     = 1
@@ -40,9 +45,15 @@ eks_managed_node_groups = {
     }]
   },
   "lumi-eks-spot-x86" = {
+    use_custom_launch_template = false
+    remote_access = {
+      ec2_ssh_key = "eks-terraform-key"
+    }
     labels = {
             "luminet-app" = "yes"
+            "nexops" = "yes"
           }
+
     ami_type     = "AL2_x86_64"
     min_size     = 0
     max_size     = 1
