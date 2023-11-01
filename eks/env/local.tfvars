@@ -10,12 +10,13 @@ cluster_version = "1.27"
 autoscaling_average_cpu = 30
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
+    subnet_ids = ["subnet-0ef5da55d9864197c"]
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
     }
     use_custom_launch_template = false
     labels = {
-            "luminet-app" = "yes"
+            "luminet-app" = "no"
             "nexops" = "yes"
           }
 
@@ -23,20 +24,9 @@ eks_managed_node_groups = {
     min_size     = 0
     max_size     = 1
     desired_size = 1
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 40
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
+    disk_size = 30
     instance_types = [
-      "t4g.medium"
+      "t4g.large"
     ]
     capacity_type = "ON_DEMAND"
     network_interfaces = [{
@@ -45,6 +35,7 @@ eks_managed_node_groups = {
     }]
   },
   "lumi-eks-spot-x86" = {
+    subnet_ids = ["subnet-0ef5da55d9864197c"]
     use_custom_launch_template = false
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
@@ -58,21 +49,9 @@ eks_managed_node_groups = {
     min_size     = 0
     max_size     = 1
     desired_size = 1
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 40
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
+    disk_size = 30
     instance_types = [
-      "t3.medium",
-      "t3.large"
+      "t3.large",
     ]
     capacity_type = "SPOT"
     network_interfaces = [{
