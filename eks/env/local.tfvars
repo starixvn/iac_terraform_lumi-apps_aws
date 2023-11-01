@@ -11,11 +11,12 @@ autoscaling_average_cpu = 30
 eks_managed_node_groups = {
   "lumi-eks-on-demand-x86" = {
     name            = "lumi-eks-on-demand-x86"
-    subnet_ids = ["subnet-0d3cd100ba5d9dc9d"]
+    subnet_ids = ["subnet-0ef5da55d9864197c"]
     use_custom_launch_template = true
 
     labels = {
             "luminet-app" = "yes"
+            "nexops" = "yes"
           }
 
     ami_type     = "AL2_x86_64"
@@ -23,13 +24,13 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3a.medium"
+      "t3.large"
     ]
     block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 10
+            volume_size           = 40
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
@@ -53,7 +54,6 @@ eks_managed_node_groups = {
           min_size     = 0
           max_size     = "1" # Retains current max size
           desired_size = 1
-          start_time   = "2023-11-02T01:00:00Z"
           time_zone    = "Asia/Bangkok"
           recurrence   = "00 08 * * MON-FRI"
         },
@@ -61,7 +61,6 @@ eks_managed_node_groups = {
           min_size     = 0
           max_size     = "1" # Retains current max size
           desired_size = 0
-          start_time   = "2023-11-01T11:00:00Z"
           time_zone    = "Asia/Bangkok"
           recurrence   = "00 19 * * MON-FRI"
         }
@@ -80,6 +79,3 @@ namespaces = ["haproxy","sample","nexops"]
 ###############
 admin_users     = ["admin1", "admin2"]
 developer_users = ["dev1", "dev2"]
-  /*labels = {
-            "luminet-app" = "yes"
-          }*/

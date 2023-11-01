@@ -16,7 +16,8 @@ eks_managed_node_groups = {
     use_custom_launch_template = true
 
     labels = {
-            "luminet-app" = "yes"
+            "luminet-app" = "yes",
+            "nexops" = "yes"
           }
 
     ami_type     = "AL2_x86_64"
@@ -54,7 +55,6 @@ eks_managed_node_groups = {
           min_size     = 0
           max_size     = "1" # Retains current max size
           desired_size = 1
-          start_time   = "2023-11-01T09:00:00Z"
           time_zone    = "Asia/Bangkok"
           recurrence   = "00 08 * * MON-FRI"
         },
@@ -62,13 +62,14 @@ eks_managed_node_groups = {
           min_size     = 0
           max_size     = "1" # Retains current max size
           desired_size = 0
-          start_time   = "2023-11-01T08:50:00Z"
           time_zone    = "Asia/Bangkok"
-          recurrence   = "00 18 * * MON-FRI"
+          recurrence   = "55 16 * * MON-FRI"
         }
       }
   },
-  "lumi-eks-spot-x86" = {
+}
+/*
+"lumi-eks-spot-x86" = {
     name            = "lumi-eks-spot-x86"
     subnet_ids = ["subnet-0d3cd100ba5d9dc9d"]
     use_custom_launch_template = true
@@ -125,8 +126,7 @@ eks_managed_node_groups = {
         }
       }
   }
-}
-/*
+
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
     }
