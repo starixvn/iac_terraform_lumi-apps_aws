@@ -12,17 +12,9 @@ cluster_version = "1.27"
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
     name            = "lumi-eks-on_demand-arm"
-    remote_access = {
-      ec2_ssh_key = "eks-terraform-key"
-    }
-    use_custom_launch_template = false
-    taints = [
-        {
-          key    = "dedicated"
-          value  = "gpuGroup"
-          effect = "NO_SCHEDULE"
-        }
-      ]
+    subnet_ids = ["subnet-0e017e745d6050e84"]
+    use_custom_launch_template = true
+
     labels = {
             "luminet-app" = "yes"
           }
@@ -40,23 +32,17 @@ eks_managed_node_groups = {
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-    tags = {
-        Name = "lumi-eks-on_demand-arm"
-      }
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
   },
   "lumi-eks-spot-x86" = {
     name            = "lumi-eks-spot-x86"
-    use_custom_launch_template = false
-    taints = [
-        {
-          key    = "dedicated"
-          value  = "gpuGroup"
-          effect = "NO_SCHEDULE"
-        }
-      ]
-    remote_access = {
-      ec2_ssh_key = "eks-terraform-key"
-    }
+    subnet_ids = ["subnet-0e017e745d6050e84"]
+    use_custom_launch_template = true
     labels = {
             "luminet-app" = "yes"
           }
@@ -68,15 +54,18 @@ eks_managed_node_groups = {
     instance_types = [
       "t3a.medium"
     ]
-    disk_size = 20
+    disk_size = 30
     capacity_type = "SPOT"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-    tags = {
-        Name = "lumi-eks-spot-x86"
-      }
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
   }
 }
 ###############
