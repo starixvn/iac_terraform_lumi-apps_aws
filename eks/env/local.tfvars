@@ -9,37 +9,11 @@ aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 cluster_version = "1.27"
 autoscaling_average_cpu = 30
 eks_managed_node_groups = {
-  "lumi-eks-on_demand-arm" = {
+  "lumi-eks-on-demand-x86" = {
+    name            = "lumi-eks-on-demand-x86"
     subnet_ids = ["subnet-0ef5da55d9864197c"]
-    remote_access = {
-      ec2_ssh_key = "eks-terraform-key"
-    }
-    use_custom_launch_template = false
-    labels = {
-            "luminet-app" = "no"
-            "nexops" = "yes"
-          }
+    use_custom_launch_template = true
 
-    ami_type     = "AL2_ARM_64"
-    min_size     = 0
-    max_size     = 1
-    desired_size = 1
-    disk_size = 30
-    instance_types = [
-      "t4g.large"
-    ]
-    capacity_type = "ON_DEMAND"
-    network_interfaces = [{
-      delete_on_termination       = true
-      associate_public_ip_address = false
-    }]
-  },
-  "lumi-eks-spot-x86" = {
-    subnet_ids = ["subnet-0ef5da55d9864197c"]
-    use_custom_launch_template = false
-    remote_access = {
-      ec2_ssh_key = "eks-terraform-key"
-    }
     labels = {
             "luminet-app" = "yes"
             "nexops" = "yes"
@@ -49,16 +23,49 @@ eks_managed_node_groups = {
     min_size     = 0
     max_size     = 1
     desired_size = 1
-    disk_size = 30
     instance_types = [
-      "t3.large",
+      "t3.large"
     ]
-    capacity_type = "SPOT"
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "ON_DEMAND"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-  }
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 19 * * MON-FRI"
+        }
+      }
+  },
 }
 
 ###############
@@ -72,6 +79,3 @@ namespaces = ["haproxy","sample","nexops"]
 ###############
 admin_users     = ["admin1", "admin2"]
 developer_users = ["dev1", "dev2"]
-  /*labels = {
-            "luminet-app" = "yes"
-          }*/
