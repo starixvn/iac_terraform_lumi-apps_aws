@@ -32,7 +32,6 @@ module "cluster" {
   }
   vpc_id                          = data.terraform_remote_state.vpc.outputs.vpc_id
   subnet_ids                      = data.terraform_remote_state.vpc.outputs.private_subnets
-  cluster_security_group_id = data.terraform_remote_state.vpc.outputs.private_web_sg
   eks_managed_node_groups         = var.eks_managed_node_groups
   tags = merge(
     local.common_tags,
