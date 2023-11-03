@@ -1,7 +1,4 @@
 resource "helm_release" "haproxy-ingress-controller" {
-  depends_on = [
-    module.cluster,
-  ]
   name       = "haproxy-ingress-controller"
   namespace  = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
