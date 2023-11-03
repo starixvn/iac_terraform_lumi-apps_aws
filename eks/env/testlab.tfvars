@@ -12,7 +12,7 @@ cluster_version = "1.27"
 eks_managed_node_groups = {
   "lumi-eks-on-demand-x86" = {
     name            = "lumi-eks-on-demand-x86"
-    subnet_ids = ["subnet-0d3cd100ba5d9dc9d"]
+    subnet_ids = ["subnet-0cffc710d4f5a88b1"]
     use_custom_launch_template = true
 
     labels = {

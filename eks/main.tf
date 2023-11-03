@@ -7,7 +7,8 @@ module "cluster" {
   cluster_name                    = lower("${var.team}-${var.environment}-eks")
   cluster_version                 = "${var.cluster_version}"
   cluster_endpoint_private_access = true
-  cluster_endpoint_public_access  = true
+  cluster_endpoint_public_access  = false
+  #cluster_endpoint_public_access_cidrs = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
   cluster_addons = {
     coredns = {
       most_recent = true
@@ -31,6 +32,7 @@ module "cluster" {
   }
   vpc_id                          = data.terraform_remote_state.vpc.outputs.vpc_id
   subnet_ids                      = data.terraform_remote_state.vpc.outputs.private_subnets
+  cluster_security_group_id = data.terraform_remote_state.vpc.outputs.private_web_sg
   eks_managed_node_groups         = var.eks_managed_node_groups
   tags = merge(
     local.common_tags,
