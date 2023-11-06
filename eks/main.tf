@@ -8,6 +8,7 @@ module "cluster" {
   cluster_version                 = "${var.cluster_version}"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
+  cluster_endpoint_public_access_cidrs = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
   cluster_addons = {
     coredns = {
       most_recent = true

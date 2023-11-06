@@ -30,3 +30,51 @@ resource "helm_release" "spot_termination_handler" {
   namespace     = var.spot_termination_handler_chart_namespace
   wait_for_jobs = true
 }
+
+
+################# haproxy-ingress-controller
+resource "helm_release" "haproxy-ingress-controller" {
+  name       = "haproxy-ingress-controller"
+  namespace  = "haproxy"
+  repository = "https://haproxytech.github.io/helm-charts"
+  chart      = "kubernetes-ingress"
+  values = [
+    "${file("values.yaml")}"
+  ]
+  set {
+    name  = "controller.service.type"
+    value = "LoadBalancer"
+  }
+
+  set {
+    name  = "controller.ingressClass"
+    value = "haproxy"
+  }
+
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
+    value = "nlb"
+  }
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-internal"
+    value = "0.0.0.0/0"
+  }
+
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-name"
+    value = lower("${var.team}-${var.environment}-eks-lb")
+  }
+}
+
+#########
+# create all Namespaces into EKS
+resource "kubernetes_namespace" "eks_namespaces" {
+  for_each = toset(var.namespaces)
+
+  metadata {
+    annotations = {
+      name = each.key
+    }
+    name = each.key
+  }
+}
