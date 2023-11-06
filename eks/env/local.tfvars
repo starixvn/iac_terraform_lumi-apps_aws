@@ -5,13 +5,14 @@ environment = "local"
 aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
+allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 ####
 cluster_version = "1.27"
-autoscaling_average_cpu = 30
+autoscaling_average_cpu = 80
 eks_managed_node_groups = {
   "lumi-eks-on-demand-x86" = {
     name            = "lumi-eks-on-demand-x86"
-    subnet_ids = ["subnet-0ef5da55d9864197c"]
+    subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
 
     labels = {
@@ -66,6 +67,7 @@ eks_managed_node_groups = {
         }
       }
   },
+
 }
 
 ###############

@@ -50,6 +50,7 @@ locals {
       instance_type = srv.instance_type
       volume_type   = srv.volume_type
       volume_size   = srv.volume_size
+      subnet_id   = srv.subnet_id
       private_ip    = srv.private_ip
       ami           = srv.ami
     }
