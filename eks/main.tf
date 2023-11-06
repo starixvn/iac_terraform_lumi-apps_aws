@@ -1,5 +1,17 @@
-# create EKS cluster
+module "ebs_csi_irsa_role" {
+  source = "gitlab.nexdev.net/iac-terraform/aws-iam/aws//modules/iam-role-for-service-accounts-eks"
+  version = "5.17.1"
+  role_name             = "${local.cluster_name}-ebs-csi"
+  attach_ebs_csi_policy = true
 
+  oidc_providers = {
+    ex = {
+      provider_arn               = module.cluster.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
+    }
+  }
+}
+# create EKS cluster
 module "cluster" {
   source = "gitlab.nexdev.net/iac-terraform/aws-eks/aws"
   version = "19.15.3"
@@ -8,7 +20,7 @@ module "cluster" {
   cluster_version                 = "${var.cluster_version}"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
-  cluster_endpoint_public_access_cidrs = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
+  cluster_endpoint_public_access_cidrs = var.allow_whitelist
   cluster_addons = {
     coredns = {
       most_recent = true
@@ -28,6 +40,11 @@ module "cluster" {
           WARM_PREFIX_TARGET       = "1"
         }
       })
+    }
+    aws-ebs-csi-driver = {
+      service_account_role_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.cluster_name}-ebs-csi"
+      most_recent              = true
+      resolve_conflicts="PRESERVE"
     }
   }
   vpc_id                          = data.terraform_remote_state.vpc.outputs.vpc_id
