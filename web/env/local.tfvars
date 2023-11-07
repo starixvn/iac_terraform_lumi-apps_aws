@@ -22,8 +22,8 @@ proxy_gw_vm = [
 apps_vm = [
   {
     "application_name" : "db-01",
-    "instance_type" : "t3.micro",
-    "ami" : "ubuntu22",
+    "instance_type" : "t4g.micro",
+    "ami" : "ubuntu22arm",
     "volume_type" : "gp3",
     "volume_size" : "40",
     "subnet_id" : "subnet-06fe4c10600cb02db",
@@ -31,8 +31,8 @@ apps_vm = [
   },
   {
     "application_name" : "db-02",
-    "instance_type" : "t3.micro",
-    "ami" : "ubuntu22",
+    "instance_type" : "t4g.micro",
+    "ami" : "ubuntu22arm",
     "volume_type" : "gp3",
     "volume_size" : "40",
     "subnet_id" : "subnet-01667b309462c88dd",
@@ -40,8 +40,8 @@ apps_vm = [
   },
   {
     "application_name" : "db-03",
-    "instance_type" : "t3.micro",
-    "ami" : "ubuntu22",
+    "instance_type" : "t4g.micro",
+    "ami" : "ubuntu22arm",
     "volume_type" : "gp3",
     "volume_size" : "40",
     "subnet_id" : "subnet-00da5f1187472fb52",
