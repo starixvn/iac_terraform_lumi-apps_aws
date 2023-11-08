@@ -34,6 +34,9 @@ variable "allow_whitelist" {
   type        = list(string)
   default     = []
 }
+variable "vpc_id" {
+  type        = string
+}
 variable "vpc_private_subnets" {
   description = "VPC Private Subnets"
   type = list(string)

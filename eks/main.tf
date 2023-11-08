@@ -47,7 +47,7 @@ module "cluster" {
       resolve_conflicts="PRESERVE"
     }
   }
-  vpc_id                          = data.terraform_remote_state.vpc.outputs.akira_vpc_id
+  vpc_id                          = var.vpc_id
   subnet_ids                      = var.vpc_private_subnets
   eks_managed_node_groups         = var.eks_managed_node_groups
   tags = merge(
