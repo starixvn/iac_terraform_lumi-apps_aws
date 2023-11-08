@@ -8,13 +8,12 @@ locals {
     Team        = local.team
     ManageBy    = "vnTerraform"
     Environment = local.environment
+    map-migrated = "migQK0IMQ5LFK"
   }
 }
 
 locals {
   cluster_name = lower("${var.team}-${var.environment}-eks") #-${random_string.suffix.result}
-  nodegroup1_label = "group1"
-  nodegroup2_label = "group_on_demand"
 }
 
 resource "random_string" "suffix" {
