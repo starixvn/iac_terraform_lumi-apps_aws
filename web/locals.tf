@@ -29,6 +29,7 @@ locals {
     "RHEL" : { owner : "amazon", filter : "*RHEL*" },
     "ubuntu20" : { owner : "amazon", filter : "*ubuntu-focal-20.04-amd64-server-20230328" },
     "ubuntu22" : { owner : "amazon", filter : "*ubuntu-jammy-22.04-amd64-server-20230728" },
+    "ubuntu22arm" : { owner : "amazon", filter : "*ubuntu-jammy-22.04-arm64-minimal-20231030" },
     "windows2019" : { owner : "amazon", filter : "Windows_Server-2019-English-Full-Base*" },
     "windows2022" : { owner : "amazon", filter : "Windows_Server-2022-English-Full-Base*" },
   }
@@ -50,6 +51,7 @@ locals {
       instance_type = srv.instance_type
       volume_type   = srv.volume_type
       volume_size   = srv.volume_size
+      subnet_id   = srv.subnet_id
       private_ip    = srv.private_ip
       ami           = srv.ami
     }

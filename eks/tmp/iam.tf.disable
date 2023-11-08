@@ -87,3 +87,18 @@ resource "kubernetes_cluster_role_binding" "iam_roles_developers" {
     }
   }
 }
+
+
+module "ebs_csi_irsa_role" {
+  source = "gitlab.nexdev.net/iac-terraform/aws-iam/aws//modules/iam-role-for-service-accounts-eks"
+  version = "5.17.1"
+  role_name             = "${local.cluster_name}-ebs-csi"
+  attach_ebs_csi_policy = true
+
+  oidc_providers = {
+    ex = {
+      provider_arn               = module.cluster.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
+    }
+  }
+}
