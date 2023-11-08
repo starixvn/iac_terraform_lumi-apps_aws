@@ -6,6 +6,12 @@ aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
+vpc_id = "vpc-039a936178b304105"
+vpc_private_subnets = [
+  "subnet-06fe4c10600cb02db",
+  "subnet-01667b309462c88dd",
+  "subnet-00da5f1187472fb52"
+]
 ####
 cluster_version = "1.27"
 autoscaling_average_cpu = 80
@@ -40,6 +46,64 @@ eks_managed_node_groups = {
         }
       }
     capacity_type = "ON_DEMAND"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 19 * * MON-FRI"
+        }
+      }
+  },
+  "lumi-eks-spot-x86" = {
+    name            = "lumi-eks-spot-x86"
+    subnet_ids = ["subnet-06fe4c10600cb02db"]
+    use_custom_launch_template = true
+
+    labels = {
+            "luminet-app" = "yes"
+            "nexops" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3.large",
+      "m5.large"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "SPOT"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false

@@ -6,14 +6,19 @@ aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
+vpc_id = "vpc-0d57213151eaf3c95"
+vpc_private_subnets = [
+  "subnet-033dfaaf997288dc4",
+  "subnet-0fc7e3eb442a669bd",
+  "subnet-01444382713d23b54"
+]
 ####
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
-
 eks_managed_node_groups = {
   "lumi-eks-on-demand-x86" = {
     name            = "lumi-eks-on-demand-x86"
-    subnet_ids = ["subnet-05baef15d22a6ccc2"]
+    subnet_ids = ["subnet-033dfaaf997288dc4"]
     use_custom_launch_template = true
 
     labels = {
@@ -26,7 +31,8 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3a.medium"
+      "t3a.medium",
+      "t3.medium"
     ]
     block_device_mappings = {
         xvda = {
