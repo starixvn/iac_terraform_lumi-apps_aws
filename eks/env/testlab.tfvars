@@ -16,8 +16,8 @@ vpc_private_subnets = [
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
-  "lumi-eks-on-demand-x86" = {
-    name            = "lumi-eks-on-demand-x86"
+  "lumi-testlab-eks-on-demand" = {
+    name            = "lumi-testlab-eks-on-demand"
     subnet_ids = ["subnet-033dfaaf997288dc4"]
     use_custom_launch_template = true
 
