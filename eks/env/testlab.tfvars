@@ -17,7 +17,7 @@ autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
   "lumi-testlab-demand" = {
-    name            = "lumi-testlab-eks-on-demand"
+    name            = "lumi-lab-eks-demand"
     subnet_ids = ["subnet-0c67ab96b83b2c60b"]
     use_custom_launch_template = true
 
