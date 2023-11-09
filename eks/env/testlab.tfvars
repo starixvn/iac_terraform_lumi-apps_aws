@@ -8,17 +8,17 @@ aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 vpc_id = "vpc-0d57213151eaf3c95"
 vpc_private_subnets = [
-  "subnet-033dfaaf997288dc4",
-  "subnet-0fc7e3eb442a669bd",
-  "subnet-01444382713d23b54"
+  "subnet-0c67ab96b83b2c60b",
+  "subnet-0ac753f43c009acc1",
+  "subnet-06b4b6d0b87055e4f"
 ]
 ####
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
-  "lumi-eks-on-demand-x86" = {
-    name            = "lumi-eks-on-demand-x86"
-    subnet_ids = ["subnet-033dfaaf997288dc4"]
+  "lumi-testlab-eks-on-demand" = {
+    name            = "lumi-testlab-eks-on-demand"
+    subnet_ids = ["subnet-0c67ab96b83b2c60b"]
     use_custom_launch_template = true
 
     labels = {
