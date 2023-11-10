@@ -204,5 +204,5 @@ spot_termination_handler_chart_namespace = "kube-system"
 ###############
 namespaces = ["haproxy","sample","nexops"]
 ###############
-admin_users     = ["admin1", "admin2"]
+admin_users     = ["tf.ken.nguyen", "tf.dennis.le", "tf.troy.vo"]
 developer_users = ["dev1", "dev2"]
