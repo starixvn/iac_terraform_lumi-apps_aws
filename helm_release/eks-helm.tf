@@ -1,0 +1,16 @@
+# get EKS authentication for being able to manage k8s objects from terraform
+#########
+# create all Namespaces into EKS
+resource "kubernetes_namespace" "eks_namespaces" {
+  depends_on = [
+    module.cluster
+ ]
+  for_each = toset(var.namespaces)
+
+  metadata {
+    annotations = {
+      name = each.key
+    }
+    name = each.key
+  }
+}

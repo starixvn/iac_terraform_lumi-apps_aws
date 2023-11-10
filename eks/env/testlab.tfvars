@@ -6,11 +6,11 @@ aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
-vpc_id = "vpc-0d57213151eaf3c95"
+vpc_id = "vpc-0f8cd6e91a5c11387"
 vpc_private_subnets = [
-  "subnet-0c67ab96b83b2c60b",
-  "subnet-0ac753f43c009acc1",
-  "subnet-06b4b6d0b87055e4f"
+  "subnet-072299953c2923f8e",
+  "subnet-02d0fd0ca9e80e01e",
+  "subnet-0238b064762b0c965"
 ]
 ####
 autoscaling_average_cpu = 90
