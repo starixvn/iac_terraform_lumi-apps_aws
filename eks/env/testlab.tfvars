@@ -75,7 +75,7 @@ eks_managed_node_groups = {
       }
   },
   "lumi-eks-spot-x86" = {
-    name            = "lumi-eks-spot-x86"
+    name            = "lumi-lab-eks-spot"
     subnet_ids = ["subnet-072299953c2923f8e"]
     use_custom_launch_template = true
 
