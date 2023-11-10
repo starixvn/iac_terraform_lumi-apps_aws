@@ -18,7 +18,7 @@ cluster_version = "1.27"
 eks_managed_node_groups = {
   "lumi-testlab-demand" = {
     name            = "lumi-lab-eks-demand"
-    subnet_ids = ["subnet-0c67ab96b83b2c60b"]
+    subnet_ids = ["subnet-072299953c2923f8e"]
     use_custom_launch_template = true
 
     labels = {
@@ -71,6 +71,64 @@ eks_managed_node_groups = {
           desired_size = 0
           time_zone    = "Asia/Bangkok"
           recurrence   = "55 16 * * MON-FRI"
+        }
+      }
+  },
+  "lumi-eks-spot-x86" = {
+    name            = "lumi-eks-spot-x86"
+    subnet_ids = ["subnet-072299953c2923f8e"]
+    use_custom_launch_template = true
+
+    labels = {
+            "luminet-app" = "yes"
+            "nexops" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3a.medium",
+      "t3.medium"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "SPOT"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 19 * * MON-FRI"
         }
       }
   },
