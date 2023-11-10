@@ -2,6 +2,27 @@
 # Cluster
 ################################################################################
 
+
+output "cluster_endpoint" {
+  description = "Endpoint for your Kubernetes API server"
+  value       = module.cluster.cluster_endpoint
+}
+
+output "cluster_id" {
+  description = "The ID of the EKS cluster. Note: currently a value is returned only for local EKS clusters created on Outposts"
+  value       = module.cluster.cluster_id
+}
+
+output "cluster_name" {
+  description = "The name of the EKS cluster"
+  value       = module.cluster.cluster_name
+}
+
+output "cluster_certificate_authority_data" {
+  description = "Base64 encoded certificate data required to communicate with the cluster"
+  value       = module.cluster.cluster_certificate_authority_data
+}
+/*
 output "cluster_arn" {
   description = "The Amazon Resource Name (ARN) of the cluster"
   value       = module.cluster.cluster_arn
@@ -190,3 +211,4 @@ output "aws_auth_configmap_yaml" {
   description = "Formatted yaml output for base aws-auth configmap containing roles used in cluster node groups/fargate profiles"
   value       = module.cluster.aws_auth_configmap_yaml
 }
+*/

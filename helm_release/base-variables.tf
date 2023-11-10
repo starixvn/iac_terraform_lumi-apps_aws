@@ -26,18 +26,8 @@ variable "aws_region_key_remote_state" {
   description = "aws_region_key"
   type        = string
 }
-variable "cluster_version" {
-  type        = string
-}
 variable "allow_whitelist" {
   description = "allow whitelist"
   type        = list(string)
   default     = []
-}
-variable "vpc_id" {
-  type        = string
-}
-variable "vpc_private_subnets" {
-  description = "VPC Private Subnets"
-  type = list(string)
 }
