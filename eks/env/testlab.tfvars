@@ -13,6 +13,12 @@ vpc_private_subnets = [
   "subnet-0faac0ab8ff45cac2"
 ]
 ####
+###############
+namespaces = ["haproxy","sample","nexops"]
+###############
+admin_users     = ["ken.test", "troy.test"] #, "troy.vo"
+developer_users = ["dev1", "dev2"]
+
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
@@ -30,9 +36,8 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t2.micro",
-      "t3.micro",
-      "t3a.micro"
+      "t3a.small",
+      "t3a.medium"
     ]
     block_device_mappings = {
         xvda = {
@@ -260,8 +265,3 @@ spot_termination_handler_chart_repo      = "https://aws.github.io/eks-charts"
 spot_termination_handler_chart_version   = "0.21.0"
 spot_termination_handler_chart_namespace = "kube-system"
 
-###############
-namespaces = ["haproxy","sample","nexops"]
-###############
-admin_users     = ["ken.test", "troy.test"] #, "troy.vo"
-developer_users = ["dev1", "dev2"]

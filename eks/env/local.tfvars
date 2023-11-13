@@ -30,9 +30,7 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t2.micro",
-      "t3.micro",
-      "t3a.micro"
+      "t3.small"
     ]
     block_device_mappings = {
         xvda = {

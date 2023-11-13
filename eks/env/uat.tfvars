@@ -30,9 +30,8 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t2.micro",
-      "t3.micro",
-      "t3a.micro"
+      "t3a.small",
+      "t3a.medium"
     ]
     block_device_mappings = {
         xvda = {
@@ -57,22 +56,6 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "55 16 * * MON-FRI"
-        }
-      }
   },
   "lumi-uat-eks-demand" = {
     name            = "lumi-uat-eks-demand"
@@ -148,6 +131,7 @@ eks_managed_node_groups = {
     instance_types = [
       "t3a.large",
       "t3.large",
+      "t2.large",
     ]
     block_device_mappings = {
         xvda = {
