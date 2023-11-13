@@ -2,7 +2,7 @@ project = "cloud"
 team = "Lumi"
 aws_region = "ap-northeast-1"
 environment = "uat"
-aws_profile = "test-iac-terraform-ci"
+#aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
@@ -16,7 +16,7 @@ vpc_private_subnets = [
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
-  "lumi-uat-ingress" = {
+  "lumi-uat-eks-gr1" = {
     name            = "lumi-uat-eks-ingress"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
@@ -60,7 +60,7 @@ eks_managed_node_groups = {
         
       }
   },
-  "lumi-uat-eks-demand" = {
+  "lumi-uat-eks-gr2" = {
     name            = "lumi-uat-eks-demand"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
@@ -117,7 +117,7 @@ eks_managed_node_groups = {
         }
       }
   },
-  "lumi-uat-eks-spot" = {
+  "lumi-uat-eks-gr3" = {
     name            = "lumi-uat-eks-spot"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
