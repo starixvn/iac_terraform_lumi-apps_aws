@@ -56,6 +56,9 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
+    schedules = {
+        
+      }
   },
   "lumi-uat-eks-demand" = {
     name            = "lumi-uat-eks-demand"

@@ -63,20 +63,7 @@ eks_managed_node_groups = {
     ]
     ####
     schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "55 16 * * MON-FRI"
-        }
+        
       }
   },
   "lumi-lab-gr1" = {
