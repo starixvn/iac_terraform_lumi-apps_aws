@@ -16,6 +16,64 @@ vpc_private_subnets = [
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
+  "lumi-uat-ingress" = {
+    name            = "lumi-uat-eks-ingress"
+    subnet_ids = ["subnet-0ae72c2068513e76b"]
+    use_custom_launch_template = true
+
+    labels = {
+            "haproxy" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t2.micro",
+      "t3.micro",
+      "t3a.micro"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 10
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "ON_DEMAND"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "55 16 * * MON-FRI"
+        }
+      }
+  },
   "lumi-uat-eks-demand" = {
     name            = "lumi-uat-eks-demand"
     subnet_ids = ["subnet-0ae72c2068513e76b"]

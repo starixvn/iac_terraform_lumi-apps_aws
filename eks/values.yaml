@@ -293,7 +293,8 @@ controller:
 
   ## Pod Node assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-  nodeSelector: {}
+  nodeSelector:
+    "haproxy": "yes"
 
   ## Node Taints and Tolerations for pod-node cheduling through attraction/repelling
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -336,16 +337,27 @@ controller:
 
   ## Custom configuration for Controller
   ## ref: https://github.com/haproxytech/kubernetes-ingress/tree/master/documentation
-  config: #{}
+  config:
     timeout-connect: "5s"
-    #ssl-redirect: "true"
+    scale-server-slots: "7"
+    maxconn: "20000"
+    stats-config-snippet: |
+      stats auth admin:lum!onRock
+      stats refresh 300s
+      stats show-legends
+      stats show-node
+      stats show-modules
+    forwarded-for: "true"
+    dontlognull: "true"
+  #logasap: "true"
+  #ssl-redirect: "true"
+  #pod-maxconn: 30 #Sets the maximum number of concurrent connections (maxconn) on a backend server (application pod).
   #   servers-increment: "10"
   #   servers-increment-max-disabled: "10"
   #   rate-limit: "ON"
   #   rate-limit-expire: "1m"
   #   rate-limit-interval: "10s"
   #   rate-limit-size: "100k"
-
   ## Extra annotation for custom configmap for Controller
   configAnnotations: {}
   #  annotationKey: value

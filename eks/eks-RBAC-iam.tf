@@ -24,6 +24,7 @@ resource "time_sleep" "wait" {
   triggers = {
     cluster_endpoint = module.cluster.cluster_endpoint
   }
+  depends_on = [module.cluster]
 }
 resource "kubernetes_config_map_v1_data" "aws_auth_users" {
   metadata {

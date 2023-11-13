@@ -15,11 +15,11 @@ proxy_gw_vm = [
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "20",
-    "private_ip" : "10.6.32.10",
+    "private_ip" : "10.6.48.10",
   },
 ]
 apps_vm = [
-  {
+  /*{
     "application_name" : "app-01",
     "instance_type" : "t3.micro",
     "ami" : "ubuntu22",
@@ -27,5 +27,5 @@ apps_vm = [
     "volume_size" : "20",
     "subnet_id" : "subnet-0c67ab96b83b2c60b",
     "private_ip" : "10.6.48.100",
-  },
+  },*/
 ]

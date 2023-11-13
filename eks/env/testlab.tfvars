@@ -6,19 +6,77 @@ aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
-vpc_id = "vpc-0f8cd6e91a5c11387"
+vpc_id = "vpc-036f816fe7bb40736"
 vpc_private_subnets = [
-  "subnet-072299953c2923f8e",
-  "subnet-02d0fd0ca9e80e01e",
-  "subnet-0238b064762b0c965"
+  "subnet-0f23ee9a6f14d940b",
+  "subnet-0d910e5c3ddde49d3",
+  "subnet-0faac0ab8ff45cac2"
 ]
 ####
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
-  "lumi-testlab-demand" = {
+  "lumi-lab-ingress" = {
+    name            = "lumi-lab-eks-ingress"
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    use_custom_launch_template = true
+
+    labels = {
+            "haproxy" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t2.micro",
+      "t3.micro",
+      "t3a.micro"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 10
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "ON_DEMAND"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "55 16 * * MON-FRI"
+        }
+      }
+  },
+  "lumi-lab-gr1" = {
     name            = "lumi-lab-eks-demand"
-    subnet_ids = ["subnet-072299953c2923f8e"]
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
     use_custom_launch_template = true
 
     labels = {
@@ -74,13 +132,13 @@ eks_managed_node_groups = {
         }
       }
   },
-  "lumi-eks-spot-x86" = {
+  "lumi-lab-gr2" = {
     name            = "lumi-lab-eks-spot"
-    subnet_ids = ["subnet-072299953c2923f8e"]
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
     use_custom_launch_template = true
 
     labels = {
-            "luminet-app" = "yes"
+            "luminet-app" = "yes",
             "nexops" = "yes"
           }
 
@@ -205,5 +263,5 @@ spot_termination_handler_chart_namespace = "kube-system"
 ###############
 namespaces = ["haproxy","sample","nexops"]
 ###############
-admin_users     = ["ken.test", "troy.test"]
+admin_users     = ["ken.test", "troy.test"] #, "troy.vo"
 developer_users = ["dev1", "dev2"]

@@ -22,6 +22,7 @@ resource "helm_release" "haproxy-ingress-controller" {
   namespace  = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
   chart      = "kubernetes-ingress"
+  version    = "1.33.1"
   values = [
     "${file("values.yaml")}"
   ]
