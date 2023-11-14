@@ -1,9 +1,9 @@
 # get EKS authentication for being able to manage k8s objects from terraform
 # deploy spot termination handler
 resource "helm_release" "spot_termination_handler" {
-  depends_on = [
+/*  depends_on = [
     module.cluster
- ]
+ ]*/
   name          = var.spot_termination_handler_chart_name
   chart         = var.spot_termination_handler_chart_name
   repository    = var.spot_termination_handler_chart_repo
@@ -15,9 +15,9 @@ resource "helm_release" "spot_termination_handler" {
 
 ################# haproxy-ingress-controller
 resource "helm_release" "haproxy-ingress-controller" {
-  depends_on = [
+  /*depends_on = [
     module.cluster
- ]
+ ]*/
   name       = "haproxy-ingress-controller"
   namespace  = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
@@ -54,9 +54,9 @@ resource "helm_release" "haproxy-ingress-controller" {
 #########
 # create all Namespaces into EKS
 resource "kubernetes_namespace" "eks_namespaces" {
-  depends_on = [
+/*  depends_on = [
     module.cluster
- ]
+ ]*/
   for_each = toset(var.namespaces)
 
   metadata {
