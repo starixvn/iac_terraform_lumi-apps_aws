@@ -342,7 +342,7 @@ controller:
     scale-server-slots: "7"
     maxconn: "20000"
     stats-config-snippet: |
-      stats auth admin:lum!onRock
+      stats auth lumi:lum!onRock
       stats refresh 300s
       stats show-legends
       stats show-node
