@@ -34,6 +34,11 @@ variable "allow_whitelist" {
   type        = list(string)
   default     = []
 }
+variable "allow_cidr_block_internal" {
+  description = "allow cidr_block_internal"
+  type        = list(string)
+  default     = []
+}
 variable "vpc_id" {
   type        = string
 }
