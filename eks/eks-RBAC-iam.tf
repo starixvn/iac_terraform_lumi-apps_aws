@@ -13,18 +13,20 @@ locals {
     {
       userarn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/${developer_user}"
       username = developer_user
-      groups   = ["${var.name_prefix}-developers"]
+      groups   = ["${var.team}-developers"]
     }
   ]
 }
 
 # add 'mapUsers' section to 'aws-auth' configmap with Admins & Developers
+/*
 resource "time_sleep" "wait" {
   create_duration = "180s"
   triggers = {
     cluster_endpoint = module.cluster.cluster_endpoint
   }
 }
+*/
 resource "kubernetes_config_map_v1_data" "aws_auth_users" {
   metadata {
     name      = "aws-auth"
@@ -37,13 +39,15 @@ resource "kubernetes_config_map_v1_data" "aws_auth_users" {
 
   force = true
 
-  depends_on = [time_sleep.wait]
+  /*depends_on = [
+    module.cluster
+ ]*/
 }
 
 # create developers Role using RBAC
 resource "kubernetes_cluster_role" "iam_roles_developers" {
   metadata {
-    name = "${var.name_prefix}-developers"
+    name = lower("${var.team}-developers")
   }
 
   rule {
@@ -68,13 +72,13 @@ resource "kubernetes_cluster_role" "iam_roles_developers" {
 # bind developer Users with their Role
 resource "kubernetes_cluster_role_binding" "iam_roles_developers" {
   metadata {
-    name = "${var.name_prefix}-developers"
+    name = lower("${var.team}-developers")
   }
 
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind      = "ClusterRole"
-    name      = "${var.name_prefix}-developers"
+    name      = lower("${var.team}-developers")
   }
 
   dynamic "subject" {
@@ -84,21 +88,6 @@ resource "kubernetes_cluster_role_binding" "iam_roles_developers" {
       name      = subject.key
       kind      = "User"
       api_group = "rbac.authorization.k8s.io"
-    }
-  }
-}
-
-
-module "ebs_csi_irsa_role" {
-  source = "gitlab.nexdev.net/iac-terraform/aws-iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.17.1"
-  role_name             = "${local.cluster_name}-ebs-csi"
-  attach_ebs_csi_policy = true
-
-  oidc_providers = {
-    ex = {
-      provider_arn               = module.cluster.oidc_provider_arn
-      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
     }
   }
 }

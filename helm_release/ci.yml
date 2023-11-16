@@ -1,0 +1,48 @@
+.helm_release:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "helm_release/**/*"
+    DIR_PATH: "helm_release"
+
+code-quality-helm_release-terraform-lint:
+  extends: [.helm_release, .terraform_lint]
+
+code-quality-helm_release-terraform-fmt:
+  extends: [.helm_release, .terraform_fmt]
+
+code-quality-helm_release-yaml-lint:
+  extends: [.helm_release, .yaml_lint]
+
+validate-syntax-helm_release:
+  extends: [.helm_release, .validate_syntax]
+
+validate-security-helm_release:
+  extends: [.helm_release, .validate_security]
+
+validate-security-checkov-helm_release:
+  extends: [.helm_release, .validate_security_checkov]
+
+build-helm_release:
+  rules:
+    - if: $RULES_CHANGES_PATH != "helm_release/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.helm_release, .plan]
+  needs: []
+
+deploy-helm_release:
+  rules:
+    - if: $RULES_CHANGES_PATH != "helm_release/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.helm_release, .apply]
+  needs: ["build-helm_release"]
+
+destroy-helm_release:
+  rules:
+    - if: $RULES_CHANGES_PATH != "helm_release/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.helm_release, .destroy]
+  needs: ["build-helm_release"]

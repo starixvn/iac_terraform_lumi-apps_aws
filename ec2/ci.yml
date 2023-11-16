@@ -1,0 +1,48 @@
+.ec2:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "ec2/**/*"
+    DIR_PATH: "ec2"
+
+code-quality-ec2-terraform-lint:
+  extends: [.ec2, .terraform_lint]
+
+code-quality-ec2-terraform-fmt:
+  extends: [.ec2, .terraform_fmt]
+
+code-quality-ec2-yaml-lint:
+  extends: [.ec2, .yaml_lint]
+
+validate-syntax-ec2:
+  extends: [.ec2, .validate_syntax]
+
+validate-security-ec2:
+  extends: [.ec2, .validate_security]
+
+validate-security-checkov-ec2:
+  extends: [.ec2, .validate_security_checkov]
+
+build-ec2:
+  rules:
+    - if: $RULES_CHANGES_PATH != "ec2/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.ec2, .plan]
+  needs: []
+
+deploy-ec2:
+  rules:
+    - if: $RULES_CHANGES_PATH != "ec2/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.ec2, .apply]
+  needs: ["build-ec2"]
+
+destroy-ec2:
+  rules:
+    - if: $RULES_CHANGES_PATH != "ec2/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.ec2, .destroy]
+  needs: ["build-ec2"]
