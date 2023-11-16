@@ -24,7 +24,7 @@ cluster_version = "1.27"
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
     name            = "lumi-eks-demand-x86"
-    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    subnet_ids = ["subnet-0207c98765cbc1b11"]
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
     }
@@ -54,7 +54,7 @@ eks_managed_node_groups = {
   },
   "lumi-eks-spot-x86" = {
     name            = "lumi-eks-spot-x86"
-    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    subnet_ids = ["subnet-0207c98765cbc1b11"]
     use_custom_launch_template = false
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
@@ -160,7 +160,7 @@ spot_termination_handler_chart_namespace = "kube-system"
 eks_managed_node_groups = {
   "lumi-lab-ingress" = {
     name            = "lumi-lab-eks-ingress"
-    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    subnet_ids = ["subnet-0207c98765cbc1b11"]
     use_custom_launch_template = true
 
     labels = {
@@ -204,7 +204,7 @@ eks_managed_node_groups = {
   },
   "lumi-lab-gr1" = {
     name            = "lumi-lab-eks-demand"
-    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    subnet_ids = ["subnet-0207c98765cbc1b11"]
     use_custom_launch_template = true
 
     labels = {
@@ -262,7 +262,7 @@ eks_managed_node_groups = {
   },
   "lumi-lab-gr2" = {
     name            = "lumi-lab-eks-spot"
-    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    subnet_ids = ["subnet-0207c98765cbc1b11"]
     use_custom_launch_template = true
 
     labels = {
