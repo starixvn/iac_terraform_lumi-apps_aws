@@ -6,133 +6,85 @@ aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
-vpc_id = "vpc-0f8cd6e91a5c11387"
+allow_cidr_block_internal = ["10.6.0.0/16"]
+vpc_id = "vpc-0d9920c2ecbbee71a"
 vpc_private_subnets = [
-  "subnet-072299953c2923f8e",
-  "subnet-02d0fd0ca9e80e01e",
-  "subnet-0238b064762b0c965"
+  "subnet-0207c98765cbc1b11",
+  "subnet-09d4fb395c65c0e8b"
 ]
 ####
+###############
+namespaces = ["haproxy","sample","nexops"]
+###############
+admin_users     = ["ken.test", "troy.test"] #, "troy.vo"
+developer_users = ["dev1", "dev2"]
+
 autoscaling_average_cpu = 90
 cluster_version = "1.27"
 eks_managed_node_groups = {
-  "lumi-testlab-demand" = {
-    name            = "lumi-lab-eks-demand"
-    subnet_ids = ["subnet-072299953c2923f8e"]
-    use_custom_launch_template = true
-
+  "lumi-eks-on_demand-arm" = {
+    name            = "lumi-eks-demand-x86"
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    remote_access = {
+      ec2_ssh_key = "eks-terraform-key"
+    }
+    use_custom_launch_template = false
     labels = {
             "luminet-app" = "yes",
-            "nexops" = "yes"
+            "nexops" = "yes",
+            "haproxy" = "yes",
           }
 
     ami_type     = "AL2_x86_64"
     min_size     = 0
     max_size     = 1
     desired_size = 1
+    disk_size = 30
     instance_types = [
-      "t3a.medium",
-      "t3.medium"
+      "t3a.small"
     ]
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 10
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
     capacity_type = "ON_DEMAND"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-    tag_specifications = [
-      "instance",
-      "volume",
-      "network-interface"
-    ]
-    ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "55 16 * * MON-FRI"
-        }
+    tags = {
+        ExtraTag = "EKS managed node group complete example"
       }
   },
   "lumi-eks-spot-x86" = {
-    name            = "lumi-lab-eks-spot"
-    subnet_ids = ["subnet-072299953c2923f8e"]
-    use_custom_launch_template = true
-
+    name            = "lumi-eks-spot-x86"
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    use_custom_launch_template = false
+    remote_access = {
+      ec2_ssh_key = "eks-terraform-key"
+    }
     labels = {
-            "luminet-app" = "yes"
-            "nexops" = "yes"
+            "luminet-app" = "yes",
+            "nexops" = "yes",
+            "haproxy" = "yes",
           }
 
     ami_type     = "AL2_x86_64"
     min_size     = 0
     max_size     = 1
     desired_size = 1
+    disk_size = 30
     instance_types = [
-      "t3a.medium",
-      "t3.medium"
+      "t3a.small",
+      "t3.small"
     ]
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 40
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
     capacity_type = "SPOT"
     network_interfaces = [{
       delete_on_termination       = true
       associate_public_ip_address = false
     }]
-    tag_specifications = [
-      "instance",
-      "volume",
-      "network-interface"
-    ]
-    ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 19 * * MON-FRI"
-        }
+    tags = {
+        ExtraTag = "EKS managed node group complete example"
       }
-  },
+  }
 }
+
 /*
 "lumi-eks-spot-x86" = {
     name            = "lumi-eks-spot-x86"
@@ -202,8 +154,169 @@ spot_termination_handler_chart_repo      = "https://aws.github.io/eks-charts"
 spot_termination_handler_chart_version   = "0.21.0"
 spot_termination_handler_chart_namespace = "kube-system"
 
-###############
-namespaces = ["haproxy","sample","nexops"]
-###############
-admin_users     = ["ken.test", "troy.test"]
-developer_users = ["dev1", "dev2"]
+
+
+/*
+eks_managed_node_groups = {
+  "lumi-lab-ingress" = {
+    name            = "lumi-lab-eks-ingress"
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    use_custom_launch_template = true
+
+    labels = {
+            "haproxy" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3a.small",
+      "t3a.medium"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 10
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "ON_DEMAND"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        
+      }
+  },
+  "lumi-lab-gr1" = {
+    name            = "lumi-lab-eks-demand"
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    use_custom_launch_template = true
+
+    labels = {
+            "luminet-app" = "yes",
+            "nexops" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3a.medium",
+      "t3.medium"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 10
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "ON_DEMAND"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "55 16 * * MON-FRI"
+        }
+      }
+  },
+  "lumi-lab-gr2" = {
+    name            = "lumi-lab-eks-spot"
+    subnet_ids = ["subnet-0f23ee9a6f14d940b"]
+    use_custom_launch_template = true
+
+    labels = {
+            "luminet-app" = "yes",
+            "nexops" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3a.medium",
+      "t3.medium"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "SPOT"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 19 * * MON-FRI"
+        }
+      }
+  },
+}
+*/

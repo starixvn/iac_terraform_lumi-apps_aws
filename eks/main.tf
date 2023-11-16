@@ -21,6 +21,18 @@ module "cluster" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   cluster_endpoint_public_access_cidrs = var.allow_whitelist
+  # Extend node-to-node security group rules 10.77.0.0/16 10.88.0.0/16
+  node_security_group_additional_rules = {
+    ingress_self_all = {
+      description = "Node to node all ports/protocols"
+      protocol    = "tcp"
+      from_port   = 80
+      to_port     = 80
+      cidr_blocks = var.allow_cidr_block_internal
+      type        = "ingress"
+      #self        = true
+    }
+  }
   cluster_addons = {
     coredns = {
       most_recent = true
@@ -44,6 +56,7 @@ module "cluster" {
     aws-ebs-csi-driver = {
       service_account_role_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.cluster_name}-ebs-csi"
       most_recent              = true
+      addon_version = "v1.24.1-eksbuild.1"
       resolve_conflicts="PRESERVE"
     }
   }
