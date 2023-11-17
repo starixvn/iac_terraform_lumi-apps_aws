@@ -39,6 +39,12 @@ variable "allow_cidr_block_internal" {
   type        = list(string)
   default     = []
 }
+variable "lb_subnets" {
+  type        = string
+}
+# variable "lb_private_ips" {
+#   type        = string
+# }
 variable "vpc_id" {
   type        = string
 }

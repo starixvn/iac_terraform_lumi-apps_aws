@@ -6,11 +6,13 @@ aws_profile = "test-iac-terraform-ci"
 aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
 aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
+lb_subnets = "subnet-04510efa6d218ba22\\,subnet-0298ca5ea219cc74f\\,subnet-06b24b20b5e0bfa35"
 allow_cidr_block_internal = ["10.6.0.0/16"]
 vpc_id = "vpc-0d9920c2ecbbee71a"
 vpc_private_subnets = [
-  "subnet-0207c98765cbc1b11",
-  "subnet-09d4fb395c65c0e8b"
+  "subnet-04510efa6d218ba22",
+  "subnet-0298ca5ea219cc74f",
+  "subnet-06b24b20b5e0bfa35"
 ]
 ####
 ###############
@@ -24,7 +26,7 @@ cluster_version = "1.27"
 eks_managed_node_groups = {
   "lumi-eks-on_demand-arm" = {
     name            = "lumi-eks-demand-x86"
-    subnet_ids = ["subnet-0207c98765cbc1b11"]
+    subnet_ids = ["subnet-04510efa6d218ba22"]
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
     }
@@ -54,7 +56,7 @@ eks_managed_node_groups = {
   },
   "lumi-eks-spot-x86" = {
     name            = "lumi-eks-spot-x86"
-    subnet_ids = ["subnet-0207c98765cbc1b11"]
+    subnet_ids = ["subnet-04510efa6d218ba22"]
     use_custom_launch_template = false
     remote_access = {
       ec2_ssh_key = "eks-terraform-key"
@@ -160,7 +162,7 @@ spot_termination_handler_chart_namespace = "kube-system"
 eks_managed_node_groups = {
   "lumi-lab-ingress" = {
     name            = "lumi-lab-eks-ingress"
-    subnet_ids = ["subnet-0207c98765cbc1b11"]
+    subnet_ids = ["subnet-04510efa6d218ba22"]
     use_custom_launch_template = true
 
     labels = {
@@ -204,7 +206,7 @@ eks_managed_node_groups = {
   },
   "lumi-lab-gr1" = {
     name            = "lumi-lab-eks-demand"
-    subnet_ids = ["subnet-0207c98765cbc1b11"]
+    subnet_ids = ["subnet-04510efa6d218ba22"]
     use_custom_launch_template = true
 
     labels = {
@@ -262,7 +264,7 @@ eks_managed_node_groups = {
   },
   "lumi-lab-gr2" = {
     name            = "lumi-lab-eks-spot"
-    subnet_ids = ["subnet-0207c98765cbc1b11"]
+    subnet_ids = ["subnet-04510efa6d218ba22"]
     use_custom_launch_template = true
 
     labels = {
