@@ -8,7 +8,7 @@ aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 lb_subnets = "subnet-04510efa6d218ba22\\,subnet-0298ca5ea219cc74f\\,subnet-06b24b20b5e0bfa35"
 allow_cidr_block_internal = ["10.6.0.0/16"]
-vpc_id = "vpc-0d9920c2ecbbee71a"
+vpc_id = "vpc-02ddfbd7054475e00"
 vpc_private_subnets = [
   "subnet-04510efa6d218ba22",
   "subnet-0298ca5ea219cc74f",
