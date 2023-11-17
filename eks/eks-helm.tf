@@ -46,6 +46,19 @@ resource "helm_release" "haproxy-ingress-controller" {
   }
 
   set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-subnets"
+    type  = "string"
+    value = var.lb_subnets
+    #value = join(",", data.terraform_remote_state.vpc.outputs.private_subnet_ids)
+  }
+
+  # set {
+  #   name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-private-ipv4-addresses"
+  #   type  = "string"
+  #   value = var.lb_private_ips
+  # }
+
+  set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-name"
     value = lower("${var.team}-${var.environment}-eks-lb")
   }

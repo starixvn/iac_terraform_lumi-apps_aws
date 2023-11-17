@@ -6,7 +6,9 @@ aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
+allow_cidr_block_internal = ["10.6.0.0/16"]
 vpc_id = "vpc-039a936178b304105"
+lb_subnets = "subnet-06fe4c10600cb02db\\,subnet-01667b309462c88dd\\,subnet-00da5f1187472fb52"
 vpc_private_subnets = [
   "subnet-06fe4c10600cb02db",
   "subnet-01667b309462c88dd",
@@ -136,7 +138,6 @@ eks_managed_node_groups = {
 
     labels = {
             "luminet-app" = "yes"
-            "nexops" = "yes"
           }
 
     ami_type     = "AL2_x86_64"
@@ -199,5 +200,5 @@ spot_termination_handler_chart_namespace = "kube-system"
 ###############
 namespaces = ["haproxy","sample","nexops"]
 ###############
-admin_users     = ["ken.test", "troy.test"]
+admin_users     = ["ken.nguyen","dennis.le","troy.vo"]
 developer_users = ["dev1", "dev2"]
