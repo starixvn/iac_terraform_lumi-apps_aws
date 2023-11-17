@@ -6,8 +6,10 @@ aws_profile = "uat-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
-allow_cidr_block_internal = ["10.77.0.0/16","10.88.112.0/20","10.88.128.0/20","10.88.144.0/20","10.77.15.0/24","10.77.25.0/24"]
+allow_cidr_block_internal = ["10.88.112.0/20","10.88.128.0/20","10.88.144.0/20","10.77.15.0/24","10.77.25.0/24"] #["10.77.0.0/16","10.88.0.0/16"] #
 vpc_id = "vpc-083b51ed3f83c5096"
+lb_subnets = "subnet-0ae72c2068513e76b\\,subnet-0ba2a5f74ec351acc\\,subnet-0f92f11b87239fbd5"
+#lb_private_ips = "10.88.112.250\\,10.88.143.250\\,10.88.159.250"
 vpc_private_subnets = [
   "subnet-0ae72c2068513e76b",
   "subnet-0ba2a5f74ec351acc",
@@ -68,6 +70,7 @@ eks_managed_node_groups = {
     labels = {
             "luminet-app" = "yes",
             "nexops" = "yes"
+            
           }
 
     ami_type     = "AL2_x86_64"
@@ -123,8 +126,7 @@ eks_managed_node_groups = {
     use_custom_launch_template = true
 
     labels = {
-            "luminet-app" = "yes",
-            "nexops" = "yes"
+            "luminet-app" = "yes"
           }
 
     ami_type     = "AL2_x86_64"
@@ -132,6 +134,8 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
+      "m5.large",
+      "m5zn.large",
       "t3a.large",
       "t3.large",
       "t2.large",
@@ -176,14 +180,14 @@ eks_managed_node_groups = {
         }
       }
   },
-}
-/*
-"lumi-eks-spot-x86" = {
-    name            = "lumi-eks-spot-x86"
-    subnet_ids = ["subnet-0d3cd100ba5d9dc9d"]
+  /*
+  "lumi-uat-eks-gr4" = {
+    name            = "lumi-uat-eks-spot"
+    subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
+
     labels = {
-            "luminet-app" = "yes"
+            "luminet-app" = "yes",
           }
 
     ami_type     = "AL2_x86_64"
@@ -191,13 +195,20 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3a.medium"
+      "m5a.large",
+      "m5n.large",
+      "m5dn.large",
+      "m5.large",
+      "m5zn.large",
+      "t3a.large",
+      "t3.large",
+      "t2.large",
     ]
     block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 15
+            volume_size           = 40
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
@@ -221,7 +232,6 @@ eks_managed_node_groups = {
           min_size     = 0
           max_size     = "1" # Retains current max size
           desired_size = 1
-          start_time   = "2023-11-01T09:00:00Z"
           time_zone    = "Asia/Bangkok"
           recurrence   = "00 08 * * MON-FRI"
         },
@@ -229,17 +239,14 @@ eks_managed_node_groups = {
           min_size     = 0
           max_size     = "1" # Retains current max size
           desired_size = 0
-          start_time   = "2023-11-01T08:50:00Z"
           time_zone    = "Asia/Bangkok"
-          recurrence   = "00 18 * * MON-FRI"
+          recurrence   = "00 20 * * MON-FRI"
         }
       }
-  }
+  },
+  */
+}
 
-    remote_access = {
-      ec2_ssh_key = "eks-terraform-key"
-    }
-*/
 ###############
 spot_termination_handler_chart_name      = "aws-node-termination-handler"
 spot_termination_handler_chart_repo      = "https://aws.github.io/eks-charts"
