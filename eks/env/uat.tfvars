@@ -60,6 +60,13 @@ eks_managed_node_groups = {
     schedules = {
         
       }
+    pre_bootstrap_user_data = <<-EOT
+        #!/bin/bash
+        LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
+        REPLACEMENT="\ \ \ \ \ \ KUBELET_EXTRA_ARGS=\$(echo \$2 | sed -s -E 's/--max-pods=[0-9]+/--max-pods=150/g')"
+        sed -i '/KUBELET_EXTRA_ARGS=\$2/d' /etc/eks/bootstrap.sh
+        sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
+      EOT
   },
 ######## APP SPOT
   "vn-lumi-uat-eks-sp1" = {
