@@ -16,7 +16,7 @@ vpc_private_subnets = [
   "subnet-0f92f11b87239fbd5"
 ]
 autoscaling_average_cpu = 90
-cluster_version = "1.27"
+cluster_version = "1.28"
 eks_managed_node_groups = {
   ######## HAPROXY Ingress
   "vn-lumi-uat-eks-ing1" = {
