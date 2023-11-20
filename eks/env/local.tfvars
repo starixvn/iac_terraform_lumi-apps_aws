@@ -15,7 +15,7 @@ vpc_private_subnets = [
   "subnet-00da5f1187472fb52"
 ]
 ####
-cluster_version = "1.27"
+cluster_version = "1.28"
 autoscaling_average_cpu = 80
 eks_managed_node_groups = {
   "lumi-local-ingress" = {
