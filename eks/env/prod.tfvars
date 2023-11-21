@@ -16,7 +16,7 @@ vpc_private_subnets = [
   "subnet-0bbd3d3adba525a51"
 ]
 autoscaling_average_cpu = 90
-cluster_version = "1.27"
+cluster_version = "1.28"
 eks_managed_node_groups = {
   ######## HAPROXY Ingress
   "vn-lumi-prod-eks-ing1" = {
@@ -124,7 +124,7 @@ eks_managed_node_groups = {
 
     ami_type     = "AL2_x86_64"
     min_size     = 0
-    max_size     = 2
+    max_size     = 1
     desired_size = 1
     instance_types = [
       "t3a.medium"
@@ -172,7 +172,7 @@ eks_managed_node_groups = {
 
     ami_type     = "AL2_x86_64"
     min_size     = 0
-    max_size     = 2
+    max_size     = 1
     desired_size = 1
     instance_types = [
       "t3a.medium"
