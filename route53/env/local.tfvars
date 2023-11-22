@@ -112,7 +112,11 @@ domain_alias_records = {
     {
         "name" : "grafana",
         "type" : "A",
-    },  
+    },
+    {
+        "name" : "eks-zabbix",
+        "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
