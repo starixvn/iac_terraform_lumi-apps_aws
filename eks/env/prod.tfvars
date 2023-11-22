@@ -67,7 +67,7 @@ eks_managed_node_groups = {
   },
   "vn-lumi-prod-eks-ing2" = {
     name            = "vn-lumi-prod-eks-ing2"
-    subnet_ids = ["subnet-0a8d5a1eef57bb185"]
+    subnet_ids = ["subnet-0cb97999f4cf68d03"]
     use_custom_launch_template = true
 
     labels = {
@@ -162,7 +162,7 @@ eks_managed_node_groups = {
   },
   "vn-lumi-prod-eks-dm2" = {
     name            = "vn-lumi-prod-eks-dm2"
-    subnet_ids = ["subnet-0a8d5a1eef57bb185"]
+    subnet_ids = ["subnet-0cb97999f4cf68d03"]
     use_custom_launch_template = true
 
     labels = {
