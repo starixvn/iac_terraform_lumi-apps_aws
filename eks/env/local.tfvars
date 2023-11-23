@@ -32,7 +32,7 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3.small"
+      "t3.micro"
     ]
     block_device_mappings = {
         xvda = {
@@ -130,8 +130,8 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
-  "lumi-local-ingress2" = {
-    name            = "lumi-local-eks-ingress2"
+  "vn-lumi-lo-eks-ing2" = {
+    name            = "vn-lumi-lo-eks-ing2"
     subnet_ids = ["subnet-01667b309462c88dd"]
     use_custom_launch_template = true
 
