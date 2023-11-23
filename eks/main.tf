@@ -25,9 +25,10 @@ module "cluster" {
   node_security_group_additional_rules = {
     ingress_self_all = {
       description = "Node to node all ports/protocols"
-      protocol    = "tcp"
-      from_port   = 80
-      to_port     = 80
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
       cidr_blocks = var.allow_cidr_block_internal
       type        = "ingress"
       #self        = true
