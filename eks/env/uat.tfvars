@@ -6,9 +6,10 @@ aws_profile = "uat-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
-allow_cidr_block_internal = ["10.88.112.0/20","10.88.128.0/20","10.88.144.0/20","10.77.15.0/24","10.77.25.0/24"] #["10.77.0.0/16","10.88.0.0/16"] #
+allow_cidr_block_internal = ["10.88.112.0/20","10.88.128.0/20","10.88.144.0/20","10.77.15.0/24","10.77.25.0/24","10.88.48.0/21","10.88.56.0/21","10.88.64.0/21"] #["10.77.0.0/16","10.88.0.0/16"] #
 vpc_id = "vpc-083b51ed3f83c5096"
 lb_subnets = "subnet-0ae72c2068513e76b\\,subnet-0ba2a5f74ec351acc\\,subnet-0f92f11b87239fbd5"
+lb_az_cross = "false"
 #lb_private_ips = "10.88.112.250\\,10.88.143.250\\,10.88.159.250"
 vpc_private_subnets = [
   "subnet-0ae72c2068513e76b",

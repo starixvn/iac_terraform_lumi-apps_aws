@@ -42,6 +42,9 @@ variable "allow_cidr_block_internal" {
 variable "lb_subnets" {
   type        = string
 }
+variable "lb_az_cross" {
+  type        = string
+}
 # variable "lb_private_ips" {
 #   type        = string
 # }
