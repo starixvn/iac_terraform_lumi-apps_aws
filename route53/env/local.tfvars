@@ -117,6 +117,10 @@ domain_alias_records = {
         "name" : "eks-zabbix",
         "type" : "A",
     },
+    {
+        "name" : "l1-history",
+        "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
