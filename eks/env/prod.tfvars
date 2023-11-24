@@ -9,6 +9,7 @@ allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 allow_cidr_block_internal = ["10.88.48.0/21","10.88.56.0/21","10.88.64.0/21","10.77.15.0/24","10.77.25.0/24","10.88.112.0/20","10.88.128.0/20","10.88.144.0/20"] 
 vpc_id = "vpc-083b51ed3f83c5096"
 lb_subnets = "subnet-0a8d5a1eef57bb185\\,subnet-0cb97999f4cf68d03\\,subnet-0bbd3d3adba525a51"
+lb_az_cross = "true"
 #lb_private_ips = "10.88.112.250\\,10.88.143.250\\,10.88.159.250"
 vpc_private_subnets = [
   "subnet-0a8d5a1eef57bb185",
