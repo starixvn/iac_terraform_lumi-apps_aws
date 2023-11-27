@@ -58,8 +58,7 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
-    schedules = {
-      }
+
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
@@ -107,22 +106,6 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 18 * * MON-FRI"
-        }
-    }
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
@@ -170,22 +153,6 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 18 * * MON-FRI"
-        }
-      }
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
@@ -235,22 +202,6 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 18 * * MON-FRI"
-        }
-      }
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
@@ -300,22 +251,6 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 18 * * MON-FRI"
-        }
-      }
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
