@@ -444,14 +444,12 @@ controller:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
     tcpPorts: #[]
       - name: port-17
-        nodePort: 32586
+        nodePort: 30778
         port: 4506
-        protocol: TCP
         targetPort: 4506
       - name: port-18
-        nodePort: 32582
+        nodePort: 30814
         port: 4522
-        protocol: TCP
         targetPort: 4522
 
     ## Set external traffic policy
