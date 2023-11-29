@@ -444,7 +444,7 @@ controller:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
     tcpPorts: #[]
       - name: http-portainer
-        port: 30778
+        port: 10778
         targetPort: http-portainer
         nodePort: 30778
 
