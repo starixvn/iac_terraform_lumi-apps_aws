@@ -443,10 +443,16 @@ controller:
     ## This is especially useful for TCP services:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
     tcpPorts: #[]
-      - name: http-portainer
-        port: 10778
-        targetPort: http-portainer
-        nodePort: 30778
+      - name: port-17
+        nodePort: 32586
+        port: 4506
+        protocol: TCP
+        targetPort: 4506
+      - name: port-18
+        nodePort: 32582
+        port: 4522
+        protocol: TCP
+        targetPort: 4522
 
     ## Set external traffic policy
     ## Default is "Cluster", setting it to "Local" preserves source IP
