@@ -442,11 +442,11 @@ controller:
     ## Additional tcp ports to expose
     ## This is especially useful for TCP services:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
-    tcpPorts: []
-    #  - name: http-alt
-    #    port: 8080
-    #    targetPort: http-alt
-    #    nodePort: 32080
+    tcpPorts: #[]
+      - name: http-portainer
+        port: 30778
+        targetPort: http-portainer
+        nodePort: 30778
 
     ## Set external traffic policy
     ## Default is "Cluster", setting it to "Local" preserves source IP
