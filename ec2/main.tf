@@ -51,17 +51,17 @@ module "private_app_linux" {
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
   private_ip             = each.value.private_ip
   hibernation            = false
-  enable_volume_tags = false
+  #enable_volume_tags = false
   root_block_device = [{
     volume_type           = each.value.volume_type
     volume_size           = each.value.volume_size
     delete_on_termination = true
-    tags = merge(
-      local.common_tags,
-      {
-        Name = lower("${var.team}-${var.environment}-${each.key}")
-      },
-    )
+    # tags = merge(
+    #   local.common_tags,
+    #   {
+    #     Name = lower("${var.team}-${var.environment}-${each.key}")
+    #   },
+    # )
   }]
   metadata_options = {
     http_endpoint               = "enabled"
