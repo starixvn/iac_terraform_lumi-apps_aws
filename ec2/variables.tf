@@ -52,3 +52,22 @@ variable "ami_name" {
     error_message = "Invalid ami name, allowed_values = [amazon suse RHEL ubuntu]."
   }
 }
+
+variable "allow_cidr_block_internal" {
+  description = "allow ingress_cidr_blocks"
+  type        = string
+}
+
+variable "cidr_block_internal" {
+  description = "allow ingress_cidr_blocks"
+  type        = list(string)
+  default     = []
+}
+
+variable "allow_whitelist" {
+  description = "allow whitelist"
+  type        = string
+}
+variable "vpc_id" {
+  type        = string
+}
