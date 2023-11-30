@@ -39,7 +39,7 @@ eks_managed_node_groups = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 10
+            volume_size           = 20
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
@@ -87,7 +87,7 @@ eks_managed_node_groups = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 10
+            volume_size           = 20
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
@@ -127,14 +127,13 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3a.medium",
       "t3.medium"
     ]
     block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 10
+            volume_size           = 20
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
