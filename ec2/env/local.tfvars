@@ -5,7 +5,11 @@ environment = "local"
 aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
-
+################## Whitelist
+allow_whitelist = "202.78.231.32/27,120.72.109.32/29,120.72.83.128/29"
+cidr_block_internal = ["10.6.0.0/16"]
+allow_cidr_block_internal = "10.6.0.0/16"
+vpc_id = "vpc-039a936178b304105"
 ##################  EC2
 public_key_location = "key/id_rsa.pub"
 private_key_location = "key/id_rsa"
