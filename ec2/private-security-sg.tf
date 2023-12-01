@@ -23,7 +23,7 @@ module "private_web_sg" {
   version     = "5.0.0"
   name        = lower("${var.team}-${var.environment}-web-sg")
   description = "Open ports for Web Application"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id      = var.vpc_id
   # Ingress Rules & CIDR Blocks
   ingress_rules       = ["ssh-tcp", "http-80-tcp", "prometheus-http-tcp", "all-icmp"]
   ingress_cidr_blocks = var.cidr_block_internal
@@ -60,12 +60,12 @@ module "private_web_sg" {
 }
 
 # SG for Zabbix
-module "private_web_sg" {
+module "private_zabbix_sg" {
   source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version     = "5.0.0"
   name        = lower("${var.team}-${var.environment}-zabbix-sg")
   description = "Open ports for Zabbix"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id      = var.vpc_id
   # Ingress Rules & CIDR Blocks
   ingress_rules       = ["ssh-tcp", "http-80-tcp", "all-icmp"]
   ingress_cidr_blocks = var.cidr_block_internal
@@ -94,7 +94,7 @@ module "private_db_sg" {
 
   name        = "${var.environment}-${var.project}-db-sg"
   description = "Security Group for DB"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id      = var.vpc_id
   ingress_rules       = ["ssh-tcp","all-icmp"]
   # Ingress Rules & CIDR Blocks
   ingress_cidr_blocks = var.cidr_block_internal
