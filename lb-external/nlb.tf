@@ -19,6 +19,11 @@ module "external_nlb" {
       protocol           = "TCP"
       target_group_index = 0
     },
+    {
+      port               = 10052
+      protocol           = "TCP"
+      target_group_index = 1
+    },
   ]
 
   # Target Groups
@@ -34,6 +39,21 @@ module "external_nlb" {
       targets = {
         my_zb1 = {
           target_id = "10.6.52.214"
+          port      = 10051
+        }
+      }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-nlb-zabbix2-srv")
+      backend_protocol     = "TCP"
+      backend_port         = 10051
+      target_type          = "ip" #"ip" instance
+      deregistration_delay = 10
+      protocol_version     = "HTTP1"
+      # Target Group - Targets
+      targets = {
+        my_zb1 = {
+          target_id = "10.6.48.100"
           port      = 10051
         }
       }
