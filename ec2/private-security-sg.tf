@@ -76,7 +76,7 @@ module "private_zabbix_sg" {
       to_port     = 10052
       protocol    = 6
       description = "Allow Portainer"
-      cidr_blocks = var.allow_cidr_block_internal
+      cidr_blocks = "0.0.0.0/0"
     },
   ]
   tags = merge(
