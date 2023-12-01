@@ -59,6 +59,34 @@ module "private_web_sg" {
   )
 }
 
+# SG for Zabbix
+module "private_web_sg" {
+  source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
+  version     = "5.0.0"
+  name        = lower("${var.team}-${var.environment}-zabbix-sg")
+  description = "Open ports for Zabbix"
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  # Ingress Rules & CIDR Blocks
+  ingress_rules       = ["ssh-tcp", "http-80-tcp", "all-icmp"]
+  ingress_cidr_blocks = var.cidr_block_internal
+  egress_rules        = ["all-all"]
+  ingress_with_cidr_blocks = [
+    {
+      from_port   = 10051
+      to_port     = 10052
+      protocol    = 6
+      description = "Allow Portainer"
+      cidr_blocks = var.allow_cidr_block_internal
+    },
+  ]
+  tags = merge(
+    local.common_tags,
+    {
+      Resource = "SG"
+    },
+  )
+}
+
 # SG for DB
 module "private_db_sg" {
   source  = "gitlab.nexdev.net/iac-terraform/security-group/aws"
@@ -73,23 +101,24 @@ module "private_db_sg" {
   ingress_with_cidr_blocks = [
     {
       from_port   = 27106
-      to_port     = 27106
-      protocol    = 6
-      description = "Allow DB port 27106"
-      cidr_blocks = var.allow_cidr_block_internal
-    },
-    {
-      from_port   = 27107
-      to_port     = 27107
-      protocol    = 6
-      description = "Allow DB port 27107"
-      cidr_blocks = var.allow_cidr_block_internal
-    },
-    {
-      from_port   = 27108
       to_port     = 27108
       protocol    = 6
-      description = "Allow DB port 27108"
+      description = "Allow DB port 27106->27108"
+      cidr_blocks = var.allow_cidr_block_internal
+    },
+    
+    {
+      from_port   = 27101
+      to_port     = 27101
+      protocol    = 6
+      description = "Allow DB port 27101"
+      cidr_blocks = var.allow_cidr_block_internal
+    },
+    {
+      from_port   = 37101
+      to_port     = 37101
+      protocol    = 6
+      description = "Allow DB port 37101"
       cidr_blocks = var.allow_cidr_block_internal
     },
   ]
