@@ -103,7 +103,7 @@ module "private_db_sg" {
       from_port   = 27106
       to_port     = 27108
       protocol    = 6
-      description = "Allow DB port 27106->27108"
+      description = "Allow DB port from 27106 to 27108"
       cidr_blocks = var.allow_cidr_block_internal
     },
     
