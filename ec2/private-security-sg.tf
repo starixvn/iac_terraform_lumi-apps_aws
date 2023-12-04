@@ -72,6 +72,13 @@ module "private_zabbix_sg" {
   egress_rules        = ["all-all"]
   ingress_with_cidr_blocks = [
     {
+      from_port   = 8081
+      to_port     = 8081
+      protocol    = 6
+      description = "Allow Zabbix Web"
+      cidr_blocks = var.allow_cidr_block_internal
+    },
+    {
       from_port   = 10051
       to_port     = 10052
       protocol    = 6
