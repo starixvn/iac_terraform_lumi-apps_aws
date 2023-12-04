@@ -50,7 +50,11 @@ module "private_app_linux" {
   name                   = lower("${var.team}-${var.environment}-${each.key}")
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = each.value.subnet_id
-  vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
+  vpc_security_group_ids = [
+    module.private_db_sg.security_group_id,
+    module.private_zabbix_sg.security_group_id,
+    ]
+  #[data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
   private_ip             = each.value.private_ip
   hibernation            = false
   enable_volume_tags = false
