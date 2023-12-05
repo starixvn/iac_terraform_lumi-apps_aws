@@ -125,6 +125,10 @@ domain_alias_records = {
         "name" : "vn-zabbix",
         "type" : "A",
     },
+    {
+        "name" : "l1-admin-api-public",
+        "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
