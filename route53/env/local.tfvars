@@ -129,6 +129,10 @@ domain_alias_records = {
         "name" : "l1-admin-api-public",
         "type" : "A",
     },
+    {
+        "name" : "l1-mongoexpress-aws",
+        "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
