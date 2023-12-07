@@ -85,3 +85,46 @@ module "private_app_linux" {
     },
   )
 }
+
+module "private_zabbix_linux" {
+  source                 = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
+  version                = "5.2.1"
+  for_each               = { for server in local.monitor_instances : server.instance_name => server }
+  instance_type          = each.value.instance_type
+  name                   = lower("${var.team}-${var.environment}-${each.key}")
+  ami                    = data.aws_ami.os[each.value.ami].id
+  subnet_id              = each.value.subnet_id
+  vpc_security_group_ids = [
+    module.private_zabbix_sg.security_group_id,
+    ]
+  #[data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
+  private_ip             = each.value.private_ip
+  hibernation            = false
+  enable_volume_tags = false
+  root_block_device = [{
+    volume_type           = each.value.volume_type
+    volume_size           = each.value.volume_size
+    delete_on_termination = true
+    tags = merge(
+      local.common_tags,
+      {
+        Name = lower("${var.team}-${var.environment}-${each.key}")
+      },
+    )
+  }]
+  metadata_options = {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 8
+  }
+  user_data = file("${path.module}/linux_ssh_prepare.sh")
+  instance_tags = {
+    OS = each.value.ami,
+  }
+  tags = merge(
+    local.common_tags,
+    {
+      Resource = "EC2"
+    },
+  )
+}
