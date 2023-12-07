@@ -77,6 +77,7 @@ eks_managed_node_groups = {
 
     labels = {
             "luminet-app" = "yes",
+            "nexops" = "yes"
           }
 
     ami_type     = "AL2_x86_64"
@@ -84,9 +85,75 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-      "t3a.medium",
-      "t3.medium",
-      "t2.medium",
+      "t3a.large",
+      "t3.large",
+      "t2.large",
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 40
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "SPOT"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 20 * * MON-FRI"
+        }
+      }
+    pre_bootstrap_user_data = <<-EOT
+        #!/bin/bash
+        LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
+        REPLACEMENT="\ \ \ \ \ \ KUBELET_EXTRA_ARGS=\$(echo \$2 | sed -s -E 's/--max-pods=[0-9]+/--max-pods=150/g')"
+        sed -i '/KUBELET_EXTRA_ARGS=\$2/d' /etc/eks/bootstrap.sh
+        sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
+      EOT
+  },
+  "vn-lumi-uat-eks-sp2" = {
+    name            = "vn-lumi-uat-eks-sp2"
+    subnet_ids = ["subnet-0ae72c2068513e76b"]
+    use_custom_launch_template = true
+
+    labels = {
+            "luminet-app" = "yes",
+            "nexops" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3a.large",
+      "t3.large",
+      "t2.large",
     ]
     block_device_mappings = {
         xvda = {
@@ -136,7 +203,7 @@ eks_managed_node_groups = {
       EOT
   },
   ######## APP ON DEMAND
-  "vn-lumi-uat-eks-dm1" = {
+  /*"vn-lumi-uat-eks-dm1" = {
     name            = "vn-lumi-uat-eks-dm1"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
@@ -263,7 +330,7 @@ eks_managed_node_groups = {
         sed -i '/KUBELET_EXTRA_ARGS=\$2/d' /etc/eks/bootstrap.sh
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
-  },
+  },*/
 }
 
 ###############
