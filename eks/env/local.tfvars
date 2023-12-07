@@ -9,7 +9,7 @@ allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 allow_cidr_block_internal = ["10.6.0.0/16"]
 vpc_id = "vpc-039a936178b304105"
 lb_subnets = "subnet-06fe4c10600cb02db\\,subnet-01667b309462c88dd\\,subnet-00da5f1187472fb52"
-lb_az_cross = "false"
+lb_az_cross = "true"
 vpc_private_subnets = [
   "subnet-06fe4c10600cb02db",
   "subnet-01667b309462c88dd",
@@ -19,55 +19,6 @@ vpc_private_subnets = [
 cluster_version = "1.28"
 autoscaling_average_cpu = 80
 eks_managed_node_groups = {
-  "lumi-local-zabbix" = {
-    name            = "lumi-local-eks-zabbix"
-    subnet_ids = ["subnet-06fe4c10600cb02db"]
-    use_custom_launch_template = true
-
-    labels = {
-            "zabbix" = "yes"
-          }
-
-    ami_type     = "AL2_x86_64"
-    min_size     = 0
-    max_size     = 1
-    desired_size = 1
-    instance_types = [
-      "t3.micro"
-    ]
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 30
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
-    capacity_type = "ON_DEMAND"
-    network_interfaces = [{
-      delete_on_termination       = true
-      associate_public_ip_address = false
-    }]
-    tag_specifications = [
-      "instance",
-      "volume",
-      "network-interface"
-    ]
-    ####
-    schedules = {
-      }
-    pre_bootstrap_user_data = <<-EOT
-        #!/bin/bash
-        LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
-        REPLACEMENT="\ \ \ \ \ \ KUBELET_EXTRA_ARGS=\$(echo \$2 | sed -s -E 's/--max-pods=[0-9]+/--max-pods=100/g')"
-        sed -i '/KUBELET_EXTRA_ARGS=\$2/d' /etc/eks/bootstrap.sh
-        sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
-      EOT
-  },
   "lumi-local-ingress" = {
     name            = "lumi-local-eks-ingress"
     subnet_ids = ["subnet-06fe4c10600cb02db"]

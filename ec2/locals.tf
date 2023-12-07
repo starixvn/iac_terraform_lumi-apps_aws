@@ -45,6 +45,18 @@ locals {
       ami           = srv.ami
     }
   ]
+  # Define Monitor
+  monitor_serverconfig = [
+    for srv in var.monitor_vm : {
+      instance_name = "${srv.application_name}" #-${i}
+      instance_type = srv.instance_type
+      volume_type   = srv.volume_type
+      volume_size   = srv.volume_size
+      subnet_id   = srv.subnet_id
+      private_ip    = srv.private_ip
+      ami           = srv.ami
+    }
+  ]
   # Define App
   apps_serverconfig = [
     for srv in var.apps_vm : {
@@ -61,5 +73,6 @@ locals {
 // We need to Flatten it before using it
 locals {
   proxy_gw_instances = flatten(local.proxy_gw_serverconfig)
+  monitor_instances     = flatten(local.monitor_serverconfig)
   apps_instances     = flatten(local.apps_serverconfig)
 }

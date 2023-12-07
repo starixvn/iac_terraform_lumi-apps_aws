@@ -394,7 +394,7 @@ controller:
     ## Service annotations
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
     annotations: 
-      "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags": "Dept=VNTeam,Team=Lumi,ManageBy=vnTerraform"
+      "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags": "Dept=VNTeam,Team=Lumi,ManageBy=vnTerraform,map-migrated=migQK0IMQ5LFK"
 
     ## Service labels
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/

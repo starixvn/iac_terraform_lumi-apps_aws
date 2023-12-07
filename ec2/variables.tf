@@ -36,6 +36,10 @@ variable "apps_vm" {
   description = "EC2 configuration"
   default     = [{}]
 }
+variable "monitor_vm" {
+  description = "EC2 configuration"
+  default     = [{}]
+}
 
 variable "private_key_location" {
   type = any
