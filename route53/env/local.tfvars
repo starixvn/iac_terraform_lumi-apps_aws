@@ -141,6 +141,10 @@ domain_alias_records = {
       "name" : "l1-services",
       "type" : "A",
     },
+    {
+      "name" : "logs",
+      "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
