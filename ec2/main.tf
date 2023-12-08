@@ -97,14 +97,14 @@ module "private_zabbix_linux" {
   vpc_security_group_ids = [
     module.private_zabbix_sg.security_group_id,
     ]
-  #[data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
+  create_spot_instance = true
   private_ip             = each.value.private_ip
   hibernation            = false
   enable_volume_tags = false
   root_block_device = [{
     volume_type           = each.value.volume_type
     volume_size           = each.value.volume_size
-    delete_on_termination = true
+    delete_on_termination = false
     tags = merge(
       local.common_tags,
       {

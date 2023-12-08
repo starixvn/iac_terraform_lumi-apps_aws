@@ -28,10 +28,10 @@ proxy_gw_vm = [
 monitor_vm = [
   {
     "application_name" : "zabbix-01",
-    "instance_type" : "t3.small",
+    "instance_type" : "t3.medium",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
-    "volume_size" : "10",
+    "volume_size" : "40",
     "subnet_id" : "subnet-06fe4c10600cb02db",
     "private_ip" : "10.6.48.101",
   },
@@ -77,7 +77,7 @@ apps_vm = [
 ]
 
 spot_vm = [
-  {
+  /*{
     "application_name" : "elk-01",
     "instance_type" : "t3.large",
     "ami" : "ubuntu22",
@@ -85,5 +85,5 @@ spot_vm = [
     "volume_size" : "10",
     "subnet_id" : "subnet-06fe4c10600cb02db",
     "private_ip" : "10.6.48.101",
-  },
+  },*/
 ]
