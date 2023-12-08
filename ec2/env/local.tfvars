@@ -28,7 +28,7 @@ proxy_gw_vm = [
 monitor_vm = [
   {
     "application_name" : "zabbix-01",
-    "instance_type" : "t3.medium",
+    "instance_type" : "t3.large",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "40",
