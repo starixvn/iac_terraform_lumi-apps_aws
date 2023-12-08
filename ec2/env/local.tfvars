@@ -75,3 +75,15 @@ apps_vm = [
     "private_ip" : "10.6.48.100",
   },
 ]
+
+spot_vm = [
+  {
+    "application_name" : "elk-01",
+    "instance_type" : "t3.large",
+    "ami" : "ubuntu22",
+    "volume_type" : "gp3",
+    "volume_size" : "10",
+    "subnet_id" : "subnet-06fe4c10600cb02db",
+    "private_ip" : "10.6.48.101",
+  },
+]
