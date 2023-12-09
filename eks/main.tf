@@ -21,7 +21,7 @@ module "cluster" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   cluster_endpoint_public_access_cidrs = var.allow_whitelist
-  #create_cloudwatch_log_group = var.create_cloudwatch_log_group
+  create_cloudwatch_log_group = var.create_cloudwatch_log_group
   cluster_enabled_log_types = []
   #cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"] #default     = ["audit", "api", "authenticator"]
   # Extend node-to-node security group rules 10.77.0.0/16 10.88.0.0/16
@@ -44,12 +44,12 @@ module "cluster" {
       resolve_conflicts = "OVERWRITE"
     }
     kube-proxy = {
-      most_recent = true
+      #most_recent = true
       addon_version = "v1.27.6-eksbuild.2"
     }
     vpc-cni = {
       resolve_conflicts = "OVERWRITE"
-      most_recent              = true
+      #most_recent              = true
       addon_version = "v1.15.3-eksbuild.1"
       before_compute           = true
       configuration_values = jsonencode({
