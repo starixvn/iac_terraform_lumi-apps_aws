@@ -44,12 +44,12 @@ module "cluster" {
       resolve_conflicts = "OVERWRITE"
     }
     kube-proxy = {
-      #most_recent = true
+      most_recent = true
       addon_version = "v1.27.6-eksbuild.2"
     }
     vpc-cni = {
       resolve_conflicts = "OVERWRITE"
-      #most_recent              = true
+      most_recent              = true
       addon_version = "v1.15.3-eksbuild.1"
       before_compute           = true
       configuration_values = jsonencode({
