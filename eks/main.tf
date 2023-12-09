@@ -21,6 +21,7 @@ module "cluster" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   cluster_endpoint_public_access_cidrs = var.allow_whitelist
+  create_cloudwatch_log_group = var.create_cloudwatch_log_group
   # Extend node-to-node security group rules 10.77.0.0/16 10.88.0.0/16
   node_security_group_additional_rules = {
     ingress_self_all = {

@@ -39,6 +39,11 @@ variable "allow_cidr_block_internal" {
   type        = list(string)
   default     = []
 }
+variable "create_cloudwatch_log_group" {
+  description = "create_cloudwatch_log_group"
+  type        = string
+  default     = "false"
+}
 variable "lb_subnets" {
   type        = string
 }
