@@ -193,7 +193,7 @@ eks_managed_node_groups = {
           max_size     = "1" # Retains current max size
           desired_size = 1
           time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
+          recurrence   = "10 08 * * MON-FRI"
         },
         scale-down = {
           min_size     = 0
@@ -258,7 +258,7 @@ eks_managed_node_groups = {
           max_size     = "1" # Retains current max size
           desired_size = 1
           time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
+          recurrence   = "10 08 * * MON-FRI"
         },
         scale-down = {
           min_size     = 0
