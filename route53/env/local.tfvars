@@ -39,6 +39,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.169",
     },
+    {
+      "name" : "argocd-local",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.169",
+    },
   ],
 }
 
