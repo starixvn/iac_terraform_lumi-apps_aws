@@ -145,6 +145,10 @@ domain_alias_records = {
       "name" : "logs",
       "type" : "A",
     },
+    {
+      "name" : "argocd",
+      "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
