@@ -31,7 +31,7 @@ proxy_gw_vm = [
   },
   {
     "application_name" : "proxy-gw-02",
-    "instance_type" : "t3a.small",
+    "instance_type" : "t3.small",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "40",
