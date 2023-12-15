@@ -7,7 +7,8 @@ locals {
     Dept        = "VNTeam"
     Team        = local.team
     ManageBy    = "vnTerraform"
-    Environment = local.environment
+    Environment = upper(local.environment)
+    map-migrated = "migQK0IMQ5LFK"
   }
 }
 
