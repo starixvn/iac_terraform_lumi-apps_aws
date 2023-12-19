@@ -9,11 +9,3 @@ data "terraform_remote_state" "vpc" {
 }
 
 # Terraform Remote State  - Certificate
-data "terraform_remote_state" "acm_cert" {
-  backend = "s3"
-  config = {
-    bucket = "${var.aws_region_bucket_remote_state}"
-    key    = "${var.aws_region_key_remote_state_acm}"
-    region = "${var.aws_region}"
-  }
-}

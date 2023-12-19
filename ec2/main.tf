@@ -33,6 +33,7 @@ module "proxy_gw_linux" {
   instance_tags = {
     OS = each.value.ami,
   }
+  iam_instance_profile = data.terraform_remote_state.iam.outputs.ec2_iam_name
   tags = merge(
     local.common_tags,
     {
@@ -95,7 +96,7 @@ module "private_zabbix_linux" {
   vpc_security_group_ids = [
     module.private_zabbix_sg.security_group_id,
     ]
-  create_spot_instance = true
+  #create_spot_instance = true
   private_ip             = each.value.private_ip
   hibernation            = false
   enable_volume_tags = false
