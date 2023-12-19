@@ -27,7 +27,7 @@ proxy_gw_vm = [
 ]
 
 monitor_vm = [
-  {
+  /*{
     "application_name" : "zabbix-01",
     "instance_type" : "t3.large",
     "ami" : "ubuntu22",
@@ -35,7 +35,7 @@ monitor_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-06fe4c10600cb02db",
     "private_ip" : "10.6.48.101",
-  },
+  },*/
 ]
 
 apps_vm = [
@@ -47,6 +47,7 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-06fe4c10600cb02db",
     "private_ip" : "10.6.48.200",
+    "tag" : "stopoutofworking"
   },
   {
     "application_name" : "db-02",
@@ -56,6 +57,7 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-01667b309462c88dd",
     "private_ip" : "10.6.64.200",
+    "tag" : "stopoutofworking"
   },
   {
     "application_name" : "db-03",
@@ -65,17 +67,17 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-00da5f1187472fb52",
     "private_ip" : "10.6.80.200",
+    "tag" : "stopoutofworking"
   },
-]
-
-spot_vm = [
-  /*{
-    "application_name" : "elk-01",
-    "instance_type" : "t3.large",
+  {
+    "application_name" : "zabbix-01",
+    "instance_type" : "t3.medium",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
-    "volume_size" : "10",
+    "volume_size" : "40",
     "subnet_id" : "subnet-06fe4c10600cb02db",
-    "private_ip" : "10.6.48.101",
-  },*/
+    "private_ip" : "10.6.48.100",
+    "tag" : "EC2"
+  },
+
 ]

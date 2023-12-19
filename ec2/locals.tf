@@ -68,6 +68,7 @@ locals {
       subnet_id   = srv.subnet_id
       private_ip    = srv.private_ip
       ami           = srv.ami
+      tag           = srv.tag
     }
   ]
 }
