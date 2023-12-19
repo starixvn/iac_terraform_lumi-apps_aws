@@ -5,6 +5,7 @@ environment = "local"
 aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
+aws_region_key_iam_remote_state = "env:/local/lumi-iam-tf.tfstate"
 ################## Whitelist
 allow_whitelist = "202.78.231.32/27,120.72.109.32/29,120.72.83.128/29"
 cidr_block_internal = ["10.6.48.0/20","10.6.64.0/20","10.6.80.0/20","10.6.0.0/20","10.6.16.0/20","10.6.32.0/20"] #10.6.48.0/20,10.6.64.0/20,10.6.80.0/20
@@ -64,15 +65,6 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-00da5f1187472fb52",
     "private_ip" : "10.6.80.200",
-  },
-  {
-    "application_name" : "zabbix-01",
-    "instance_type" : "t3.medium",
-    "ami" : "ubuntu22",
-    "volume_type" : "gp3",
-    "volume_size" : "40",
-    "subnet_id" : "subnet-06fe4c10600cb02db",
-    "private_ip" : "10.6.48.100",
   },
 ]
 

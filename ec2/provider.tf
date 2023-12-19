@@ -5,10 +5,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    acme = {
-      source  = "vancluever/acme"
-      version = "2.18.0"
-    }
   }
   # Adding Backend as S3 for Remote State Storage
   backend "s3" {
@@ -18,14 +14,10 @@ terraform {
 provider "aws" {
   region = var.aws_region
   #  profile = var.aws_profile #for debug testing
-  default_tags {
-    tags = {
-      Dept = "VNTeam"
-      #Team = "VNTeam"
-    }
-  }
-}
-provider "acme" {
-  server_url = "https://acme-staging-v02.api.letsencrypt.org/directory" #Staging Testing
-  #server_url = "https://acme-v02.api.letsencrypt.org/directory"
+  # default_tags {
+  #   tags = {
+  #     Dept = "VNTeam"
+  #     #Team = "VNTeam"
+  #   }
+  # }
 }

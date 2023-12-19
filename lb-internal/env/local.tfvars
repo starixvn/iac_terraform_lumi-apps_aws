@@ -5,8 +5,6 @@ environment = "local"
 aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
-aws_region_key_remote_state_acm    = "env:/local/route53-acme-certificate-tf.tfstate"
-
 ################EC2
 public_key_location = "key/id_rsa.pub"
 private_key_location = "key/id_rsa"
@@ -14,45 +12,25 @@ private_key_location = "key/id_rsa"
 proxy_gw_configuration = [
   {
     "application_name" : "proxy_gw-1",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
+    "private_ip" : "10.6.48.10",
   },
   {
     "application_name" : "proxy_gw-02",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
+    "private_ip" : "10.6.48.10",
   },
 ]
 web_server_configuration = [
   {
     "application_name" : "app_server-1",
-    "instance_type" : "t3.micro",
-    "ami" : "windows2022",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "30",
+    "private_ip" : "10.6.48.10",
   },
   {
     "application_name" : "app_server-2",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
+    "private_ip" : "10.6.48.10",
   },
   {
     "application_name" : "web_server-1",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
+    "private_ip" : "10.6.48.10",
   },
   
 ]
