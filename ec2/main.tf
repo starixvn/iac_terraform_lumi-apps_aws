@@ -51,7 +51,8 @@ module "private_app_linux" {
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = each.value.subnet_id
   vpc_security_group_ids = [
-    module.private_db_sg.security_group_id
+    module.private_db_sg.security_group_id,
+    module.private_zabbix_sg.security_group_id
     ]
   #[data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
   private_ip             = each.value.private_ip
@@ -60,7 +61,7 @@ module "private_app_linux" {
   root_block_device = [{
     volume_type           = each.value.volume_type
     volume_size           = each.value.volume_size
-    delete_on_termination = false
+    delete_on_termination = true
     tags = merge(
       local.common_tags,
       {
@@ -80,7 +81,7 @@ module "private_app_linux" {
   tags = merge(
     local.common_tags,
     {
-      Resource = "EC2"
+      Resource = each.value.tag
     },
   )
 }
