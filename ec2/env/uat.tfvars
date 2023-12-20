@@ -5,6 +5,7 @@ environment = "uat"
 aws_profile = "uat-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
+aws_region_key_iam_remote_state = "spnk-terraform-asura-vpc-ec2-iam.tfstate"
 ################## Whitelist
 allow_whitelist = "202.78.231.32/27,120.72.109.32/29,120.72.83.128/29"
 cidr_block_internal = ["10.88.0.0/16","10.77.0.0/16"]
@@ -53,6 +54,8 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.151",
+    "tag" : "stopoutofworking"
+    
   },
   {
     "application_name" : "dbuat-02",
@@ -62,6 +65,7 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.152",
+    "tag" : "stopoutofworking"
   },
   {
     "application_name" : "dbuat-03",
@@ -71,6 +75,7 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.153",
+    "tag" : "stopoutofworking"
   },
   {
     "application_name" : "dbsit-01",
@@ -80,6 +85,7 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.154",
+    "tag" : "stopoutofworking"
   },
   {
     "application_name" : "dbsit-02",
@@ -89,6 +95,7 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.155",
+    "tag" : "stopoutofworking"
   },
   {
     "application_name" : "dbsit-03",
@@ -98,5 +105,6 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.156",
+    "tag" : "stopoutofworking"
   },
 ]

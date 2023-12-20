@@ -61,7 +61,7 @@ module "private_app_linux" {
   root_block_device = [{
     volume_type           = each.value.volume_type
     volume_size           = each.value.volume_size
-    delete_on_termination = true
+    delete_on_termination = false
     tags = merge(
       local.common_tags,
       {
@@ -78,6 +78,7 @@ module "private_app_linux" {
   instance_tags = {
     OS = each.value.ami,
   }
+  iam_instance_profile = data.terraform_remote_state.iam.outputs.ec2_iam_name
   tags = merge(
     local.common_tags,
     {
