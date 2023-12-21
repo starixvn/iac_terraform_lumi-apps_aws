@@ -6,6 +6,9 @@ aws_profile = "uat-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
 aws_region_key_iam_remote_state = "spnk-terraform-asura-vpc-ec2-iam.tfstate"
+aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-ghost"
+aws_region_key_sg_remote_state_vn = "env:/uat/lumi-sg-tf.tfstate"
+
 ################## Whitelist
 allow_whitelist = "202.78.231.32/27,120.72.109.32/29,120.72.83.128/29"
 cidr_block_internal = ["10.88.0.0/16","10.77.0.0/16"]
