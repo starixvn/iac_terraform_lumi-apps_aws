@@ -1,8 +1,7 @@
 output "proxy_gw_private_ip" {
     value = module.proxy_gw_linux
 }
-/*
-output "proxy_gw_private_ip" {
-    value = module.proxy_gw_linux["proxy-gw-1"].private_ip
+output "ec2_zabbix" {
+  description = "The ID of the instance ec2_zabbix"
+  value       = module.private_zabbix_linux
 }
-*/
