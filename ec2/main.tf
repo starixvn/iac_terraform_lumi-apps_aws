@@ -102,14 +102,14 @@ module "private_zabbix_linux" {
   vpc_security_group_ids = [
     data.terraform_remote_state.sg.outputs.private_mon_sg,
     ]
-  #create_spot_instance = true
   private_ip             = each.value.private_ip
   hibernation            = false
   enable_volume_tags = false
   root_block_device = [{
-    volume_type           = each.value.volume_type
-    volume_size           = each.value.volume_size
-    delete_on_termination = false
+    volume_type = "gp3"
+    throughput  = 150
+    volume_size = 8
+    delete_on_termination = true
     tags = merge(
       local.common_tags,
       {
@@ -117,6 +117,19 @@ module "private_zabbix_linux" {
       },
     )
   }]
+  ebs_block_device = [
+    {
+      device_name = "/dev/sdf"
+      volume_type = each.value.volume_type
+      volume_size = each.value.volume_size
+      throughput  = 150
+      #encrypted   = true
+      #kms_key_id  = aws_kms_key.this.arn
+      tags = {
+        MountPoint = "/mnt/data"
+      }
+    }
+  ]
   metadata_options = {
     http_endpoint               = "enabled"
     http_tokens                 = "required"
