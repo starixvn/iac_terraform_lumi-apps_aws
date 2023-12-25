@@ -70,6 +70,9 @@ module "cluster" {
   vpc_id                          = var.vpc_id
   subnet_ids                      = var.vpc_private_subnets
   eks_managed_node_groups         = var.eks_managed_node_groups
+  iam_role_additional_policies = {
+      additional = data.terraform_remote_state.iam.outputs.cloud_watch_iam_role_arn
+    }
   tags = merge(
     local.common_tags,
     {
