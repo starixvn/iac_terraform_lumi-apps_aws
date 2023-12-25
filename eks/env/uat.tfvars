@@ -10,6 +10,7 @@ allow_cidr_block_internal = ["10.88.112.0/20","10.88.128.0/20","10.88.144.0/20",
 vpc_id = "vpc-083b51ed3f83c5096"
 lb_subnets = "subnet-0ae72c2068513e76b\\,subnet-0ba2a5f74ec351acc\\,subnet-0f92f11b87239fbd5"
 lb_az_cross = "true"
+create_cloudwatch_log_group = "false"
 #lb_private_ips = "10.88.112.250\\,10.88.143.250\\,10.88.159.250"
 vpc_private_subnets = [
   "subnet-0ae72c2068513e76b",
