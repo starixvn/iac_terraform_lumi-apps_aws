@@ -30,7 +30,7 @@ proxy_gw_vm = [
 ]
 
 monitor_vm = [
-  *{
+  {
     "application_name" : "zabbix-02",
     "instance_type" : "t3.medium",
     "ami" : "ubuntu22",
