@@ -54,11 +54,6 @@ module "private_app_linux" {
     data.terraform_remote_state.sg.outputs.private_db_sg,
     data.terraform_remote_state.sg.outputs.private_mon_sg,
     ]
-  /*
-  [data.terraform_remote_state.vpc.outputs.private_db_mongo_sg]
-    module.private_db_sg.security_group_id,
-    module.private_zabbix_sg.security_group_id
-  */
   private_ip             = each.value.private_ip
   hibernation            = false
   enable_volume_tags = false
@@ -82,7 +77,7 @@ module "private_app_linux" {
   instance_tags = {
     OS = each.value.ami,
   }
-  iam_instance_profile = data.terraform_remote_state.iam.outputs.ec2_iam_name
+  iam_instance_profile = data.terraform_remote_state.ec2.outputs.id
   tags = merge(
     local.common_tags,
     {
@@ -117,19 +112,6 @@ module "private_zabbix_linux" {
       },
     )
   }]
-  ebs_block_device = [
-    {
-      device_name = "/dev/sdf"
-      volume_type = each.value.volume_type
-      volume_size = each.value.volume_size
-      throughput  = 150
-      #encrypted   = true
-      #kms_key_id  = aws_kms_key.this.arn
-      tags = {
-        MountPoint = "/mnt/data"
-      }
-    }
-  ]
   metadata_options = {
     http_endpoint               = "enabled"
     http_tokens                 = "required"
