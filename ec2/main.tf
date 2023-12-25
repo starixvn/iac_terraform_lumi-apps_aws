@@ -47,7 +47,7 @@ module "private_app_linux" {
   version                = "5.2.1"
   for_each               = { for server in local.apps_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
-  name                   = lower("${var.team}-${var.environment}-${each.key}")
+  name                   = lower("vn-${var.team}-${var.environment}-${each.key}")
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = each.value.subnet_id
   vpc_security_group_ids = [
@@ -96,7 +96,7 @@ module "private_zabbix_linux" {
   version                = "5.2.1"
   for_each               = { for server in local.monitor_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
-  name                   = lower("${var.team}-${var.environment}-${each.key}")
+  name                   = lower("vn-${var.team}-${var.environment}-${each.key}")
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = each.value.subnet_id
   vpc_security_group_ids = [
