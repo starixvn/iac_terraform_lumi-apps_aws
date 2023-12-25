@@ -153,7 +153,7 @@ eks_managed_node_groups = {
     name            = "lumi-eks-app1-spot"
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {}
     labels = {
             "luminet-app" = "yes"
             "haproxy" = "yes"
@@ -222,7 +222,7 @@ eks_managed_node_groups = {
     name            = "lumi-eks-app2-spot"
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {}
     labels = {
             "luminet-app" = "yes"
             "haproxy" = "yes"
@@ -292,7 +292,9 @@ eks_managed_node_groups = {
     name            = "lumi-eks-elk1-spot"
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::584102114761:policy/Lumi-CloudWatch-Policy"
+    }
     labels = {
             "nexops-logs" = "yes"
           }
@@ -361,7 +363,9 @@ eks_managed_node_groups = {
     name            = "lumi-eks-elk2-spot"
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::584102114761:policy/Lumi-CloudWatch-Policy"
+    }
     labels = {
             "nexops-logs" = "yes"
           }
