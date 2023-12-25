@@ -163,7 +163,11 @@ eks_managed_node_groups = {
     desired_size = 1
     instance_types = [
       "t3.large",
-      "m5.large"
+      "m5.large",
+      "c5.large",
+      "c5a.large",
+      "c5.xlarge",
+      "c5a.xlarge"
     ]
     block_device_mappings = {
         xvda = {
@@ -228,7 +232,11 @@ eks_managed_node_groups = {
     desired_size = 1
     instance_types = [
       "t3.large",
-      "m5.large"
+      "m5.large",
+      "c5.large",
+      "c5a.large",
+      "c5.xlarge",
+      "c5a.xlarge"
     ]
     block_device_mappings = {
         xvda = {
@@ -293,7 +301,11 @@ eks_managed_node_groups = {
     desired_size = 1
     instance_types = [
       "t3.large",
-      "m5.large"
+      "m5.large",
+      "c5.large",
+      "c5a.large",
+      "c5.xlarge",
+      "c5a.xlarge"
     ]
     block_device_mappings = {
         xvda = {
@@ -358,7 +370,11 @@ eks_managed_node_groups = {
     desired_size = 1
     instance_types = [
       "t3.large",
-      "m5.large"
+      "m5.large",
+      "c5.large",
+      "c5a.large",
+      "c5.xlarge",
+      "c5a.xlarge"
     ]
     block_device_mappings = {
         xvda = {

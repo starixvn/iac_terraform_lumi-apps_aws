@@ -1,16 +1,19 @@
 resource "aws_volume_attachment" "zabbix" {
   device_name = "/dev/sdh"
   volume_id   = aws_ebs_volume.zabbix.id
-  instance_id = data.terraform_remote_state.iam.outputs.ec2_zabbix.id
+  instance_id = data.terraform_remote_state.ec2.outputs.ec2_zabbix["${var.zabbix_host}"].id
 }
 
 resource "aws_ebs_volume" "zabbix" {
   availability_zone = var.availability_zone
-  size              = 10
+  size              = 40
+  type = "gp3"
+  throughput = 150
+
   tags = merge(
     local.common_tags,
     {
-      Resource = "EBS"
+      Name = lower("${var.team}-${var.environment}-zabbix")
     },
   )
 }

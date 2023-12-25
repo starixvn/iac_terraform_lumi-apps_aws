@@ -32,3 +32,6 @@ variable "team" {
 variable "availability_zone" {
   type = string
 }
+variable "zabbix_host" {
+  type = string
+}

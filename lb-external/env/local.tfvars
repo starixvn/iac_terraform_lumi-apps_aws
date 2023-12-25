@@ -4,6 +4,8 @@ aws_region = "ap-east-1"
 environment = "local"
 aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
+aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-goshawk"
+aws_region_key_sg_remote_state_vn = "env:/local/lumi-sg-tf.tfstate"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 aws_region_key_remote_state_acm    = "env:/local/route53-acme-certificate-tf.tfstate"
 

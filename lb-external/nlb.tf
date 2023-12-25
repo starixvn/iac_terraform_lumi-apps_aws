@@ -11,7 +11,7 @@ module "external_nlb" {
     data.terraform_remote_state.vpc.outputs.public_subnets[1],
   ]
   internal        = false
-  security_groups = [data.terraform_remote_state.vpc.outputs.loadbalancer_sg]
+  security_groups = [data.terraform_remote_state.sg.outputs.public_tools_sg]
   # HTTP Listeners
   http_tcp_listeners = [
     {
