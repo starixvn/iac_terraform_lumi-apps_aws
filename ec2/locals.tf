@@ -46,7 +46,7 @@ locals {
       ami           = srv.ami
     }
   ]
-  # Define Monitor
+  ## Define Monitor
   monitor_serverconfig = [
     for srv in var.monitor_vm : {
       instance_name = "${srv.application_name}" #-${i}
