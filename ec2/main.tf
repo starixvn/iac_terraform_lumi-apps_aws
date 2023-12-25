@@ -4,7 +4,7 @@ module "proxy_gw_linux" {
   version                = "5.2.1"
   for_each               = { for server in local.proxy_gw_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
-  name                   = lower("${var.team}-${var.environment}-${each.key}")
+  name                   = lower("vn-${var.team}-${var.environment}-${each.key}")
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = each.value.subnet_id
   #data.terraform_remote_state.vpc.outputs.private_subnets[0]
