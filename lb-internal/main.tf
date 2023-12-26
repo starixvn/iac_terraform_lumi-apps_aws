@@ -1,13 +1,16 @@
 # Terraform AWS Application Load Balancer (ALB)
-module "internal_proxy_gw" {
+module "internal_proxy_gw_v1" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-alb/aws"
   version = "8.6.1"
-  name               = lower("${var.team}-${var.environment}-nlb-proxy-gw")
+  name               = lower("${var.team}-${var.environment}-nlb-proxy-gw-v1")
   load_balancer_type = "network"
-  vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id = var.vpc_id
   subnets = [
-    data.terraform_remote_state.vpc.outputs.public_subnets[0],
+    var.vpc_private_subnets[0],
+    var.vpc_private_subnets[1],
   ]
+  security_groups = [data.terraform_remote_state.sg.outputs.public_app_sg]
+  enable_cross_zone_load_balancing = true
   internal = true
   # Listeners
   http_tcp_listeners = [
@@ -16,12 +19,22 @@ module "internal_proxy_gw" {
       protocol           = "TCP"
       target_group_index = 0
     },
+    {
+      port               = 8088
+      protocol           = "TCP"
+      target_group_index = 1
+    },
+    {
+      port               = 8080
+      protocol           = "TCP"
+      target_group_index = 2
+    },
   ]
 
   # Target Groups
   target_groups = [
     {
-      name                 = lower("${var.team}-${var.environment}-gw-80")
+      name                 = lower("${var.team}-${var.environment}-gw-80-v1")
       backend_protocol     = "TCP"
       backend_port         = 80
       target_type          = "ip" #"ip" instance alb
@@ -50,9 +63,9 @@ module "internal_proxy_gw" {
       tags = local.common_tags # Target Group Tags
     },
     {
-      name                 = lower("${var.team}-${var.environment}-gw-80")
+      name                 = lower("${var.team}-${var.environment}-gw-8088-v1")
       backend_protocol     = "TCP"
-      backend_port         = 80
+      backend_port         = 8088
       target_type          = "ip"
       health_check = {
         protocol            = "TCP"
@@ -66,10 +79,32 @@ module "internal_proxy_gw" {
         for server in local.proxy_gw_instances :
         server.instance_name => {
           target_id = server.private_ip
-          port      = 80
+          port      = 8088
         }
       }
-    }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-gw-8080-v1")
+      backend_protocol     = "TCP"
+      backend_port         = 8080
+      target_type          = "ip"
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
+      # Target Group - Targets
+      targets = {
+        for server in local.proxy_gw_instances :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 8080
+        }
+      }
+    },
+    
   ]
   tags = merge(
           local.common_tags,

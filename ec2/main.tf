@@ -52,7 +52,6 @@ module "private_app_linux" {
   subnet_id              = each.value.subnet_id
   vpc_security_group_ids = [
     data.terraform_remote_state.sg.outputs.private_db_sg,
-    data.terraform_remote_state.sg.outputs.private_mon_sg,
     ]
   private_ip             = each.value.private_ip
   hibernation            = false

@@ -22,10 +22,15 @@ variable "aws_region_bucket_remote_state" {
   description = "aws_region_bucket"
   type        = string
 }
+variable "aws_region_bucket_remote_state_vn" {
+  description = "aws_region_bucket VN"
+  type        = string
+}
 variable "aws_region_key_remote_state" {
   description = "aws_region_key"
   type        = string
 }
+
 
 variable "aws_region_key_iam_remote_state" {
   description = "iam_remote_state"

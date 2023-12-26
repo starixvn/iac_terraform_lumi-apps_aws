@@ -21,7 +21,7 @@ locals {
   ]
   # Define App
   apps_serverconfig = [
-    for srv in var.apps_vm : {
+    for srv in var.web_server_configuration : {
       instance_name = "${srv.application_name}" #-${i}
       private_ip    = srv.private_ip
     }

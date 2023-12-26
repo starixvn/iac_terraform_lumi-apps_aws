@@ -25,8 +25,14 @@ variable "aws_region_key_remote_state" {
   type        = string
 }
 
-variable "aws_region_key_remote_state_acm" {
-  type = string
+variable "aws_region_bucket_remote_state_vn" {
+  description = "aws_region_bucket VN"
+  type        = string
+}
+
+variable "aws_region_key_sg_remote_state_vn" {
+  description = "sg_remote_state VN"
+  type        = string
 }
 
 variable "team" {
@@ -36,7 +42,18 @@ variable "proxy_gw_vm" {
   description = "EC2 configuration"
   default     = [{}]
 }
-variable "apps_vm" {
+variable "web_server_configuration" {
   description = "EC2 configuration"
   default     = [{}]
+}
+###VPC
+variable "vpc_id" {
+  description = "vpc_id"
+  type = string 
+}
+
+# VPC Private Subnets
+variable "vpc_private_subnets" {
+  description = "SC - VPC Private Subnets"
+  type = list(string)
 }
