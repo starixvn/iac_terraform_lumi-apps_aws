@@ -6,7 +6,7 @@ aws_profile = "local-iac-terraform-ci"
 aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
 aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
 aws_region_key_iam_remote_state = "env:/local/lumi-iam-tf.tfstate"
-aws_region_bucket_remote_state_vn = "env:/local/lumi-iam-tf.tfstate"
+aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-goshawk"
 
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 allow_cidr_block_internal = ["10.6.0.0/16"]
