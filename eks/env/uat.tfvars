@@ -5,6 +5,8 @@ environment = "uat"
 aws_profile = "uat-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
+aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-ghost"
+aws_region_key_iam_remote_state = "env:/uat/lumi-iam-tf.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"]
 allow_cidr_block_internal = ["10.88.112.0/20","10.88.128.0/20","10.88.144.0/20","10.77.15.0/24","10.77.25.0/24","10.88.48.0/21","10.88.56.0/21","10.88.64.0/21"] #["10.77.0.0/16","10.88.0.0/16"] #
 vpc_id = "vpc-083b51ed3f83c5096"
@@ -25,7 +27,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-uat-eks-ing1"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-uat-cloudwatch-policy-v1"
+    }
     labels = {
             "haproxy" = "yes"
           }
@@ -75,7 +79,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-uat-eks-sp1"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-uat-cloudwatch-policy-v1"
+    }
     labels = {
             "luminet-app" = "yes",
             "nexops" = "yes"
@@ -141,7 +147,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-uat-eks-sp2"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-uat-cloudwatch-policy-v1"
+    }
     labels = {
             "luminet-app" = "yes",
             "nexops" = "yes"
@@ -345,127 +353,3 @@ namespaces = ["haproxy","sample","nexops"]
 ###############
 admin_users     = ["tf.ken.nguyen", "tf.dennis.le", "tf.troy.vo"]
 developer_users = ["dev1", "dev2"]
-
-/*"lumi-uat-eks-gr2" = {
-    name            = "lumi-uat-eks-demand"
-    subnet_ids = ["subnet-0ae72c2068513e76b"]
-    use_custom_launch_template = true
-
-    labels = {
-            "luminet-app" = "yes",
-            "nexops" = "yes"
-            
-          }
-
-    ami_type     = "AL2_x86_64"
-    min_size     = 0
-    max_size     = 1
-    desired_size = 1
-    instance_types = [
-      "t3a.large"
-    ]
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 40
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
-    capacity_type = "ON_DEMAND"
-    network_interfaces = [{
-      delete_on_termination       = true
-      associate_public_ip_address = false
-    }]
-    tag_specifications = [
-      "instance",
-      "volume",
-      "network-interface"
-    ]
-    ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 20 * * MON-FRI"
-        }
-      }
-  },*/
-  /*"lumi-uat-eks-gr3" = {
-    name            = "lumi-uat-eks-spot"
-    subnet_ids = ["subnet-0ae72c2068513e76b"]
-    use_custom_launch_template = true
-
-    labels = {
-            "luminet-app" = "yes"
-          }
-
-    ami_type     = "AL2_x86_64"
-    min_size     = 0
-    max_size     = 1
-    desired_size = 1
-    instance_types = [
-      "m5.large",
-      "m5zn.large",
-      "t3a.large",
-      "t3.large",
-      "t2.large",
-      "m5a.large",
-      "m5n.large",
-      "m5dn.large",
-      "m5.large",
-      "m5zn.large",
-    ]
-    block_device_mappings = {
-        xvda = {
-          device_name = "/dev/xvda"
-          ebs = {
-            volume_size           = 40
-            volume_type           = "gp3"
-            iops                  = 3000
-            throughput            = 150
-            delete_on_termination = true
-          }
-        }
-      }
-    capacity_type = "SPOT"
-    network_interfaces = [{
-      delete_on_termination       = true
-      associate_public_ip_address = false
-    }]
-    tag_specifications = [
-      "instance",
-      "volume",
-      "network-interface"
-    ]
-    ####
-    schedules = {
-        scale-up = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 1
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 08 * * MON-FRI"
-        },
-        scale-down = {
-          min_size     = 0
-          max_size     = "1" # Retains current max size
-          desired_size = 0
-          time_zone    = "Asia/Bangkok"
-          recurrence   = "00 20 * * MON-FRI"
-        }
-      }
-  },*/
