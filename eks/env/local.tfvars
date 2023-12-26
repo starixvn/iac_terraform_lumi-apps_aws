@@ -154,7 +154,7 @@ eks_managed_node_groups = {
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
-      additional = "arn:aws:iam::584102114761:policy/Lumi-CloudWatch-Policy"
+      additional = "arn:aws:iam::584102114761:policy/lumi-local-cloudwatch-policy-v1"
     }
     labels = {
             "luminet-app" = "yes"
@@ -225,7 +225,7 @@ eks_managed_node_groups = {
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
-      additional = "arn:aws:iam::584102114761:policy/Lumi-CloudWatch-Policy"
+      additional = "arn:aws:iam::584102114761:policy/lumi-local-cloudwatch-policy-v1"
     }
     labels = {
             "luminet-app" = "yes"
@@ -297,7 +297,7 @@ eks_managed_node_groups = {
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
-      additional = "arn:aws:iam::584102114761:policy/Lumi-CloudWatch-Policy"
+      additional = "arn:aws:iam::584102114761:policy/lumi-local-cloudwatch-policy-v1"
     }
     labels = {
             "nexops-logs" = "yes"
@@ -368,7 +368,7 @@ eks_managed_node_groups = {
     subnet_ids = ["subnet-06fe4c10600cb02db"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
-      additional = "arn:aws:iam::584102114761:policy/Lumi-CloudWatch-Policy"
+      additional = "arn:aws:iam::584102114761:policy/lumi-local-cloudwatch-policy-v1"
     }
     labels = {
             "nexops-logs" = "yes"
