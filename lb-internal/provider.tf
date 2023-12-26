@@ -17,7 +17,7 @@ provider "aws" {
   default_tags {
     tags = {
       Dept = "VNTeam"
-      #Team = "VNTeam"
+      Team = "Lumi"
     }
   }
 }
