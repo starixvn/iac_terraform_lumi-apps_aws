@@ -5,7 +5,7 @@ environment = "uat"
 aws_profile = "uat-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
-aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-goshawk"
+aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-ghost"
 aws_region_key_sg_remote_state_vn = "env:/uat/lumi-sg-tf.tfstate"
 
 vpc_id = "vpc-083b51ed3f83c5096"

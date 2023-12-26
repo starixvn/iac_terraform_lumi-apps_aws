@@ -8,7 +8,7 @@ data "terraform_remote_state" "vpc" {
   }
 }
 #SG
-/*
+
 data "terraform_remote_state" "sg" {
   backend = "s3"
   config = {
@@ -17,4 +17,3 @@ data "terraform_remote_state" "sg" {
     region = "${var.aws_region}"
   }
 }
-*/
