@@ -33,7 +33,7 @@ module "external_nlb" {
       # Target Group - Targets
       targets = {
         my_zb1 = {
-          target_id = "10.6.48.100"
+          target_id = "10.6.48.101"
           port      = 10051
         }
       }
