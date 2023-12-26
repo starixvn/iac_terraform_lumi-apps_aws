@@ -19,11 +19,6 @@ module "internal_proxy_gw_v1" {
       protocol           = "TCP"
       target_group_index = 0
     },
-    {
-      port               = 8088
-      protocol           = "TCP"
-      target_group_index = 1
-    },
   ]
 
   # Target Groups

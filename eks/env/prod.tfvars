@@ -5,6 +5,8 @@ environment = "prod"
 aws_profile = "prod-iac-terraform-ci"
 aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
 aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
+aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-ghost"
+aws_region_key_iam_remote_state = "env:/prod/lumi-iam-tf.tfstate"
 allow_whitelist = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29","43.198.255.129/32"]
 allow_cidr_block_internal = ["10.88.48.0/21","10.88.56.0/21","10.88.64.0/21","10.77.15.0/24","10.77.25.0/24","10.88.112.0/20","10.88.128.0/20","10.88.144.0/20"] 
 vpc_id = "vpc-083b51ed3f83c5096"
@@ -24,7 +26,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-prod-eks-mon1"
     subnet_ids = ["subnet-0a8d5a1eef57bb185"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-prod-cloudwatch-policy-v1"
+    }
     labels = {
             "nexops-mon" = "yes"
           }
@@ -72,7 +76,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-prod-eks-ing1"
     subnet_ids = ["subnet-0a8d5a1eef57bb185"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-prod-cloudwatch-policy-v1"
+    }
     labels = {
             "haproxy" = "yes"
           }
@@ -118,7 +124,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-prod-eks-ing2"
     subnet_ids = ["subnet-0cb97999f4cf68d03"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-prod-cloudwatch-policy-v1"
+    }
     labels = {
             "haproxy" = "yes"
           }
@@ -165,7 +173,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-prod-eks-dm1"
     subnet_ids = ["subnet-0a8d5a1eef57bb185"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-prod-cloudwatch-policy-v1"
+    }
     labels = {
             "luminet-app" = "yes",
             "nexops" = "yes"
@@ -213,7 +223,9 @@ eks_managed_node_groups = {
     name            = "vn-lumi-prod-eks-dm2"
     subnet_ids = ["subnet-0cb97999f4cf68d03"]
     use_custom_launch_template = true
-
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-prod-cloudwatch-policy-v1"
+    }
     labels = {
             "luminet-app" = "yes",
             "nexops" = "yes"
