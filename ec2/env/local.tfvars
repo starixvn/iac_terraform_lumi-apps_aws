@@ -72,15 +72,4 @@ apps_vm = [
     "private_ip" : "10.6.80.200",
     "tag" : "stopoutofworking"
   },
-  {
-    "application_name" : "zabbix-01",
-    "instance_type" : "t3.medium",
-    "ami" : "ubuntu22",
-    "volume_type" : "gp3",
-    "volume_size" : "40",
-    "subnet_id" : "subnet-06fe4c10600cb02db",
-    "private_ip" : "10.6.48.100",
-    "tag" : "EC2"
-  },
-
 ]
