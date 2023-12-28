@@ -36,7 +36,7 @@ proxy_gw_vm = [
     "private_ip" : "10.88.127.100",
     "tag" : "EC2"
   },
-  {
+/*  {
     "application_name" : "proxy-gw-02",
     "instance_type" : "t3.small",
     "ami" : "ubuntu22",
@@ -46,6 +46,7 @@ proxy_gw_vm = [
     "private_ip" : "10.88.143.100",
     "tag" : "stopoutofworking"
   },
+*/
 ]
 
 monitor_vm = []
