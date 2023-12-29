@@ -34,8 +34,9 @@ proxy_gw_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.100",
+    "tag" : "EC2"
   },
-  {
+/*  {
     "application_name" : "proxy-gw-02",
     "instance_type" : "t3.small",
     "ami" : "ubuntu22",
@@ -43,7 +44,9 @@ proxy_gw_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ba2a5f74ec351acc",
     "private_ip" : "10.88.143.100",
+    "tag" : "stopoutofworking"
   },
+*/
 ]
 
 monitor_vm = []

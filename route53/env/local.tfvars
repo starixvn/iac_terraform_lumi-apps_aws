@@ -171,6 +171,10 @@ domain_alias_records = {
       "name" : "jaegereks",
       "type" : "A",
     },
+    {
+      "name" : "es",
+      "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {

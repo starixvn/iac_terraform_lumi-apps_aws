@@ -37,7 +37,7 @@ module "proxy_gw_linux" {
   tags = merge(
     local.common_tags,
     {
-      Resource  = "EC2"
+      Resource = each.value.tag
     },
   )
 }
