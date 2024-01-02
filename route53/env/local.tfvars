@@ -168,7 +168,7 @@ domain_alias_records = {
       "type" : "A",
     },
     {
-      "name" : "jaegereks",
+      "name" : "jaeger-collector-eks",
       "type" : "A",
     },
     {

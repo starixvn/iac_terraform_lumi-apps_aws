@@ -8,18 +8,11 @@ aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
 aws_region_key_iam_remote_state = "spnk-terraform-asura-vpc-ec2-iam.tfstate"
 aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-ghost"
 aws_region_key_sg_remote_state_vn = "env:/uat/lumi-sg-tf.tfstate"
-
-################## Whitelist
-allow_whitelist = "202.78.231.32/27,120.72.109.32/29,120.72.83.128/29"
-cidr_block_internal = ["10.88.0.0/16","10.77.0.0/16"]
-#["10.88.112.0/20","10.88.128.0/20","10.88.144.0/20","10.77.15.0/24","10.77.25.0/24","10.88.48.0/21","10.88.56.0/21","10.88.64.0/21","10.88.80.13/32","10.88.83.13/32"] #["10.77.0.0/16","10.88.0.0/16"] #
-allow_cidr_block_internal = "10.88.0.0/16,10.77.0.0/16"
-#"10.88.112.0/20,10.88.128.0/20,10.88.144.0/20,10.77.15.0/24,10.77.25.0/24,10.88.48.0/21,10.88.56.0/21,10.88.64.0/21,10.88.80.13/32,10.88.83.13/32"
 vpc_id = "vpc-083b51ed3f83c5096"
 # vpc_private_subnets = [
-#   "subnet-0ae72c2068513e76b",
-#   "subnet-0ba2a5f74ec351acc",
-#   "subnet-0f92f11b87239fbd5"
+#   "subnet-0ae72c2068513e76b", 10.88.112.0/20 (4k): 10.88.112.1->10.88.127.254
+#   "subnet-0ba2a5f74ec351acc", 10.88.128.0/20 (4k): 10.88.128.1->10.88.143.254
+#   "subnet-0f92f11b87239fbd5" 10.88.144.0/20 (4k): 10.88.144.1->10.88.159.254
 # ]
 
 ##################  EC2

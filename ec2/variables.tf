@@ -70,21 +70,6 @@ variable "ami_name" {
   }
 }
 
-variable "allow_cidr_block_internal" {
-  description = "allow ingress_cidr_blocks"
-  type        = string
-}
-
-variable "cidr_block_internal" {
-  description = "allow ingress_cidr_blocks"
-  type        = list(string)
-  default     = []
-}
-
-variable "allow_whitelist" {
-  description = "allow whitelist"
-  type        = string
-}
 variable "vpc_id" {
   type        = string
 }
