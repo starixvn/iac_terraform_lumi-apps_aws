@@ -26,5 +26,5 @@ proxy_gw_vm = [
     "private_ip" : "10.88.56.100",
   },
 ]
-
+mon_server_configuration = []
 web_server_configuration = []

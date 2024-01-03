@@ -20,6 +20,13 @@ locals {
       private_ip    = srv.private_ip
     }
   ]
+  # Define Mon
+  mons_serverconfig = [
+    for srv in var.mon_server_configuration : {
+      instance_name = "${srv.application_name}" #-${i}
+      private_ip    = srv.private_ip
+    }
+  ]
   # Define App
   apps_serverconfig = [
     for srv in var.web_server_configuration : {
@@ -31,5 +38,6 @@ locals {
 // We need to Flatten it before using it
 locals {
   proxy_gw_instances = flatten(local.proxy_gw_serverconfig)
+  mons_instances     = flatten(local.mons_serverconfig)
   apps_instances     = flatten(local.apps_serverconfig)
 }
