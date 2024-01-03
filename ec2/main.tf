@@ -97,13 +97,13 @@ module "private_zabbix_linux" {
     data.terraform_remote_state.sg.outputs.private_mon_sg,
     ]
   private_ip             = each.value.private_ip
-  hibernation            = true
+  hibernation            = false
   enable_volume_tags = false
   root_block_device = [{
     volume_type = "gp3"
     throughput  = 150
     volume_size = 60
-    delete_on_termination = true
+    delete_on_termination = false
     tags = merge(
       local.common_tags,
       {
