@@ -29,11 +29,6 @@ module "internal_proxy_gw_v1" {
       protocol           = "TCP"
       target_group_index = 2
     },
-    {
-      port               = 10051
-      protocol           = "TCP"
-      target_group_index = 3
-    },
   ]
 
   # Target Groups
@@ -106,27 +101,6 @@ module "internal_proxy_gw_v1" {
         server.instance_name => {
           target_id = server.private_ip
           port      = 8080
-        }
-      }
-    },
-    {
-      name                 = lower("${var.team}-${var.environment}-zb-10051-v1")
-      backend_protocol     = "TCP"
-      backend_port         = 10051
-      target_type          = "ip"
-      health_check = {
-        protocol            = "TCP"
-        healthy_threshold   = 2
-        unhealthy_threshold = 2
-        interval            = 5
-        timeout             = 3
-      }
-      # Target Group - Targets
-      targets = {
-        for server in local.mons_instances :
-        server.instance_name => {
-          target_id = server.private_ip
-          port      = 10051
         }
       }
     },
