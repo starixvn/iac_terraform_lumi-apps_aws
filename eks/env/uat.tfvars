@@ -243,7 +243,7 @@ eks_managed_node_groups = {
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
-            delete_on_termination = false
+            delete_on_termination = true
           }
         }
       }
@@ -259,6 +259,20 @@ eks_managed_node_groups = {
     ]
     ####
     schedules = {
+      scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "10 08 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 20 * * MON-FRI"
+        }
       
       }
     pre_bootstrap_user_data = <<-EOT
