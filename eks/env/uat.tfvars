@@ -212,6 +212,7 @@ eks_managed_node_groups = {
       EOT
   },
   ############## SENTRY
+  /*
   "vn-lumi-uat-eks-sp7" = {
     name            = "vn-lumi-uat-eks-sp7"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
@@ -283,7 +284,7 @@ eks_managed_node_groups = {
         sed -i '/KUBELET_EXTRA_ARGS=\$2/d' /etc/eks/bootstrap.sh
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
-  },
+  },*/
 }
 
 ###############
