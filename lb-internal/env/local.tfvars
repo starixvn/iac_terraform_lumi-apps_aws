@@ -19,6 +19,7 @@ proxy_gw_configuration = [
     "private_ip" : "10.6.48.10",
   },
 ]
+mon_server_configuration = []
 web_server_configuration = [
   {
     "application_name" : "app_server-1",

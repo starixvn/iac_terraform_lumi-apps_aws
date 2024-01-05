@@ -102,8 +102,8 @@ module "private_zabbix_linux" {
   root_block_device = [{
     volume_type = "gp3"
     throughput  = 150
-    volume_size = 20
-    delete_on_termination = true
+    volume_size = 60
+    delete_on_termination = false
     tags = merge(
       local.common_tags,
       {

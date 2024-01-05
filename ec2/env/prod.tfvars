@@ -36,7 +36,7 @@ proxy_gw_vm = [
     "volume_type" : "gp3",
     "volume_size" : "40",
     "subnet_id" : "subnet-0cb97999f4cf68d03",
-    "private_ip" : "10.88.63.100",
+    "private_ip" : "10.88.56.100",
     "tag" : "EC2"
   },
 

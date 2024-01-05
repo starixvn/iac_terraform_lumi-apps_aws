@@ -28,3 +28,9 @@ proxy_gw_vm = [
 ]
 
 web_server_configuration = []
+mon_server_configuration = [
+  {
+    "application_name" : "zabbix-01",
+    "private_ip" : "10.88.127.99",
+  },
+]

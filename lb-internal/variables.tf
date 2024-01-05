@@ -42,6 +42,10 @@ variable "proxy_gw_vm" {
   description = "EC2 configuration"
   default     = [{}]
 }
+variable "mon_server_configuration" {
+  description = "EC2 configuration"
+  default     = [{}]
+}
 variable "web_server_configuration" {
   description = "EC2 configuration"
   default     = [{}]
