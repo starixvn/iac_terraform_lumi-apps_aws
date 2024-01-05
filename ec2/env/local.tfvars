@@ -25,17 +25,7 @@ proxy_gw_vm = [
   },
 ]
 
-monitor_vm = [
-  {
-    "application_name" : "zabbix-02",
-    "instance_type" : "t3.medium",
-    "ami" : "ubuntu22",
-    "volume_type" : "gp3",
-    "volume_size" : "40",
-    "subnet_id" : "subnet-06fe4c10600cb02db",
-    "private_ip" : "10.6.48.101",
-  },
-]
+monitor_vm = []
 
 apps_vm = [
   {
