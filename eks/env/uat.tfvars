@@ -230,10 +230,10 @@ eks_managed_node_groups = {
     instance_types = [
 #      "c5a.xlarge",
 #      "c5.xlarge",
-      "c5.2xlarge",
-      "c5a.2xlarge",
-      "c5.4xlarge",
-      "c5d.2xlarge"
+      "t3.xlarge",
+      "t3.2xlarge",
+      "t3a.xlarge",
+      "t3a.2xlarge"
     ]
     block_device_mappings = {
         xvda = {
