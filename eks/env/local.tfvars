@@ -32,6 +32,12 @@ eks_managed_node_groups = {
     }
     labels = {
             "luminet-app" = "yes"
+            "sc1-games" = "yes"
+            "sc2-games" = "yes"
+            "sc1-api" = "yes"
+            "sc2-api" = "yes"
+            "sc1-games-backend" = "yes"
+            "sc2-games-backend" = "yes"
             "haproxy" = "yes"
           }
 
@@ -103,6 +109,12 @@ eks_managed_node_groups = {
     }
     labels = {
             "luminet-app" = "yes"
+            "sc1-games" = "yes"
+            "sc2-games" = "yes"
+            "sc1-api" = "yes"
+            "sc2-api" = "yes"
+            "sc1-games-backend" = "yes"
+            "sc2-games-backend" = "yes"
             "haproxy" = "yes"
           }
 
