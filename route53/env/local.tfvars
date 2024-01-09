@@ -175,6 +175,10 @@ domain_alias_records = {
       "name" : "es",
       "type" : "A",
     },
+    {
+      "name" : "awsapi",
+      "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
