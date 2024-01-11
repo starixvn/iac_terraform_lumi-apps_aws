@@ -29,6 +29,21 @@ module "internal_proxy_gw_v1" {
       protocol           = "TCP"
       target_group_index = 2
     },
+    {
+      port               = 8882
+      protocol           = "TCP"
+      target_group_index = 3
+    },
+    {
+      port               = 5055
+      protocol           = "TCP"
+      target_group_index = 4
+    },
+    {
+      port               = 8081
+      protocol           = "TCP"
+      target_group_index = 5
+    },
   ]
 
   # Target Groups
@@ -101,6 +116,69 @@ module "internal_proxy_gw_v1" {
         server.instance_name => {
           target_id = server.private_ip
           port      = 8080
+        }
+      }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-ansible-8882-v1")
+      backend_protocol     = "TCP"
+      backend_port         = 8882
+      target_type          = "ip"
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
+      # Target Group - Targets
+      targets = {
+        for server in local.ansible_instances :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 8882
+        }
+      }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-registry-5055-v1")
+      backend_protocol     = "TCP"
+      backend_port         = 5055
+      target_type          = "ip"
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
+      # Target Group - Targets
+      targets = {
+        for server in local.registry_instances :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 5055
+        }
+      }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-zabbix-8081-v1")
+      backend_protocol     = "TCP"
+      backend_port         = 8081
+      target_type          = "ip"
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
+      # Target Group - Targets
+      targets = {
+        for server in local.mons_instances :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 8081
         }
       }
     },

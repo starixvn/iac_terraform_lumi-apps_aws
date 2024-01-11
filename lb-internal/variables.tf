@@ -50,6 +50,16 @@ variable "web_server_configuration" {
   description = "EC2 configuration"
   default     = [{}]
 }
+
+variable "ansible_server_configuration" {
+  description = "EC2 configuration"
+  default     = [{}]
+}
+
+variable "registry_server_configuration" {
+  description = "EC2 configuration"
+  default     = [{}]
+}
 ###VPC
 variable "vpc_id" {
   description = "vpc_id"

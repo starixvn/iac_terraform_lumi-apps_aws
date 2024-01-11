@@ -34,10 +34,26 @@ locals {
       private_ip    = srv.private_ip
     }
   ]
+  # Define Tools
+  ansible_serverconfig = [
+    for srv in var.ansible_server_configuration : {
+      instance_name = "${srv.application_name}"
+      private_ip    = srv.private_ip
+    }
+  ]
+
+  registry_serverconfig = [
+    for srv in var.registry_server_configuration : {
+      instance_name = "${srv.application_name}"
+      private_ip    = srv.private_ip
+    }
+  ]
 }
 // We need to Flatten it before using it
 locals {
   proxy_gw_instances = flatten(local.proxy_gw_serverconfig)
   mons_instances     = flatten(local.mons_serverconfig)
   apps_instances     = flatten(local.apps_serverconfig)
+  ansible_instances     = flatten(local.ansible_serverconfig)
+  registry_instances     = flatten(local.registry_serverconfig)
 }
