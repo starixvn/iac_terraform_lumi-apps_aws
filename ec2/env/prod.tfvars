@@ -135,7 +135,7 @@ apps_vm = [
     "volume_type" : "gp3",
     "volume_size" : "100",
     "subnet_id" : "subnet-0a8d5a1eef57bb185",
-    "private_ip" : "10.88.56.117",
+    "private_ip" : "10.88.55.117",
     "tag" : "DB"
   },
 ]
