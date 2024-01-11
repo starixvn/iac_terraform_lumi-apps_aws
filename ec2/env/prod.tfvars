@@ -46,7 +46,7 @@ monitor_vm = [
   {
     "application_name" : "ansible-01",
     "instance_type" : "t3a.medium",
-    "ami" : "ubuntu22",
+    "ami" : "ubuntu22vn",
     "volume_type" : "gp3",
     "volume_size" : "60",
     "subnet_id" : "subnet-0a8d5a1eef57bb185",
@@ -56,14 +56,13 @@ monitor_vm = [
   {
     "application_name" : "registry-01",
     "instance_type" : "t3a.small",
-    "ami" : "ubuntu22",
+    "ami" : "ubuntu22vn",
     "volume_type" : "gp3",
     "volume_size" : "50",
     "subnet_id" : "subnet-0a8d5a1eef57bb185",
     "private_ip" : "10.88.55.108",
     "tag" : "EC2"
   },
-
 ]
 
 apps_vm = []
