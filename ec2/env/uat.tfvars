@@ -48,7 +48,7 @@ monitor_vm = [
     "instance_type" : "t3a.medium",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
-    "volume_size" : "40",
+    "volume_size" : "60",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.99",
   },

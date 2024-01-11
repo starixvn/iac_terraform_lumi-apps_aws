@@ -94,15 +94,14 @@ module "private_zabbix_linux" {
   ami                    = data.aws_ami.os[each.value.ami].id
   subnet_id              = each.value.subnet_id
   vpc_security_group_ids = [
-    data.terraform_remote_state.sg.outputs.private_mon_sg,
+    data.terraform_remote_state.sg.outputs.private_tool_sg,
     ]
   private_ip             = each.value.private_ip
   hibernation            = false
   enable_volume_tags = false
   root_block_device = [{
-    volume_type = "gp3"
-    throughput  = 150
-    volume_size = 60
+    volume_type           = each.value.volume_type
+    volume_size           = each.value.volume_size
     delete_on_termination = false
     tags = merge(
       local.common_tags,
