@@ -42,9 +42,7 @@ proxy_gw_vm = [
 
 ]
 
-monitor_vm = []
-
-apps_vm = [
+monitor_vm = [
   {
     "application_name" : "ansible-01",
     "instance_type" : "t3a.medium",
@@ -67,3 +65,5 @@ apps_vm = [
   },
 
 ]
+
+apps_vm = []
