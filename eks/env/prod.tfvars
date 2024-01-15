@@ -275,6 +275,7 @@ eks_managed_node_groups = {
       EOT
   },
   ###############BACKEND 
+  /*
   "vn-lumi-prod-eks-be1" = {
     name            = "vn-lumi-prod-eks-be1"
     subnet_ids = ["subnet-0a8d5a1eef57bb185"]
@@ -385,6 +386,7 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
+  */
 }
 
 ###############
