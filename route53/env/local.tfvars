@@ -37,13 +37,13 @@ domain_a_records = {
       "name" : "deployapi-k8s",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.169",
+      "record" : "10.10.50.100",
     },
     {
       "name" : "argocd-local",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.169",
+      "record" : "10.10.50.100",
     },
     {
       "name" : "bots",
@@ -59,6 +59,18 @@ domain_a_records = {
     },
     {
       "name" : "argocd-local-1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "haproxy-k8s",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "haproxy-gw",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.100",
