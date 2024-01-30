@@ -25,7 +25,7 @@ domain_a_records = {
       "name" : "*",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "202.78.231.62",
+      "record" : "10.10.50.69", #202.78.231.62
     },
     {
       "name" : "hub",
@@ -74,6 +74,30 @@ domain_a_records = {
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.100",
+    },
+    {
+      "name" : "t1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "t2",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "hubbk",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.54",
+    },
+    {
+      "name" : "whoami",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.51",
     },
   ],
 }
@@ -138,10 +162,6 @@ domain_alias_records = {
       "type" : "A",
     },
     {
-      "name" : "t1",
-      "type" : "A",
-    },
-    {
       "name" : "portainereks",
       "type" : "A",
     },
@@ -195,6 +215,42 @@ domain_alias_records = {
     },
     {
       "name" : "awsapi",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-admin-api",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-admin",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-proxy",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-guide",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-gamelobby-simulator",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-resul",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-ap",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-auth",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-game",
       "type" : "A",
     },
   ],
