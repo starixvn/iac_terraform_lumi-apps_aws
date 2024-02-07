@@ -28,3 +28,11 @@ proxy_gw_vm = [
 ]
 mon_server_configuration = []
 web_server_configuration = []
+ansbile_server_configuration = [
+  {
+    "application_name" : "ansible-01",
+    "private_ip" : "10.88.55.107",
+  },
+]
+ansible_server_configuration = []
+registry_server_configuration = []

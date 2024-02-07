@@ -224,8 +224,8 @@ eks_managed_node_groups = {
       EOT
   },
   ############## SENTRY
-  "vn-lumi-uat-eks-sp7" = {
-    name            = "vn-lumi-uat-eks-sp7"
+  "vn-lumi-uat-eks-sp8" = {
+    name            = "vn-lumi-uat-eks-sp8"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
@@ -242,9 +242,9 @@ eks_managed_node_groups = {
     instance_types = [
 #      "c5a.xlarge",
 #      "c5.xlarge",
-      "t3.xlarge",
+#      "t3.xlarge",
       "t3.2xlarge",
-      "t3a.xlarge",
+#      "t3a.xlarge",
       "t3a.2xlarge"
     ]
     block_device_mappings = {
