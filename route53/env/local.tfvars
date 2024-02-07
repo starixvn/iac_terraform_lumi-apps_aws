@@ -253,6 +253,51 @@ domain_alias_records = {
       "name" : "gn-game",
       "type" : "A",
     },
+    {
+      "name" : "auth",
+      "type" : "A",
+    },
+    {
+      "name" : "api",
+      "type" : "A",
+    },
+    {
+      "name" : "admin",
+      "type" : "A",
+    },
+    {
+      "name" : "admin-api",
+      "type" : "A",
+    },
+    {
+      "name" : "gamelobby-simulator",
+      "type" : "A",
+    },
+    {
+      "name" : "owapi-simulator",
+      "type" : "A",
+    },
+    {
+      "name" : "result",
+      "type" : "A",
+    },
+    {
+      "name" : "l1-gw",
+      "type" : "A",
+    },
+    {
+      "name" : "l1-guide",
+      "type" : "A",
+    },
+    {
+      "name" : "notification-bot",
+      "type" : "A",
+    },
+    {
+      "name" : "l1-proxy",
+      "type" : "A",
+    },
+    
   ],
   /*"staging.lumigame.com" = [
     {
