@@ -377,6 +377,10 @@ domain_alias_records = {
       "name" : "l1-proxy",
       "type" : "A",
     },
+    {
+      "name" : "l1-client",
+      "type" : "A",
+    },
     
   ],
   "luminetsoft.com" = [
@@ -507,6 +511,10 @@ domain_alias_records = {
     },
     {
       "name" : "l1-proxy",
+      "type" : "A",
+    },
+    {
+      "name" : "l1-client",
       "type" : "A",
     },
     
