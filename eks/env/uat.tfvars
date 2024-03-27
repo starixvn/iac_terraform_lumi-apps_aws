@@ -86,10 +86,13 @@ eks_managed_node_groups = {
             "luminet-app" = "yes",
             "sc1-games" = "yes"
             "sc2-games" = "yes"
+            "gn-games" = "yes"
             "sc1-api" = "yes"
             "sc2-api" = "yes"
+            "gn-api" = "yes"
             "sc1-games-backend" = "yes"
             "sc2-games-backend" = "yes"
+            "gn-games-backend" = "yes"
             "nexops" = "yes"
           }
 
@@ -160,10 +163,13 @@ eks_managed_node_groups = {
             "luminet-app" = "yes",
             "sc1-games" = "yes"
             "sc2-games" = "yes"
+            "gn-games" = "yes"
             "sc1-api" = "yes"
             "sc2-api" = "yes"
+            "gn-api" = "yes"
             "sc1-games-backend" = "yes"
             "sc2-games-backend" = "yes"
+            "gn-games-backend" = "yes"
             "nexops" = "yes"
           }
 
