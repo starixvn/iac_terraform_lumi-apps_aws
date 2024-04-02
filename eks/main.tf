@@ -1,5 +1,5 @@
 module "ebs_csi_irsa_role" {
-  source = "gitlab.nexdev.net/iac-terraform/aws-iam/aws//modules/iam-role-for-service-accounts-eks"
+  source = "gitlab.nexdev.net/iac/aws-iam/aws//modules/iam-role-for-service-accounts-eks"
   version = "5.17.1"
   role_name             = "${local.cluster_name}-ebs-csi"
   attach_ebs_csi_policy = true
@@ -13,7 +13,7 @@ module "ebs_csi_irsa_role" {
 }
 # create EKS cluster
 module "cluster" {
-  source = "gitlab.nexdev.net/iac-terraform/aws-eks/aws"
+  source = "gitlab.nexdev.net/iac/aws-eks/aws"
   version = "19.15.3"
 
   cluster_name                    = lower("${var.team}-${var.environment}-eks")
