@@ -86,10 +86,13 @@ eks_managed_node_groups = {
             "luminet-app" = "yes",
             "sc1-games" = "yes"
             "sc2-games" = "yes"
+            "gn-games" = "yes"
             "sc1-api" = "yes"
             "sc2-api" = "yes"
+            "gn-api" = "yes"
             "sc1-games-backend" = "yes"
             "sc2-games-backend" = "yes"
+            "gn-games-backend" = "yes"
             "nexops" = "yes"
           }
 
@@ -160,10 +163,13 @@ eks_managed_node_groups = {
             "luminet-app" = "yes",
             "sc1-games" = "yes"
             "sc2-games" = "yes"
+            "gn-games" = "yes"
             "sc1-api" = "yes"
             "sc2-api" = "yes"
+            "gn-api" = "yes"
             "sc1-games-backend" = "yes"
             "sc2-games-backend" = "yes"
+            "gn-games-backend" = "yes"
             "nexops" = "yes"
           }
 
@@ -224,6 +230,7 @@ eks_managed_node_groups = {
       EOT
   },
   ############## SENTRY
+  /*
   "vn-lumi-uat-eks-sp8" = {
     name            = "vn-lumi-uat-eks-sp8"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
@@ -240,11 +247,7 @@ eks_managed_node_groups = {
     max_size     = 1
     desired_size = 1
     instance_types = [
-#      "c5a.xlarge",
-#      "c5.xlarge",
-#      "t3.xlarge",
       "t3.2xlarge",
-#      "t3a.xlarge",
       "t3a.2xlarge"
     ]
     block_device_mappings = {
@@ -296,6 +299,7 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
+  */
 }
 
 ###############

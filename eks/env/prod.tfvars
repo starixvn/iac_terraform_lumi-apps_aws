@@ -180,6 +180,7 @@ eks_managed_node_groups = {
             "luminet-app" = "yes",
             "sc1-games" = "yes"
             "sc2-games" = "yes"
+            "gn-games" = "yes"
             "nexops" = "yes"
           }
 
@@ -232,6 +233,7 @@ eks_managed_node_groups = {
             "luminet-app" = "yes",
             "sc1-games" = "yes"
             "sc2-games" = "yes"
+            "gn-games" = "yes"
             "nexops" = "yes"
           }
 

@@ -1,6 +1,6 @@
 /* Proxy GW */
 module "proxy_gw_linux" {
-  source                 = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
+  source                 = "gitlab.nexdev.net/iac/ec2-instance/aws"
   version                = "5.2.1"
   for_each               = { for server in local.proxy_gw_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
@@ -43,7 +43,7 @@ module "proxy_gw_linux" {
 }
 
 module "private_app_linux" {
-  source                 = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
+  source                 = "gitlab.nexdev.net/iac/ec2-instance/aws"
   version                = "5.2.1"
   for_each               = { for server in local.apps_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
@@ -86,7 +86,7 @@ module "private_app_linux" {
 }
 
 module "private_zabbix_linux" {
-  source                 = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
+  source                 = "gitlab.nexdev.net/iac/ec2-instance/aws"
   version                = "5.2.1"
   for_each               = { for server in local.monitor_instances : server.instance_name => server }
   instance_type          = each.value.instance_type
