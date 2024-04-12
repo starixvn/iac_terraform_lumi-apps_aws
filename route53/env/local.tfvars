@@ -381,7 +381,18 @@ domain_alias_records = {
       "name" : "l1-client",
       "type" : "A",
     },
-    
+    {
+      "name" : "gn-game-1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-game-2",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-game-3",
+      "type" : "A",
+    },
   ],
   "luminetsoft.com" = [
     {
@@ -517,7 +528,18 @@ domain_alias_records = {
       "name" : "l1-client",
       "type" : "A",
     },
-    
+    {
+      "name" : "gn-game-1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-game-2",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-game-3",
+      "type" : "A",
+    },
   ],
   /*"staging.lumigame.com" = [
     {
