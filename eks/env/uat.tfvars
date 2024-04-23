@@ -141,7 +141,7 @@ eks_managed_node_groups = {
           max_size     = "1" # Retains current max size
           desired_size = 0
           time_zone    = "Asia/Bangkok"
-          recurrence   = "00 19 * * MON-FRI"
+          recurrence   = "00 20 * * MON-FRI"
         }
       }
     pre_bootstrap_user_data = <<-EOT
@@ -218,7 +218,7 @@ eks_managed_node_groups = {
           max_size     = "1" # Retains current max size
           desired_size = 0
           time_zone    = "Asia/Bangkok"
-          recurrence   = "00 19 * * MON-FRI"
+          recurrence   = "00 20 * * MON-FRI"
         }
       }
     pre_bootstrap_user_data = <<-EOT
