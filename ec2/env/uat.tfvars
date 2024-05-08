@@ -131,7 +131,7 @@ apps_vm = [
   {
     "application_name" : "dr-db01",
     "instance_type" : "m6g.medium	",
-    "ami" : "ubuntu22arm",
+    "ami" : "ubuntu22arm64",
     "volume_type" : "gp3",
     "volume_size" : "20",
     "subnet_id" : "subnet-0ae72c2068513e76b",
