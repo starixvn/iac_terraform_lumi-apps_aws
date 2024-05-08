@@ -44,6 +44,11 @@ module "internal_proxy_gw_v1" {
       protocol           = "TCP"
       target_group_index = 5
     },
+    {
+      port               = 8885
+      protocol           = "TCP"
+      target_group_index = 6
+    },
   ]
 
   # Target Groups
@@ -179,6 +184,27 @@ module "internal_proxy_gw_v1" {
         server.instance_name => {
           target_id = server.private_ip
           port      = 8081
+        }
+      }
+    },
+    {
+      name                 = lower("${var.team}-${var.environment}-dr-8885-v1")
+      backend_protocol     = "TCP"
+      backend_port         = 8885
+      target_type          = "ip"
+      health_check = {
+        protocol            = "TCP"
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        interval            = 5
+        timeout             = 3
+      }
+      # Target Group - Targets
+      targets = {
+        for server in local.apps_serverconfig :
+        server.instance_name => {
+          target_id = server.private_ip
+          port      = 80
         }
       }
     },
