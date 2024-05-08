@@ -119,7 +119,7 @@ apps_vm = [
   },
   */
   {
-    "application_name" : "dr-01",
+    "application_name" : "dr-app01",
     "instance_type" : "t3a.large",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
@@ -129,9 +129,9 @@ apps_vm = [
     "tag" : "stopoutofworking"
   },
   {
-    "application_name" : "dbdr-01",
+    "application_name" : "dr-db01",
     "instance_type" : "m6g.medium	",
-    "ami" : "ubuntu22",
+    "ami" : "ubuntu22arm",
     "volume_type" : "gp3",
     "volume_size" : "20",
     "subnet_id" : "subnet-0ae72c2068513e76b",
