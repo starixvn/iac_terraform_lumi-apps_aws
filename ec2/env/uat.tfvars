@@ -121,7 +121,7 @@ apps_vm = [
   {
     "application_name" : "dr-app01",
     "instance_type" : "t3a.large",
-    "ami" : "ubuntu22",
+    "ami" : "ubuntu22vn",
     "volume_type" : "gp3",
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",

@@ -32,7 +32,7 @@ locals {
     "ubuntu22" : { owner : "amazon", filter : "*ubuntu-jammy-22.04-amd64-server-20230728" },
     "ubuntu22vn" : { owner : "014999276089", filter : "*asura-VNTeam" },
     "ubuntu22arm" : { owner : "amazon", filter : "*ubuntu-jammy-22.04-arm64-minimal-20231030" },
-    "ubuntu22arm64" : { owner : "amazon", filter : "*ubuntu-jammy-22.04-arm64-server-20230919" },
+    "ubuntu22arm64" : { owner : "099720109477", filter : "*ubuntu-jammy-22.04-arm64-server-20230919" },
     "windows2019" : { owner : "amazon", filter : "Windows_Server-2019-English-Full-Base*" },
     "windows2022" : { owner : "amazon", filter : "Windows_Server-2022-English-Full-Base*" },
   }
