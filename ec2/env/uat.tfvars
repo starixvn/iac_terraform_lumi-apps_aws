@@ -129,26 +129,6 @@ apps_vm = [
     "tag" : "stopoutofworking"
   },
   {
-    "application_name" : "dr-app02",
-    "instance_type" : "t3a.small",
-    "ami" : "ubuntu22vn",
-    "volume_type" : "gp3",
-    "volume_size" : "40",
-    "subnet_id" : "subnet-0ae72c2068513e76b",
-    "private_ip" : "10.88.127.159",
-    "tag" : "stopoutofworking"
-  },
-  {
-    "application_name" : "dr-app03",
-    "instance_type" : "t3a.small",
-    "ami" : "ubuntu22vn",
-    "volume_type" : "gp3",
-    "volume_size" : "40",
-    "subnet_id" : "subnet-0ae72c2068513e76b",
-    "private_ip" : "10.88.127.160",
-    "tag" : "stopoutofworking"
-  },
-  {
     "application_name" : "dr-db01",
     "instance_type" : "m6g.medium",
     "ami" : "ubuntu22arm64",
