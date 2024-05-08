@@ -130,7 +130,7 @@ apps_vm = [
   },
   {
     "application_name" : "dr-db01",
-    "instance_type" : "m6g.medium	",
+    "instance_type" : "m6g.medium",
     "ami" : "ubuntu22arm64",
     "volume_type" : "gp3",
     "volume_size" : "20",
