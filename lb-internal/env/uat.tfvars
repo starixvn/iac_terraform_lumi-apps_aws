@@ -27,7 +27,12 @@ proxy_gw_vm = [
   },
 ]
 
-web_server_configuration = []
+web_server_configuration = [
+  {
+    "application_name" : "swarm-01",
+    "private_ip" : "10.88.127.157",
+  },
+]
 mon_server_configuration = [
   {
     "application_name" : "zabbix-01",

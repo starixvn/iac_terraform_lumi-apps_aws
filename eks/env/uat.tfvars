@@ -103,13 +103,12 @@ eks_managed_node_groups = {
     instance_types = [
       "t3a.large",
       "t3.large",
-      "t2.large",
     ]
     block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 40
+            volume_size           = 60
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
@@ -134,7 +133,7 @@ eks_managed_node_groups = {
           max_size     = "1" # Retains current max size
           desired_size = 1
           time_zone    = "Asia/Bangkok"
-          recurrence   = "10 08 * * MON-FRI"
+          recurrence   = "30 07 * * MON-FRI"
         },
         scale-down = {
           min_size     = 0
@@ -180,13 +179,12 @@ eks_managed_node_groups = {
     instance_types = [
       "t3a.large",
       "t3.large",
-      "t2.large",
     ]
     block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 40
+            volume_size           = 60
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 150
@@ -211,7 +209,7 @@ eks_managed_node_groups = {
           max_size     = "1" # Retains current max size
           desired_size = 1
           time_zone    = "Asia/Bangkok"
-          recurrence   = "10 08 * * MON-FRI"
+          recurrence   = "30 07 * * MON-FRI"
         },
         scale-down = {
           min_size     = 0
@@ -229,6 +227,7 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
+  
   ############## SENTRY
   /*
   "vn-lumi-uat-eks-sp8" = {

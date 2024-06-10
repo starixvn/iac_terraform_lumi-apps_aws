@@ -55,6 +55,7 @@ monitor_vm = [
 ]
 
 apps_vm = [
+  /*
   {
     "application_name" : "dbuat-01",
     "instance_type" : "t4g.micro",
@@ -114,6 +115,27 @@ apps_vm = [
     "volume_size" : "40",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.156",
+    "tag" : "stopoutofworking"
+  },
+  */
+  {
+    "application_name" : "dr-app01",
+    "instance_type" : "t3a.large",
+    "ami" : "ubuntu22vn",
+    "volume_type" : "gp3",
+    "volume_size" : "40",
+    "subnet_id" : "subnet-0ae72c2068513e76b",
+    "private_ip" : "10.88.127.157",
+    "tag" : "stopoutofworking"
+  },
+  {
+    "application_name" : "dr-db01",
+    "instance_type" : "m6g.medium",
+    "ami" : "ubuntu22arm64",
+    "volume_type" : "gp3",
+    "volume_size" : "20",
+    "subnet_id" : "subnet-0ae72c2068513e76b",
+    "private_ip" : "10.88.127.158",
     "tag" : "stopoutofworking"
   },
 ]
