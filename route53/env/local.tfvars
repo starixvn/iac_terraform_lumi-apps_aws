@@ -105,6 +105,13 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "202.78.231.51",
     },
+    {
+      "name" : "gitgd",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
+
   ],
   "luminetsoft.com" = [
     {
