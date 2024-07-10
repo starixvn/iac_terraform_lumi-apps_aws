@@ -117,6 +117,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "vault",
+      "type" : "A",
+      "ttl" : "300",
+      "record" : "10.10.50.121",
+    },
 
   ],
   "luminetsoft.com" = [
