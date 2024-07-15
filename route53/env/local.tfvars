@@ -123,7 +123,12 @@ domain_a_records = {
       "ttl" : "300",
       "record" : "10.10.50.121",
     },
-
+    {
+      "name" : "hub-k3s",
+      "type" : "A",
+      "ttl" : "300",
+      "record" : "10.10.50.121",
+    },
   ],
   "luminetsoft.com" = [
     {
