@@ -123,7 +123,18 @@ domain_a_records = {
       "ttl" : "300",
       "record" : "10.10.50.121",
     },
-
+    {
+      "name" : "hub-k3s",
+      "type" : "A",
+      "ttl" : "300",
+      "record" : "10.10.50.121",
+    },
+    {
+      "name" : "logs",
+      "type" : "A",
+      "ttl" : "300",
+      "record" : "10.10.50.121",
+    },
   ],
   "luminetsoft.com" = [
     {
@@ -288,10 +299,6 @@ domain_alias_records = {
     },
     {
       "name" : "l1-services",
-      "type" : "A",
-    },
-    {
-      "name" : "logs",
       "type" : "A",
     },
     {
