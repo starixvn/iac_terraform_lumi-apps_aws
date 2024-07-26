@@ -109,13 +109,13 @@ domain_a_records = {
       "name" : "argocd2",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.121",
+      "record" : "10.10.50.69",
     },
     {
       "name" : "npm",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.121",
+      "record" : "10.10.50.69",
     },
 
     {
