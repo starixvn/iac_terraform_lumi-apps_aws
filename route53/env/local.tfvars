@@ -109,13 +109,19 @@ domain_a_records = {
       "name" : "argocd2",
       "type" : "A",
       "ttl" : "3600",
+      "record" : "127.0.0.1",
+    },
+    {
+      "name" : "argocd",
+      "type" : "A",
+      "ttl" : "3600",
       "record" : "10.10.50.121",
     },
     {
       "name" : "npm",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.121",
+      "record" : "10.10.50.69",
     },
 
     {
@@ -326,10 +332,10 @@ domain_alias_records = {
       "name" : "l1-services",
       "type" : "A",
     },
-    {
-      "name" : "argocd",
-      "type" : "A",
-    },
+    # {
+    #   "name" : "argocd",
+    #   "type" : "A",
+    # },
     {
       "name" : "jaeger-collector-eks",
       "type" : "A",
