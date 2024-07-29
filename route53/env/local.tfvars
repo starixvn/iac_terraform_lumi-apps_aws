@@ -154,6 +154,18 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "longhorn",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
+    {
+      "name" : "longhorn-sc",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
   ],
   "luminetsoft.com" = [
     {
