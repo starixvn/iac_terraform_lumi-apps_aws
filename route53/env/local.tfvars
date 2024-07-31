@@ -123,7 +123,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.69",
     },
-
+    {
+      "name" : "npm-k3s",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50..121",
+    },
     {
       "name" : "vault",
       "type" : "A",
