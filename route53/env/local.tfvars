@@ -166,6 +166,18 @@ domain_a_records = {
       "record" : "10.10.50.121",
     },
     {
+      "name" : "minio-lumprod",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
+    {
+      "name" : "minio-lumprod-api",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
+    {
       "name" : "longhorn-sc",
       "type" : "A",
       "ttl" : "3600",
