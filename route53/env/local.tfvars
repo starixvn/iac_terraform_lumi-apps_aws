@@ -121,7 +121,7 @@ domain_a_records = {
       "name" : "npm",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.69",
+      "record" : "10.10.50.121",
     },
     {
       "name" : "npm-k3s",
