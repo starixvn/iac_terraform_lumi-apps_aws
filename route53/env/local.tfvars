@@ -189,6 +189,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "hub-bk",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
   ],
   "luminetsoft.com" = [
     {
