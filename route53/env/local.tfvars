@@ -196,12 +196,6 @@ domain_a_records = {
       "record" : "10.10.50.121",
     },
     {
-      "name" : "hub-bk",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.121",
-    },
-    {
       "name" : "jaeger-elasticsearch-k3s",
       "type" : "A",
       "ttl" : "3600",
