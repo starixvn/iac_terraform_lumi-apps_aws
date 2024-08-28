@@ -360,10 +360,6 @@ domain_alias_records = {
       "type" : "A",
     },
     {
-      "name" : "grafana",
-      "type" : "A",
-    },
-    {
       "name" : "eks-zabbix",
       "type" : "A",
     },
