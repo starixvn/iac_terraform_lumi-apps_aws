@@ -293,6 +293,24 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "npm",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.54",
+    },
+    {
+      "name" : "l1-proxy1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.52",
+    },
+    {
+      "name" : "l1-sedie-client-demo1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.52",
+    },
   ],
 }
 
