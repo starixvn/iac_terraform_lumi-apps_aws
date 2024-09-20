@@ -225,6 +225,19 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "202.78.231.52",
     },
+    {
+      "name" : "l1-glbs1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.52",
+    },
+    {
+      "name" : "l1-ows1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.52",
+    },
+
   ],
   "luminetsoft.com" = [
     {
