@@ -552,6 +552,10 @@ domain_alias_records = {
       "name" : "gn-auth1",
       "type" : "A",
     },
+    {
+      "name" : "gn-proxy1",
+      "type" : "A",
+    },
   ],
   "luminetsoft.com" = [
     {
