@@ -524,6 +524,34 @@ domain_alias_records = {
       "name" : "gn-game-3",
       "type" : "A",
     },
+    {
+      "name" : "gn-glbs1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-ows1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-result1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-api1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-admin-api1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-admin1",
+      "type" : "A",
+    },
+    {
+      "name" : "gn-auth1",
+      "type" : "A",
+    },
   ],
   "luminetsoft.com" = [
     {
