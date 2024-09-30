@@ -238,6 +238,13 @@ domain_a_records = {
       "record" : "202.78.231.52",
     },
 
+    {
+      "name" : "rocketchat",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
+
   ],
   "luminetsoft.com" = [
     {
