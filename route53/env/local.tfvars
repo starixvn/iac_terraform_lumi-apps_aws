@@ -237,7 +237,18 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "202.78.231.52",
     },
-
+    {
+      "name" : "gn-proxy",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.52",
+    },
+    {
+      "name" : "gn-core-client-demo",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "202.78.231.52",
+    },
     {
       "name" : "rocketchat",
       "type" : "A",
