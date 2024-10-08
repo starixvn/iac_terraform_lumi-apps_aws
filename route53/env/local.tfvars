@@ -468,10 +468,6 @@ domain_alias_records = {
       "type" : "A",
     },
     {
-      "name" : "gn-proxy",
-      "type" : "A",
-    },
-    {
       "name" : "gn-guide",
       "type" : "A",
     },
