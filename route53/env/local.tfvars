@@ -484,10 +484,6 @@ domain_alias_records = {
       "type" : "A",
     },
     {
-      "name" : "gn-gamelobby-simulator",
-      "type" : "A",
-    },
-    {
       "name" : "gn-resul",
       "type" : "A",
     },
