@@ -256,12 +256,6 @@ domain_a_records = {
       "record" : "202.78.231.34",
     },
     {
-      "name" : "gn-owapi-simulator",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
       "name" : "rocketchat",
       "type" : "A",
       "ttl" : "3600",
