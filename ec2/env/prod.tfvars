@@ -63,6 +63,16 @@ monitor_vm = [
     "private_ip" : "10.88.55.108",
     "tag" : "EC2"
   },
+  {
+    "application_name" : "registry-02",
+    "instance_type" : "t3a.small",
+    "ami" : "ubuntu22vn",
+    "volume_type" : "gp3",
+    "volume_size" : "50",
+    "subnet_id" : "subnet-0a8d5a1eef57bb185",
+    "private_ip" : "10.88.55.109",
+    "tag" : "EC2"
+  },
 ]
 ## Zone A: subnet-0a8d5a1eef57bb185 C: subnet-0cb97999f4cf68d03 D: subnet-0bbd3d3adba525a51
 apps_vm = [
