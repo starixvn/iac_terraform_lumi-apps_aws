@@ -47,10 +47,6 @@ ansible_server_configuration = [
 ]
 registry_server_configuration = [
   {
-    "application_name" : "registry-01",
-    "private_ip" : "10.88.55.108",
-  },
-  {
     "application_name" : "registry-02",
     "private_ip" : "10.88.55.109",
   },
