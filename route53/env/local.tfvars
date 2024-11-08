@@ -202,6 +202,12 @@ domain_a_records = {
       "record" : "10.10.50.121",
     },
     {
+      "name" : "jaeger",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
+    {
       "name" : "grafana",
       "type" : "A",
       "ttl" : "3600",
