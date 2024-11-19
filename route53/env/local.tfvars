@@ -172,22 +172,10 @@ domain_a_records = {
       "record" : "10.10.50.137",
     },
     {
-      "name" : "longhorn-sc",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
       "name" : "s3-api",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.137",
-    },
-    {
-      "name" : "longhorn-sc",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
     },
     {
       "name" : "hub-main",
