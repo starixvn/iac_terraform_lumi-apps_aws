@@ -172,12 +172,6 @@ domain_a_records = {
       "record" : "10.10.50.137",
     },
     {
-      "name" : "s3-api",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.137",
-    },
-    {
       "name" : "hub-main",
       "type" : "A",
       "ttl" : "3600",
