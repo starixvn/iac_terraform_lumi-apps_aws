@@ -291,12 +291,23 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.100",
     },
-
     {
       "name" : "gn-mini1",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.100",
+    },
+    {
+      "name" : "minio",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.137",
+    },
+    {
+      "name" : "minio-console",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.137",
     },
 
   ],
