@@ -55,7 +55,7 @@ monitor_vm = [
   },
   {
     "application_name" : "registry-02",
-    "instance_type" : "t3a.medium",
+    "instance_type" : "t3a.medium", ### Upgrade specs hub
     "ami" : "ubuntu22vn",
     "volume_type" : "gp3",
     "volume_size" : "50",
