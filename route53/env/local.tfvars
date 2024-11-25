@@ -283,13 +283,13 @@ domain_a_records = {
       "name" : "minio",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.137",
+      "record" : "10.10.50.121",
     },
     {
       "name" : "minio-console",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.137",
+      "record" : "10.10.50.121",
     },
 
   ],
