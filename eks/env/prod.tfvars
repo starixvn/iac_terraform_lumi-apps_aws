@@ -19,7 +19,7 @@ vpc_private_subnets = [
   "subnet-0bbd3d3adba525a51"
 ]
 autoscaling_average_cpu = 90
-cluster_version = "1.28"
+cluster_version = "1.29"
 eks_managed_node_groups = {
     ######## Monitor tools
     "vn-lumi-prod-eks-mon1" = {
