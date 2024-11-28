@@ -309,6 +309,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.100",
     },
+    {
+      "name" : "penpot",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
   ],
   "luminetsoft.com" = [
     {
