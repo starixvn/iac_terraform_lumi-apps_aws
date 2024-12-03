@@ -315,6 +315,66 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "sk-gamelobby-simulator",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-result",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-api",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-guide",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-game",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-owapi-simulator",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-auth",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-game-1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-game-2",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "sk-game-3",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
   ],
   "luminetsoft.com" = [
     {
