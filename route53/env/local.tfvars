@@ -400,13 +400,37 @@ domain_a_records = {
       "record" : "10.10.50.100",
     },
     {
-      "name" : "l1-game1",
+      "name" : "l1-games1",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.100",
     },
     {
       "name" : "l1-admin1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-mini1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-m1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-keno1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-gw1",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.100",
