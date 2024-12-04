@@ -375,6 +375,61 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.100",
     },
+    {
+      "name" : "l1-api1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-auth1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-glbs1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-ows1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-result1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-guide1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-game1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-admin1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-proxy1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+
   ],
   "luminetsoft.com" = [
     {
