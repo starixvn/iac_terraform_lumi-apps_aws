@@ -746,6 +746,10 @@ domain_alias_records = {
       "name" : "gn-proxy1",
       "type" : "A",
     },
+    {
+      "name" : "gn-guide1",
+      "type" : "A",
+    },
   ],
   "luminetsoft.com" = [
     {
