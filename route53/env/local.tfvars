@@ -223,7 +223,7 @@ domain_a_records = {
       "name" : "l1-sedie-client-demo1",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "202.78.231.52",
+      "record" : "202.78.231.34",
     },
     {
       "name" : "l1-glbs1",
@@ -431,6 +431,24 @@ domain_a_records = {
     },
     {
       "name" : "l1-gw1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-direct-game-client1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-connectsite1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
+    {
+      "name" : "l1-connectapi1",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.100",
