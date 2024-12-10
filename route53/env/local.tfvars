@@ -477,7 +477,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.100",
     },
-
+    {
+      "name" : "sk-guide1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.100",
+    },
   ],
   "luminetsoft.com" = [
     {
