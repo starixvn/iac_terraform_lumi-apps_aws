@@ -37,7 +37,7 @@ domain_a_records = {
       "name" : "deployapi-k8s",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "bots",
