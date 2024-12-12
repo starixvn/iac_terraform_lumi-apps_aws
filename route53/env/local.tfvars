@@ -687,24 +687,24 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "202.78.231.34",
     },
-    # {
-    #   "name" : "gn-api",
-    #   "type" : "A",
-    #   "ttl" : "3600",
-    #   "record" : "10.10.50.145",
-    # },
+    {
+      "name" : "gn-api",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
     {
       "name" : "gn-auth",
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.145",
     },
-    # {
-    #   "name" : "gn-result",
-    #   "type" : "A",
-    #   "ttl" : "3600",
-    #   "record" : "10.10.50.145",
-    # },
+    {
+      "name" : "gn-result",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
     {
       "name" : "gn-admin-api",
       "type" : "A",
@@ -944,14 +944,7 @@ domain_alias_records = {
       "name" : "awsapi",
       "type" : "A",
     },
-    {
-      "name" : "gn-resul",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-ap",
-      "type" : "A",
-    },
+
     {
       "name" : "gn-game",
       "type" : "A",
@@ -1045,14 +1038,6 @@ domain_alias_records = {
     },
     {
       "name" : "gn-gamelobby-simulator",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-resul",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-ap",
       "type" : "A",
     },
     {
