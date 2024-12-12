@@ -253,7 +253,7 @@ domain_a_records = {
       "name" : "gn-mini",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "gn-mini1",
@@ -277,7 +277,7 @@ domain_a_records = {
       "name" : "gn-mini-1",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "gn-mini-2",
@@ -319,13 +319,13 @@ domain_a_records = {
       "name" : "sk-guide",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "sk-game",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "sk-owapi-simulator",
@@ -343,7 +343,7 @@ domain_a_records = {
       "name" : "sk-game-1",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "sk-game-2",
@@ -373,7 +373,7 @@ domain_a_records = {
       "name" : "sk-guide1",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "admin",
@@ -777,7 +777,18 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.145",
     },
-
+    {
+      "name" : "gn-game-1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-game",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
   ],
   "luminetsoft.com" = [
     {
@@ -944,11 +955,6 @@ domain_alias_records = {
       "name" : "awsapi",
       "type" : "A",
     },
-
-    {
-      "name" : "gn-game",
-      "type" : "A",
-    },
     {
       "name" : "notification-bot",
       "type" : "A",
@@ -957,10 +963,7 @@ domain_alias_records = {
       "name" : "l1-client",
       "type" : "A",
     },
-    {
-      "name" : "gn-game-1",
-      "type" : "A",
-    },
+
     {
       "name" : "gn-game-2",
       "type" : "A",
