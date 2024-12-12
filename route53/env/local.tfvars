@@ -687,6 +687,96 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "202.78.231.34",
     },
+    {
+      "name" : "gn-api",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-auth",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-result",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-admin-api",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-admin",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-guide",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-api1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-ows1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-glbs1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-auth1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-proxy1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-admin-api1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-result1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-admin1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "gn-guide1",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
 
   ],
   "luminetsoft.com" = [
@@ -855,27 +945,11 @@ domain_alias_records = {
       "type" : "A",
     },
     {
-      "name" : "gn-admin-api",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-admin",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-guide",
-      "type" : "A",
-    },
-    {
       "name" : "gn-resul",
       "type" : "A",
     },
     {
       "name" : "gn-ap",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-auth",
       "type" : "A",
     },
     {
@@ -900,42 +974,6 @@ domain_alias_records = {
     },
     {
       "name" : "gn-game-3",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-glbs1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-ows1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-result1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-api1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-admin-api1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-admin1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-auth1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-proxy1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-guide1",
       "type" : "A",
     },
   ],
