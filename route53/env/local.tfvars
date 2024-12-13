@@ -367,7 +367,7 @@ domain_a_records = {
       "name" : "l1-direct-game-client1",
       "type" : "A",
       "ttl" : "3600",
-      "record" : "10.10.50.100",
+      "record" : "10.10.50.145",
     },
     {
       "name" : "sk-guide1",
