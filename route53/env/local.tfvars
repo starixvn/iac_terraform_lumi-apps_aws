@@ -532,6 +532,12 @@ domain_a_records = {
       "record" : "10.10.50.145",
     },
     {
+      "name" : "maintenance",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
       "name" : "l1-guide-1",
       "type" : "A",
       "ttl" : "3600",
