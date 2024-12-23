@@ -800,6 +800,7 @@ domain_a_records = {
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.145",
+    },
     {
       "name" : "ing-stat",
       "type" : "A",
@@ -811,7 +812,6 @@ domain_a_records = {
       "type" : "A",
       "ttl" : "3600",
       "record" : "10.10.50.121",
-    },
     },
   ],
   "luminetsoft.com" = [
