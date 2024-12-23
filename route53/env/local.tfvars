@@ -813,6 +813,12 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "d1aof1lwumql9k",
+      "type" : "CNAME",
+      "ttl" : "3600",
+      "record" : "d1aof1lwumql9k.cloudfront.net",
+    },
   ],
   "luminetsoft.com" = [
     {
