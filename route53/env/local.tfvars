@@ -881,6 +881,18 @@ domain_a_records = {
       "ttl" : "3600",
       "record" : "10.10.50.121",
     },
+    {
+      "name" : "ing-stat",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.145",
+    },
+    {
+      "name" : "vn-lu-ing-k3slocal",
+      "type" : "A",
+      "ttl" : "3600",
+      "record" : "10.10.50.121",
+    },
   ],
 }
 
