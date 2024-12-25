@@ -79,3 +79,14 @@ module "alias" {
   ]
 
 }
+
+
+######################################
+##  for Cluster A records
+module "cluster_records" {
+  source    = "gitlab.nexdev.net/iac/aws-route53/aws//modules/records"
+  version   = "2.10.2"
+  for_each  = { for idx, zone_records in local.cluster_records_by_zone : idx => zone_records }
+  zone_name = each.value.zone_name
+  records   = each.value.records
+}

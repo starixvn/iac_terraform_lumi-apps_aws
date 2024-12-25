@@ -44,4 +44,37 @@ locals {
       }
     ]
   ])
+  # Define Cluster Records
+  # cluster_records = flatten([
+  #   for zone, records in var.cluster_records : [
+  #     for record in records : {
+  #       # zone_id      = data.terraform_remote_state.route53_zone.outputs.route53_zone[domain].route53_zone_zone_id[domain]
+  #       zone_name    = zone
+  #       records = [
+
+  #       ]
+  #       record_name  = record.name
+  #       record_value = record.value
+  #       record_type  = try(record.type, "A")
+  #       record_ttl   = try(record.ttl, "3600")
+  #     }
+  #   ]
+  # ])
+
+
+  cluster_records_by_zone = flatten([
+    for zone, record_list in var.cluster_records : {
+      zone_name = zone
+      records = [
+        for record in record_list : {
+          name = record.name
+          type = try(record.typ, "A")
+          ttl  = try(record.ttl, "3600")
+          records = [
+            record.value,
+          ]
+        }
+      ]
+    }
+  ])
 }

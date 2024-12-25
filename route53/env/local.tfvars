@@ -19,6 +19,26 @@ domain_ns_records = [
   },*/
 ]
 
+cluster_records = {
+  "lumigame.com" = [
+    {
+      name  = "vn-sc-ing-lumprod",
+      value = "10.10.50.121",
+      desc  = "Kube Ingress K3S-LUMPROD"
+    },
+    {
+      name  = "vn-sc-ing-local",
+      value = "10.10.50.145",
+      desc  = "Kube Ingress K8S-SC-LOCAL"
+    },
+    {
+      name  = "vn-st-ing-backup",
+      value = "10.10.50.137",
+      desc  = "Kube Ingress K8S-ST-BACKUP"
+    }
+  ]
+}
+
 domain_a_records = {
   "lumigame.com" = [
     {

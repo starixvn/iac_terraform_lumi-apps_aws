@@ -52,3 +52,7 @@ variable "domain_ns_records" {
   description = "domain ns records"
   default     = [{}]
 }
+variable "cluster_records" {
+  description = "Records for Cluster VIP"
+  default     = [{}]
+}
