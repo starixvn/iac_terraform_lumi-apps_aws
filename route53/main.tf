@@ -90,3 +90,11 @@ module "cluster_records" {
   zone_name = each.value.zone_name
   records   = each.value.records
 }
+
+module "cluster_cname_records" {
+  source    = "gitlab.nexdev.net/iac/aws-route53/aws//modules/records"
+  version   = "2.10.2"
+  for_each  = { for idx, canonical in local.cluster_cname_records_by_zone : idx => canonical }
+  zone_name = each.value.zone_name
+  records   = each.value.records
+}

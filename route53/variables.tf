@@ -56,3 +56,7 @@ variable "cluster_records" {
   description = "Records for Cluster VIP"
   default     = [{}]
 }
+variable "cluster_cname_records" {
+  description = "Records CNAME for each Cluster VIP"
+  default     = [{}]
+}

@@ -44,24 +44,8 @@ locals {
       }
     ]
   ])
+
   # Define Cluster Records
-  # cluster_records = flatten([
-  #   for zone, records in var.cluster_records : [
-  #     for record in records : {
-  #       # zone_id      = data.terraform_remote_state.route53_zone.outputs.route53_zone[domain].route53_zone_zone_id[domain]
-  #       zone_name    = zone
-  #       records = [
-
-  #       ]
-  #       record_name  = record.name
-  #       record_value = record.value
-  #       record_type  = try(record.type, "A")
-  #       record_ttl   = try(record.ttl, "3600")
-  #     }
-  #   ]
-  # ])
-
-
   cluster_records_by_zone = flatten([
     for zone, record_list in var.cluster_records : {
       zone_name = zone
@@ -77,4 +61,42 @@ locals {
       ]
     }
   ])
+
+  # Define CNAME Cluster Records
+  cluster_cname_records_by_zone = flatten([
+    for zone, canonicals in var.cluster_cname_records : [
+      for canonical in canonicals : {
+        zone_name = zone
+        records = [
+          for sub in canonical.cname_records : {
+            name = sub
+            type = "CNAME"
+            ttl  = "3600"
+            records = [
+              canonical.canonical_name,
+            ]
+          }
+        ]
+      }
+    ]
+  ])
+
+  # cluster_cname_records_by_zone = flatten([
+  #   for zone, canonicals in var.cluster_cname_records : {
+  #     zone_name = zone
+  #     records = [
+  #       for canonical in canonicals : {
+  #         for sub in canonical.cname_records : {
+  #           name = sub
+  #           type = "CNAME"
+  #           ttl  = "3600"
+  #           records = [
+  #             canonical.canonical_name,
+  #           ]
+  #         }
+  #       }
+  #     ]
+  #   }
+  # ])
+
 }
