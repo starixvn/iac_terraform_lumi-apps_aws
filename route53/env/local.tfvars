@@ -19,32 +19,95 @@ domain_ns_records = [
   },*/
 ]
 
-cluster_records = {
+main_records = {
   "lumigame.com" = [
     {
-      name  = "vn-sc-ing-lumprod",
-      value = "10.10.50.121",
-      desc  = "Kube Ingress K3S-LUMPROD"
+      # Wildcard mapping
+      name   = "*",
+      values = ["10.10.50.69", ] #202.78.231.62
     },
     {
-      name  = "vn-sc-ing-local",
-      value = "10.10.50.145",
-      desc  = "Kube Ingress K8S-SC-LOCAL"
+      # Kube Ingress K3S-LUMPROD
+      name   = "vn-sc-ing-lumprod",
+      values = ["10.10.50.121", ]
     },
     {
-      name  = "vn-st-ing-backup",
-      value = "10.10.50.137",
-      desc  = "Kube Ingress K8S-ST-BACKUP"
+      # Kube Ingress K8S-SC-LOCAL
+      name   = "vn-sc-ing-local",
+      values = ["10.10.50.145", ]
+    },
+    {
+      # Kube Ingress K8S-ST-BACKUP
+      name   = "vn-st-ing-backup",
+      values = ["10.10.50.137", ]
+    },
+    {
+      # HAP CORE
+      name   = "vn-sc-hap-core",
+      values = ["10.10.50.100", ]
+    },
+
+    ###########################################
+    ############### WAN MAPPING ###############
+    {
+      # WAN LUMPROD
+      name   = "vn-sc-wan-lumprod",
+      values = ["202.78.231.54", ]
+    },
+    {
+      # WAN SWARM SC LOCAL
+      name   = "vn-sc-wan-swlocal",
+      values = ["202.78.231.51", ]
+    },
+    {
+      # WAN K8S SC LOCAL
+      name   = "vn-sc-wan-local",
+      values = ["202.78.231.34", ]
+    },
+
+    ###########################################
+    ############### EXT MAPPING ###############
+    {
+      name   = "minio-api",
+      values = ["10.10.50.128", ]
+    },
+    {
+      name   = "d1aof1lwumql9k",
+      type   = "CNAME"
+      values = ["d1aof1lwumql9k.cloudfront.net", ]
     }
   ]
+
   "luminetsoft.com" = [
     {
-      name  = "vn-sc-ing-lumprod",
-      value = "10.10.50.121",
-      desc  = "Kube Ingress K3S-LUMPROD"
+      # Wildcard mapping
+      name   = "*",
+      values = ["10.10.50.69", ] #202.78.231.62
     },
+    {
+      # Kube Ingress K3S-LUMPROD
+      name   = "vn-sc-ing-lumprod",
+      values = ["10.10.50.121", ]
+    },
+    {
+      # HAP CORE
+      name   = "vn-sc-hap-core",
+      values = ["10.10.50.100", ]
+    },
+
+    {
+      # WAN LUMPROD
+      name   = "vn-sc-wan-lumprod",
+      values = ["202.78.231.54", ]
+    },
+    {
+      # WAN SWARM SC LOCAL
+      name   = "vn-sc-wan-swlocal",
+      values = ["202.78.231.51", ]
+    }
   ]
 }
+
 
 cluster_cname_records = {
   "lumigame.com" = [
@@ -76,6 +139,7 @@ cluster_cname_records = {
       ]
     },
     {
+      # K8S SC LOCAL
       canonical_name = "vn-sc-ing-local.lumigame.com"
       cname_records = [
         "admin",
@@ -156,557 +220,166 @@ cluster_cname_records = {
         "sk-guide",
         "sk-guide1",
       ]
+    },
+    {
+      # K3S ST BACKUP
+      canonical_name = "vn-st-ing-backup.lumigame.com"
+      cname_records = [
+        "s3-api",
+      ]
+    },
+    {
+      # HAP CORE
+      canonical_name = "vn-sc-hap-core.lumigame.com"
+      cname_records = [
+        "gn-mini-2",
+        "gn-mini-3",
+        "gn-mini1",
+        "haproxy-gw",
+        "haproxy-k8s",
+        "l1-guide1",
+        "sk-api",
+        "sk-auth",
+        "sk-game-2",
+        "sk-game-3",
+        "sk-gamelobby-simulator",
+        "sk-owapi-simulator",
+        "sk-result",
+        "t1",
+        "t2",
+        "awsapi",
+        "deployapi-aws",
+        "deployapi-eks",
+        "echo",
+        "echo2",
+        "eks-ingress",
+        "eks-zabbix",
+        "es",
+        "gn-game-2",
+        "gn-game-3",
+        "haproxy",
+        "jaeger-collector-eks",
+        "l1-admin-api-public",
+        "l1-aws-game-api",
+        "l1-client",
+        "l1-history",
+        "l1-mongoexpress-aws",
+        "l1-services",
+        "notification-bot",
+        "portainereks",
+        "vn-zabbix",
+        "w1",
+        "w2",
+      ]
+    },
+
+    {
+      # WAN LUMPROD
+      canonical_name = "vn-sc-wan-lumprod.lumigame.com"
+      cname_records = [
+        "hub",
+        "hubbk",
+        "npm"
+      ]
+    },
+    {
+      # WAN SWARM SC LOCAL
+      canonical_name = "vn-sc-wan-swlocal.lumigame.com",
+      cname_records = [
+        "bots",
+        "chinese-poker",
+        "whoami",
+        "pusoy"
+      ]
+    },
+    {
+      # WAN K8S SC LOCAL
+      canonical_name = "vn-sc-wan-local.lumigame.com",
+      cname_records = [
+        "gn-core-client-demo",
+        "gn-gamelobby-simulator",
+        "gn-owapi-simulator",
+        "gn-proxy",
+        "l1-glbs1",
+        "l1-ows1",
+        "l1-proxy1",
+        "l1-sedie-client-demo1",
+      ]
     }
   ],
 
   "luminetsoft.com" = [
     {
+      # Kube Ingress K3S-LUMPROD
       canonical_name = "vn-sc-ing-lumprod.luminetsoft.com"
       cname_records = [
         "trivy",
         "portainer"
       ]
+    },
+    {
+      # HAP CORE
+      canonical_name = "vn-sc-hap-core.luminetsoft.com"
+      cname_records = [
+        "deployapi-k8s",
+        "haproxy-gw",
+        "haproxy-k8s",
+        "t1",
+        "t2",
+        "admin",
+        "admin-api",
+        "api",
+        "auth",
+        "awsapi",
+        "gamelobby-simulator",
+        "games",
+        "gn-admin",
+        "gn-admin-api",
+        "gn-auth",
+        "gn-game",
+        "gn-game-1",
+        "gn-game-2",
+        "gn-game-3",
+        "gn-gamelobby-simulator",
+        "gn-guide",
+        "gn-proxy",
+        "l1-admin-api-public",
+        "l1-appdownload",
+        "l1-aws-game-api",
+        "l1-client",
+        "l1-guide",
+        "l1-gw",
+        "l1-history",
+        "l1-info",
+        "l1-keno",
+        "l1-m",
+        "l1-mini",
+        "l1-mongoexpress-aws",
+        "l1-proxy",
+        "l1-services",
+        "notification-bot",
+        "owapi-simulator",
+        "result",
+      ]
+    },
+
+    {
+      # WAN LUMPROD
+      canonical_name = "vn-sc-wan-lumprod.luminetsoft.com",
+      cname_records = [
+        "hub",
+        "hubbk"
+      ]
+    },
+    {
+      # WAN SWARM SC LOCAL
+      canonical_name = "vn-sc-wan-swlocal.luminetsoft.com",
+      cname_records = [
+        "bots",
+        "chinese-poker",
+        "whoami"
+      ]
     }
   ]
-}
-
-domain_a_records = {
-  "lumigame.com" = [
-    {
-      "name" : "*",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.69", #202.78.231.62
-    },
-    {
-      "name" : "hub",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.54",
-    },
-    {
-      "name" : "bots",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-    {
-      "name" : "chinese-poker",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-    {
-      "name" : "haproxy-k8s",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "haproxy-gw",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "t1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "t2",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "hubbk",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.54",
-    },
-    {
-      "name" : "whoami",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-    {
-      "name" : "pusoy",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-    {
-      "name" : "argocd2",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "127.0.0.1",
-    },
-    {
-      "name" : "minio-api",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.128",
-    },
-    {
-      "name" : "s3-api",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.137",
-    },
-    {
-      "name" : "npm",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.54",
-    },
-    {
-      "name" : "l1-sedie-client-demo1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "gn-core-client-demo",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "gn-proxy",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "gn-gamelobby-simulator",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "gn-owapi-simulator",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "gn-mini1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "gn-mini-2",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "gn-mini-3",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-gamelobby-simulator",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-result",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-api",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-owapi-simulator",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-auth",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-game-2",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "sk-game-3",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "l1-guide1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "l1-proxy1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "l1-glbs1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "l1-ows1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.34",
-    },
-    {
-      "name" : "d1aof1lwumql9k",
-      "type" : "CNAME",
-      "ttl" : "3600",
-      "record" : "d1aof1lwumql9k.cloudfront.net",
-    },
-  ],
-  "luminetsoft.com" = [
-    {
-      "name" : "*",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.69", #202.78.231.62
-    },
-    {
-      "name" : "hub",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.54",
-    },
-    {
-      "name" : "deployapi-k8s",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "bots",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-    {
-      "name" : "chinese-poker",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-    {
-      "name" : "haproxy-k8s",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "haproxy-gw",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "t1",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "t2",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "10.10.50.100",
-    },
-    {
-      "name" : "hubbk",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.54",
-    },
-    {
-      "name" : "whoami",
-      "type" : "A",
-      "ttl" : "3600",
-      "record" : "202.78.231.51",
-    },
-  ],
-}
-
-
-domain_alias_records = {
-  "lumigame.com" = [
-    {
-      "name" : "w1",
-      "type" : "A",
-    },
-    {
-      "name" : "w2",
-      "type" : "A",
-    },
-    {
-      "name" : "echo",
-      "type" : "A",
-    },
-    {
-      "name" : "echo2",
-      "type" : "A",
-    },
-    {
-      "name" : "haproxy",
-      "type" : "A",
-    },
-    {
-      "name" : "deployapi-aws",
-      "type" : "A",
-    },
-    {
-      "name" : "eks-ingress",
-      "type" : "A",
-    },
-    {
-      "name" : "deployapi-eks",
-      "type" : "A",
-    },
-    {
-      "name" : "portainereks",
-      "type" : "A",
-    },
-    {
-      "name" : "eks-zabbix",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-history",
-      "type" : "A",
-    },
-    {
-      "name" : "vn-zabbix",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-admin-api-public",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-mongoexpress-aws",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-aws-game-api",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-services",
-      "type" : "A",
-    },
-    # {
-    #   "name" : "argocd",
-    #   "type" : "A",
-    # },
-    {
-      "name" : "jaeger-collector-eks",
-      "type" : "A",
-    },
-    {
-      "name" : "es",
-      "type" : "A",
-    },
-    {
-      "name" : "awsapi",
-      "type" : "A",
-    },
-    {
-      "name" : "notification-bot",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-client",
-      "type" : "A",
-    },
-
-    {
-      "name" : "gn-game-2",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-game-3",
-      "type" : "A",
-    },
-  ],
-  "luminetsoft.com" = [
-    {
-      "name" : "l1-appdownload",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-info",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-keno",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-m",
-      "type" : "A",
-    },
-    {
-      "name" : "games",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-mini",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-history",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-admin-api-public",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-mongoexpress-aws",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-aws-game-api",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-services",
-      "type" : "A",
-    },
-
-    {
-      "name" : "awsapi",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-admin-api",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-admin",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-proxy",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-guide",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-gamelobby-simulator",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-auth",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-game",
-      "type" : "A",
-    },
-    {
-      "name" : "auth",
-      "type" : "A",
-    },
-    {
-      "name" : "api",
-      "type" : "A",
-    },
-    {
-      "name" : "admin",
-      "type" : "A",
-    },
-    {
-      "name" : "admin-api",
-      "type" : "A",
-    },
-    {
-      "name" : "gamelobby-simulator",
-      "type" : "A",
-    },
-    {
-      "name" : "owapi-simulator",
-      "type" : "A",
-    },
-    {
-      "name" : "result",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-gw",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-guide",
-      "type" : "A",
-    },
-    {
-      "name" : "notification-bot",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-proxy",
-      "type" : "A",
-    },
-    {
-      "name" : "l1-client",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-game-1",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-game-2",
-      "type" : "A",
-    },
-    {
-      "name" : "gn-game-3",
-      "type" : "A",
-    },
-  ],
-  /*"staging.lumigame.com" = [
-    {
-        "name" : "w1",
-        "type" : "A",
-    },
-    {
-        "name" : "w2",
-        "type" : "A",
-    },
-    {
-        "name" : "w1-api",
-        "type" : "A",
-    },
-  ],
-  */
 }
 
