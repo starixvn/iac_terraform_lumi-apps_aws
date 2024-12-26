@@ -52,7 +52,7 @@ locals {
       records = [
         for record in record_list : {
           name    = record.name
-          type    = try(record.typ, "A")
+          type    = try(record.type, "A")
           ttl     = try(record.ttl, "3600")
           records = record.values
         }
