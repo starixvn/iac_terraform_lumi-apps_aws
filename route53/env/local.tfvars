@@ -112,7 +112,7 @@ main_records = {
 cluster_cname_records = {
   "lumigame.com" = [
     {
-      # K3S LUMPROD 
+      # 10.10.50.121 - K3S LUMPROD 
       canonical_name = "vn-sc-ing-lumprod.lumigame.com"
       cname_records = [
         "gitgd",
@@ -139,7 +139,7 @@ cluster_cname_records = {
       ]
     },
     {
-      # K8S SC LOCAL
+      # 10.10.50.145 - K8S SC LOCAL
       canonical_name = "vn-sc-ing-local.lumigame.com"
       cname_records = [
         "admin",
@@ -222,14 +222,14 @@ cluster_cname_records = {
       ]
     },
     {
-      # K3S ST BACKUP
+      # 10.10.50.137 - K3S ST BACKUP
       canonical_name = "vn-st-ing-backup.lumigame.com"
       cname_records = [
         "s3-api",
       ]
     },
     {
-      # HAP CORE
+      # 10.10.50.100 - HAP CORE
       canonical_name = "vn-sc-hap-core.lumigame.com"
       cname_records = [
         "gn-mini-2",
@@ -274,7 +274,7 @@ cluster_cname_records = {
     },
 
     {
-      # WAN LUMPROD
+      # 202.78.231.54 - WAN LUMPROD
       canonical_name = "vn-sc-wan-lumprod.lumigame.com"
       cname_records = [
         "hub",
@@ -283,7 +283,7 @@ cluster_cname_records = {
       ]
     },
     {
-      # WAN SWARM SC LOCAL
+      # 202.78.231.51 - WAN SWARM SC LOCAL
       canonical_name = "vn-sc-wan-swlocal.lumigame.com",
       cname_records = [
         "bots",
@@ -293,7 +293,7 @@ cluster_cname_records = {
       ]
     },
     {
-      # WAN K8S SC LOCAL
+      # 202.78.231.34 - WAN K8S SC LOCAL
       canonical_name = "vn-sc-wan-local.lumigame.com",
       cname_records = [
         "gn-core-client-demo",
@@ -310,7 +310,7 @@ cluster_cname_records = {
 
   "luminetsoft.com" = [
     {
-      # Kube Ingress K3S-LUMPROD
+      # 10.10.50.121 - Kube Ingress K3S-LUMPROD
       canonical_name = "vn-sc-ing-lumprod.luminetsoft.com"
       cname_records = [
         "trivy",
@@ -318,7 +318,7 @@ cluster_cname_records = {
       ]
     },
     {
-      # HAP CORE
+      # 10.10.50.100 - HAP CORE
       canonical_name = "vn-sc-hap-core.luminetsoft.com"
       cname_records = [
         "deployapi-k8s",
@@ -364,7 +364,7 @@ cluster_cname_records = {
     },
 
     {
-      # WAN LUMPROD
+      # 202.78.231.54 - WAN LUMPROD
       canonical_name = "vn-sc-wan-lumprod.luminetsoft.com",
       cname_records = [
         "hub",
@@ -372,7 +372,7 @@ cluster_cname_records = {
       ]
     },
     {
-      # WAN SWARM SC LOCAL
+      # 202.78.231.51 - WAN SWARM SC LOCAL
       canonical_name = "vn-sc-wan-swlocal.luminetsoft.com",
       cname_records = [
         "bots",
