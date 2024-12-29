@@ -46,6 +46,11 @@ main_records = {
       name   = "vn-sc-hap-core",
       values = ["10.10.50.100", ]
     },
+    {
+      # HAP SC LOCAL
+      name   = "vn-sc-hap-local",
+      values = ["10.10.50.69", ]
+    },
 
     ###########################################
     ############### WAN MAPPING ###############
@@ -93,6 +98,11 @@ main_records = {
       # HAP CORE
       name   = "vn-sc-hap-core",
       values = ["10.10.50.100", ]
+    },
+    {
+      # HAP SC LOCAL
+      name   = "vn-sc-hap-local",
+      values = ["10.10.50.69", ]
     },
 
     {
@@ -257,7 +267,6 @@ cluster_cname_records = {
         "es",
         "gn-game-2",
         "gn-game-3",
-        "haproxy",
         "jaeger-collector-eks",
         "l1-admin-api-public",
         "l1-aws-game-api",
@@ -270,6 +279,13 @@ cluster_cname_records = {
         "vn-zabbix",
         "w1",
         "w2",
+      ]
+    },
+    {
+      # 10.10.50.69 - HAP SC LOCAL
+      canonical_name = "vn-sc-hap-local.lumigame.com"
+      cname_records = [
+        "haproxy",
       ]
     },
 
