@@ -32,6 +32,11 @@ main_records = {
       values = ["10.10.50.121", ]
     },
     {
+      # Kube API K8S-SC-LOCAL
+      name   = "vn-sc-ing-local-api",
+      values = ["10.10.50.144", ]
+    },
+    {
       # Kube Ingress K8S-SC-LOCAL
       name   = "vn-sc-ing-local",
       values = ["10.10.50.145", ]
