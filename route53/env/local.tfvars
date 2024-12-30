@@ -27,6 +27,11 @@ main_records = {
       values = ["10.10.50.69", ] #202.78.231.62
     },
     {
+      # Kube API K3S-LUMPROD
+      name   = "vn-sc-ing-lumprod-api",
+      values = ["10.10.50.120", ]
+    },
+    {
       # Kube Ingress K3S-LUMPROD
       name   = "vn-sc-ing-lumprod",
       values = ["10.10.50.121", ]
@@ -40,6 +45,11 @@ main_records = {
       # Kube Ingress K8S-SC-LOCAL
       name   = "vn-sc-ing-local",
       values = ["10.10.50.145", ]
+    },
+    {
+      # Kube API K8S-ST-BACKUP
+      name   = "vn-st-ing-backup-api",
+      values = ["10.10.50.136", ]
     },
     {
       # Kube Ingress K8S-ST-BACKUP
