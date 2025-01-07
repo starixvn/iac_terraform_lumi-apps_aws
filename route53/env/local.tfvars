@@ -244,6 +244,15 @@ cluster_cname_records = {
         "sk-game-1",
         "sk-guide",
         "sk-guide1",
+        "hd-admin-api",
+        "hd-admin",
+        "hd-auth",
+        "hd-proxy",
+        "hd-guide",
+        "hd-glbs",
+        "hd-owapi-simulator",
+        "hd-result",
+        "hd-api",
       ]
     },
     {
