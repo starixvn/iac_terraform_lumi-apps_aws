@@ -253,6 +253,9 @@ cluster_cname_records = {
         "hd-owapi-simulator",
         "hd-result",
         "hd-api",
+        "l1-direct-game-client",
+        "l1-direct-game-client2",
+        "l1-direct-game-client3",
       ]
     },
     {
