@@ -256,6 +256,8 @@ cluster_cname_records = {
         "l1-direct-game-client",
         "l1-direct-game-client2",
         "l1-direct-game-client3",
+        "hd-lobby",
+        "hd-client",
       ]
     },
     {
