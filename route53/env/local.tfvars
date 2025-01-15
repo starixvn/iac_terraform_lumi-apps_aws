@@ -92,6 +92,10 @@ main_records = {
       values = ["10.10.50.128", ]
     },
     {
+      name   = "n8n",
+      values = ["10.10.50.128", ]
+    },
+    {
       name   = "d1aof1lwumql9k",
       type   = "CNAME"
       values = ["d1aof1lwumql9k.cloudfront.net", ]
