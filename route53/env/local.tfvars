@@ -263,6 +263,22 @@ cluster_cname_records = {
         "hd-lobby",
         "hd-client",
         "l1-game-perform",
+        "l2-api",
+        "l2-auth",
+        "l2-glbs",
+        "l2-ows",
+        "l2-result",
+        "l2-guide",
+        "l2-games",
+        "l2-admin",
+        "l2-admin-api",
+        "l2-gw",
+        "l2-proxy",
+        "l2-mini",
+        "l2-m",
+        "l2-keno",
+        "l2-info",
+        "l2-promotion"
       ]
     },
     {
