@@ -386,7 +386,6 @@ cluster_cname_records = {
       # 202.78.231.51 - WAN SWARM SC LOCAL
       canonical_name = "vn-sc-wan-swlocal.lumigame.com",
       cname_records = [
-        "bots",
         "chinese-poker",
         "whoami",
         "pusoy"
@@ -404,6 +403,9 @@ cluster_cname_records = {
         "l1-ows1",
         "l1-proxy1",
         "l1-sedie-client-demo1",
+        "bots",
+        "pusoy",
+
       ]
     }
   ],
