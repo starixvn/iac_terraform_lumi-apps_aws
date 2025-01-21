@@ -312,6 +312,7 @@ cluster_cname_records = {
         "l1-connectsite2",
         "l1-info2",
         "l1-appdownload2",
+        "l1-proxy2",
       ]
     },
     {
