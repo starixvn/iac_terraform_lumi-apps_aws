@@ -388,7 +388,6 @@ cluster_cname_records = {
       cname_records = [
         "chinese-poker",
         "whoami",
-        "pusoy"
       ]
     },
     {
