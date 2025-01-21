@@ -402,7 +402,6 @@ cluster_cname_records = {
         "l1-ows1",
         "l1-proxy1",
         "l1-sedie-client-demo1",
-        "bots",
         "pusoy",
 
       ]
