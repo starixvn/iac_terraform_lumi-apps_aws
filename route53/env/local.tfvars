@@ -403,7 +403,7 @@ cluster_cname_records = {
         "l1-proxy1",
         "l1-sedie-client-demo1",
         "pusoy",
-
+        "bots",
       ]
     }
   ],
