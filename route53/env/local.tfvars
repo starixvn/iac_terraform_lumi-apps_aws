@@ -165,6 +165,7 @@ cluster_cname_records = {
         "minio-console",
         "penpot",
         "vn-lu-ing-k3slocal",
+        "n8n-1",
       ]
     },
     {
