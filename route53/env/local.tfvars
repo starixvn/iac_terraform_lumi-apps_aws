@@ -313,6 +313,9 @@ cluster_cname_records = {
         "l1-info2",
         "l1-appdownload2",
         "l1-proxy2",
+        "l2-direct-game-client",
+        "l2-direct-game-client1",
+        "l2-direct-game-client2",
       ]
     },
     {
