@@ -332,7 +332,6 @@ cluster_cname_records = {
         "l2-keno2",
         "l2-info2",
         "l2-promotion2",
-        "l2-direct-game-client2",
       ]
     },
     {
