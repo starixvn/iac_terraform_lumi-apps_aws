@@ -357,7 +357,8 @@ cluster_cname_records = {
       canonical_name = "vn-sc-hap-local.lumigame.com"
       cname_records = [
         "haproxy",
-        "deploy"
+        "deploy",
+        "sentry"
       ]
     },
 
