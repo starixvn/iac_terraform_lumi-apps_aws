@@ -88,10 +88,6 @@ main_records = {
     ###########################################
     ############### EXT MAPPING ###############
     {
-      name   = "minio-api",
-      values = ["10.10.50.128", ]
-    },
-    {
       name   = "d1aof1lwumql9k",
       type   = "CNAME"
       values = ["d1aof1lwumql9k.cloudfront.net", ]
@@ -157,8 +153,6 @@ cluster_cname_records = {
         "jaeger",
         "grafana",
         "rocketchat",
-        "minio",
-        "minio-console",
         "penpot",
         "vn-lu-ing-k3slocal",
         "n8n",
