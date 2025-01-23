@@ -24,7 +24,7 @@ main_records = {
     {
       # Wildcard mapping
       name   = "*",
-      values = ["10.10.50.69", ] #202.78.231.62
+      values = ["10.10.50.145", ]
     },
     {
       # Kube API K3S-LUMPROD
@@ -98,7 +98,7 @@ main_records = {
     {
       # Wildcard mapping
       name   = "*",
-      values = ["10.10.50.69", ] #202.78.231.62
+      values = ["10.10.50.145", ]
     },
     {
       # Kube Ingress K3S-LUMPROD
