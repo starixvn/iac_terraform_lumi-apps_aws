@@ -199,7 +199,8 @@ cluster_cname_records = {
       cname_records = [
         "haproxy",
         "deploy",
-        "sentry"
+        "sentry",
+        "sonarqube"
       ]
     },
 
