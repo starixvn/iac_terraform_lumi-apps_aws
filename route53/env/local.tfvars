@@ -209,7 +209,8 @@ cluster_cname_records = {
       cname_records = [
         "hub",
         "hubbk",
-        "npm"
+        "npm",
+        "n8n"
       ]
     },
     {
