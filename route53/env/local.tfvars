@@ -155,6 +155,7 @@ cluster_cname_records = {
         "rocketchat",
         "penpot",
         "vn-lu-ing-k3slocal",
+        "openproject",
       ]
     },
     {
