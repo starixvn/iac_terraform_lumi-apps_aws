@@ -161,6 +161,7 @@ cluster_cname_records = {
         "penpot",
         "vn-lu-ing-k3slocal",
         "openproject",
+        "nui"
       ]
     },
     {
