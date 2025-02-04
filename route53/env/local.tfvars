@@ -91,6 +91,11 @@ main_records = {
       name   = "d1aof1lwumql9k",
       type   = "CNAME"
       values = ["d1aof1lwumql9k.cloudfront.net", ]
+    },
+    {
+      # Collect Autotest Report
+      name   = "test-reports",
+      values = ["10.10.50.160", ]
     }
   ]
 
