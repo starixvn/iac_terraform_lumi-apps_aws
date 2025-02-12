@@ -207,7 +207,8 @@ cluster_cname_records = {
         "haproxy",
         "deploy",
         "sentry",
-        "sonarqube"
+        "sonarqube",
+        "rocketor-api",
       ]
     },
 
