@@ -243,6 +243,7 @@ cluster_cname_records = {
         "l1-sedie-client-demo1",
         "pusoy",
         "bots",
+        "l1-admin1",
       ]
     }
   ],
