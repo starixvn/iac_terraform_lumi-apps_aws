@@ -96,7 +96,12 @@ main_records = {
       # Collect Autotest Report
       name   = "test-reports",
       values = ["10.10.50.160", ]
-    }
+    },
+    {
+      # NATS on LUMPROD
+      name   = "nats",
+      values = ["10.10.50.122", ]
+    },
   ]
 
   "luminetsoft.com" = [
@@ -162,7 +167,6 @@ cluster_cname_records = {
         "vn-lu-ing-k3slocal",
         "openproject",
         "nui",
-        "nats",
         "sentry-k8s", ## lumprod
       ]
     },
