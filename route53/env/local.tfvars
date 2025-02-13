@@ -162,6 +162,7 @@ cluster_cname_records = {
         "vn-lu-ing-k3slocal",
         "openproject",
         "nui",
+        "nats",
         "sentry-k8s", ## lumprod
       ]
     },
