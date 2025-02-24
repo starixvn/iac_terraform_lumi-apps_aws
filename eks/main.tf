@@ -14,7 +14,7 @@ module "ebs_csi_irsa_role" {
 # create EKS cluster
 module "cluster" {
   source = "gitlab.nexdev.net/iac/aws-eks/aws"
-  version = "19.15.3"
+  version = "19.21.0"
 
   cluster_name                    = lower("${var.team}-${var.environment}-eks")
   cluster_version                 = "${var.cluster_version}"
@@ -45,7 +45,7 @@ module "cluster" {
     }
     kube-proxy = {
       most_recent = true
-      addon_version = "v1.29.13-eksbuild.3"
+      addon_version = "v1.27.6-eksbuild.2"
     }
     vpc-cni = {
       resolve_conflicts = "OVERWRITE"
