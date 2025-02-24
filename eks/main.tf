@@ -45,7 +45,7 @@ module "cluster" {
     }
     kube-proxy = {
       most_recent = true
-      addon_version = "v1.27.6-eksbuild.2"
+      addon_version = "v1.29.13-eksbuild.3"
     }
     vpc-cni = {
       resolve_conflicts = "OVERWRITE"
