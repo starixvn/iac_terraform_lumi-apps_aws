@@ -167,7 +167,8 @@ cluster_cname_records = {
         "vn-lu-ing-k3slocal",
         "openproject",
         "nui",
-        "sentry-k8s", ## lumprod
+        "sentry-k8s",
+        "rancher",
       ]
     },
     {
