@@ -215,6 +215,7 @@ cluster_cname_records = {
         "sentry",
         "sonarqube",
         "rocketor-api",
+        "plane",
       ]
     },
 
