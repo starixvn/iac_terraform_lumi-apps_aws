@@ -40,17 +40,17 @@ module "cluster" {
   cluster_addons = {
     coredns = {
       #most_recent = true
-      addon_version = "v1.10.1-eksbuild.5"
+      addon_version = "v1.11.4-eksbuild.2" #"v1.10.1-eksbuild.5"
       resolve_conflicts = "OVERWRITE"
     }
     kube-proxy = {
       most_recent = true
-      addon_version = "v1.27.6-eksbuild.2"
+      addon_version = "v1.30.9-eksbuild.3" #"v1.27.6-eksbuild.2"
     }
     vpc-cni = {
       resolve_conflicts = "OVERWRITE"
       most_recent              = true
-      addon_version = "v1.15.3-eksbuild.1"
+      addon_version = "v1.19.2-eksbuild.5" #"v1.15.3-eksbuild.1"
       before_compute           = true
       configuration_values = jsonencode({
         env = {
