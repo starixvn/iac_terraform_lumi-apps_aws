@@ -168,6 +168,7 @@ cluster_cname_records = {
         "openproject",
         "nui",
         "sentry-k8s",
+        "deployapi-k3s"
       ]
     },
     {
