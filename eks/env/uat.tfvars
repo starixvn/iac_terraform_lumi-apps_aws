@@ -93,6 +93,19 @@ eks_managed_node_groups = {
             "sc1-games-backend" = "yes"
             "sc2-games-backend" = "yes"
             "gn-games-backend" = "yes"
+            "sp-api" = "yes"
+            "sp-games" = "yes"
+            "sp-games-backend" = "yes"
+            "sk-api" = "yes"
+            "sk-games" = "yes"
+            "sk-games-backend" = "yes"
+            "tg-api" = "yes"
+            "tg-games" = "yes"
+            "tg-games-backend" = "yes"
+            "hd-api" = "yes"
+            "hd-games" = "yes"
+            "hd-games-backend" = "yes"
+            "node-role.kubernetes.io/web" = ""
             "nexops" = "yes"
           }
 
@@ -171,6 +184,19 @@ eks_managed_node_groups = {
             "sc1-games-backend" = "yes"
             "sc2-games-backend" = "yes"
             "gn-games-backend" = "yes"
+            "sp-api" = "yes"
+            "sp-games" = "yes"
+            "sp-games-backend" = "yes"
+            "sk-api" = "yes"
+            "sk-games" = "yes"
+            "sk-games-backend" = "yes"
+            "tg-api" = "yes"
+            "tg-games" = "yes"
+            "tg-games-backend" = "yes"
+            "hd-api" = "yes"
+            "hd-games" = "yes"
+            "hd-games-backend" = "yes"
+            "node-role.kubernetes.io/web" = ""
             "nexops" = "yes"
           }
 
@@ -314,5 +340,5 @@ spot_termination_handler_chart_namespace = "kube-system"
 ###############
 namespaces = ["haproxy","sample","nexops"]
 ###############
-admin_users     = ["tf.ken.nguyen", "tf.dennis.le", "tf.troy.vo"]
+admin_users     = ["tf.josh.tran","tf.ken.nguyen", "tf.dennis.le", "tf.troy.vo"]
 developer_users = ["dev1", "dev2"]
