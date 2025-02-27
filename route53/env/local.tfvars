@@ -262,7 +262,8 @@ cluster_cname_records = {
       canonical_name = "vn-sc-ing-lumprod.luminetsoft.com"
       cname_records = [
         "trivy",
-        "portainer"
+        "portainer",
+        "deployapi-k3s"
       ]
     },
     {
