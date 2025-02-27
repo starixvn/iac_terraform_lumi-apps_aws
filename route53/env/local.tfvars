@@ -169,6 +169,7 @@ cluster_cname_records = {
         "nui",
         "sentry-k8s",
         "rancher",
+        "rancher-z",
       ]
     },
     {
