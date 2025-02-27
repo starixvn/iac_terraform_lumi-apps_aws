@@ -168,8 +168,6 @@ cluster_cname_records = {
         "openproject",
         "nui",
         "sentry-k8s",
-        "rancher",
-        "rancher-z",
       ]
     },
     {
@@ -227,7 +225,8 @@ cluster_cname_records = {
         "hub",
         "hubbk",
         "npm",
-        "n8n"
+        "n8n",
+        "rancher",
       ]
     },
     {
