@@ -257,6 +257,97 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
+  "vn-lumi-uat-eks-sp3" = {
+    name            = "vn-lumi-uat-eks-sp3"
+    subnet_ids = ["subnet-0ae72c2068513e76b"]
+    use_custom_launch_template = true
+    iam_role_additional_policies = {
+      additional = "arn:aws:iam::014999276089:policy/lumi-uat-cloudwatch-policy-v1"
+    }
+    labels = {
+            "luminet-app" = "yes",
+            "sc1-games" = "yes"
+            "sc2-games" = "yes"
+            "gn-games" = "yes"
+            "sc1-api" = "yes"
+            "sc2-api" = "yes"
+            "gn-api" = "yes"
+            "sc1-games-backend" = "yes"
+            "sc2-games-backend" = "yes"
+            "gn-games-backend" = "yes"
+            "sp-api" = "yes"
+            "sp-games" = "yes"
+            "sp-games-backend" = "yes"
+            "sk-api" = "yes"
+            "sk-games" = "yes"
+            "sk-games-backend" = "yes"
+            "tg-api" = "yes"
+            "tg-games" = "yes"
+            "tg-games-backend" = "yes"
+            "hd-api" = "yes"
+            "hd-games" = "yes"
+            "hd-games-backend" = "yes"
+            "node-role.kubernetes.io/web" = "true"
+            "nexops" = "yes"
+          }
+
+    ami_type     = "AL2_x86_64"
+    min_size     = 0
+    max_size     = 1
+    desired_size = 1
+    instance_types = [
+      "t3a.large",
+      "t3.large",
+      "t3.2xlarge",
+      "t3a.2xlarge"
+    ]
+    block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 60
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 150
+            delete_on_termination = true
+          }
+        }
+      }
+    capacity_type = "SPOT"
+    network_interfaces = [{
+      delete_on_termination       = true
+      associate_public_ip_address = false
+    }]
+    tag_specifications = [
+      "instance",
+      "volume",
+      "network-interface"
+    ]
+    ####
+    schedules = {
+        scale-up = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 1
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "30 07 * * MON-FRI"
+        },
+        scale-down = {
+          min_size     = 0
+          max_size     = "1" # Retains current max size
+          desired_size = 0
+          time_zone    = "Asia/Bangkok"
+          recurrence   = "00 20 * * MON-FRI"
+        }
+      }
+    pre_bootstrap_user_data = <<-EOT
+        #!/bin/bash
+        LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
+        REPLACEMENT="\ \ \ \ \ \ KUBELET_EXTRA_ARGS=\$(echo \$2 | sed -s -E 's/--max-pods=[0-9]+/--max-pods=200/g')"
+        sed -i '/KUBELET_EXTRA_ARGS=\$2/d' /etc/eks/bootstrap.sh
+        sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
+      EOT
+  },
   
   ############## SENTRY
   /*
