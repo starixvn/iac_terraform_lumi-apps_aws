@@ -348,7 +348,7 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
-  "vn-lumi-uat-eks-dm1" = {
+  /*"vn-lumi-uat-eks-dm1" = {
     name            = "vn-lumi-uat-eks-dm1"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
