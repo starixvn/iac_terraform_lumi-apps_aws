@@ -105,7 +105,6 @@ eks_managed_node_groups = {
             "hd-api" = "yes"
             "hd-games" = "yes"
             "hd-games-backend" = "yes"
-            "node-role.kubernetes.io/web" = "true"
             "nexops" = "yes"
           }
 
@@ -287,7 +286,6 @@ eks_managed_node_groups = {
             "hd-api" = "yes"
             "hd-games" = "yes"
             "hd-games-backend" = "yes"
-            "node-role.kubernetes.io/web" = "true"
             "nexops" = "yes"
           }
 
