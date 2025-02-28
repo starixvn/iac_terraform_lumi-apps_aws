@@ -106,6 +106,7 @@ eks_managed_node_groups = {
             "hd-games" = "yes"
             "hd-games-backend" = "yes"
             "nexops" = "yes"
+            "node-role.kubernetes.io/web" = "true"
           }
 
     ami_type     = "AL2_x86_64"
@@ -196,6 +197,7 @@ eks_managed_node_groups = {
             "hd-games" = "yes"
             "hd-games-backend" = "yes"
             "nexops" = "yes"
+            "node-role.kubernetes.io/web" = "true"
           }
 
     ami_type     = "AL2_x86_64"
@@ -286,6 +288,7 @@ eks_managed_node_groups = {
             "hd-games" = "yes"
             "hd-games-backend" = "yes"
             "nexops" = "yes"
+            "node-role.kubernetes.io/web" = "true"
           }
 
     ami_type     = "AL2_x86_64"
