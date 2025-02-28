@@ -75,8 +75,8 @@ eks_managed_node_groups = {
       EOT
   },
 ######## APP SPOT
-  "vn-lumi-uat-eks-sp1" = {
-    name            = "vn-lumi-uat-eks-sp1"
+  "vn-lumi-uat-eks-sp5" = {
+    name            = "vn-lumi-uat-eks-sp5"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
@@ -165,8 +165,8 @@ eks_managed_node_groups = {
         sed -i "$${LINE_NUMBER}i $${REPLACEMENT}" /etc/eks/bootstrap.sh
       EOT
   },
-  "vn-lumi-uat-eks-sp2" = {
-    name            = "vn-lumi-uat-eks-sp2"
+  "vn-lumi-uat-eks-sp4" = {
+    name            = "vn-lumi-uat-eks-sp4"
     subnet_ids = ["subnet-0ae72c2068513e76b"]
     use_custom_launch_template = true
     iam_role_additional_policies = {
@@ -195,7 +195,6 @@ eks_managed_node_groups = {
             "hd-api" = "yes"
             "hd-games" = "yes"
             "hd-games-backend" = "yes"
-            "node-role.kubernetes.io/web" = "true"
             "nexops" = "yes"
           }
 
