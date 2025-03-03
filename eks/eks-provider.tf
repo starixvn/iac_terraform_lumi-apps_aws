@@ -8,7 +8,7 @@ provider "kubernetes" {
     command     = "aws"
   }
 }
-
+/*
 provider "helm" {
   kubernetes {
     host                   = module.cluster.cluster_endpoint
@@ -20,3 +20,4 @@ provider "helm" {
     }
   }
 }
+*/
