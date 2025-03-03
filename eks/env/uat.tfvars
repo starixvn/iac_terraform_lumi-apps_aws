@@ -141,6 +141,9 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
+    schedules = {
+
+      }
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
@@ -215,6 +218,9 @@ eks_managed_node_groups = {
       "network-interface"
     ]
     ####
+    schedules = {
+
+      }
     pre_bootstrap_user_data = <<-EOT
         #!/bin/bash
         LINE_NUMBER=$(grep -n "KUBELET_EXTRA_ARGS=\$2" /etc/eks/bootstrap.sh | cut -f1 -d:)
