@@ -27,29 +27,14 @@ main_records = {
       values = ["10.10.50.145", ]
     },
     {
-      # Kube API K3S-LUMPROD
-      name   = "vn-sc-ing-lumprod-api",
-      values = ["10.10.50.120", ]
-    },
-    {
       # Kube Ingress K3S-LUMPROD
       name   = "vn-sc-ing-lumprod",
       values = ["10.10.50.121", ]
     },
     {
-      # Kube API K8S-SC-LOCAL
-      name   = "vn-sc-ing-local-api",
-      values = ["10.10.50.144", ]
-    },
-    {
       # Kube Ingress K8S-SC-LOCAL
       name   = "vn-sc-ing-local",
       values = ["10.10.50.145", ]
-    },
-    {
-      # Kube API K8S-ST-BACKUP
-      name   = "vn-st-ing-backup-api",
-      values = ["10.10.50.136", ]
     },
     {
       # Kube Ingress K8S-ST-BACKUP
@@ -169,7 +154,8 @@ cluster_cname_records = {
         "nui",
         "sentry-k8s",
         "deployapi-k3s",
-        "deploy-test"
+        "deploy-test",
+        "deploy",
       ]
     },
     {
@@ -212,7 +198,6 @@ cluster_cname_records = {
       canonical_name = "vn-sc-hap-local.lumigame.com"
       cname_records = [
         "haproxy",
-        "deploy",
         "sentry",
         "sonarqube",
         "rocketor-api",
