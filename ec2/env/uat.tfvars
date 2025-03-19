@@ -1,14 +1,14 @@
-project = "cloud"
-team = "Lumi"
-aws_region = "ap-northeast-1"
-environment = "uat"
-aws_profile = "uat-iac-terraform-ci"
-aws_region_bucket_remote_state = "spnk-terraform-remote-state-s3"
-aws_region_key_remote_state    = "spnk-terraform-akira-vpc.tfstate"
-aws_region_key_iam_remote_state = "spnk-terraform-asura-vpc-ec2-iam.tfstate"
+project                           = "cloud"
+team                              = "Lumi"
+aws_region                        = "ap-northeast-1"
+environment                       = "uat"
+aws_profile                       = "uat-iac-terraform-ci"
+aws_region_bucket_remote_state    = "spnk-terraform-remote-state-s3"
+aws_region_key_remote_state       = "spnk-terraform-akira-vpc.tfstate"
+aws_region_key_iam_remote_state   = "spnk-terraform-asura-vpc-ec2-iam.tfstate"
 aws_region_bucket_remote_state_vn = "cloud-lumi-starix-tf-ghost"
 aws_region_key_sg_remote_state_vn = "env:/uat/lumi-sg-tf.tfstate"
-vpc_id = "vpc-083b51ed3f83c5096"
+vpc_id                            = "vpc-083b51ed3f83c5096"
 # vpc_private_subnets = [
 #   "subnet-0ae72c2068513e76b", 10.88.112.0/20 (4k): 10.88.112.1->10.88.127.254
 #   "subnet-0ba2a5f74ec351acc", 10.88.128.0/20 (4k): 10.88.128.1->10.88.143.254
@@ -16,7 +16,7 @@ vpc_id = "vpc-083b51ed3f83c5096"
 # ]
 
 ##################  EC2
-public_key_location = "key/id_rsa.pub"
+public_key_location  = "key/id_rsa.pub"
 private_key_location = "key/id_rsa"
 proxy_gw_vm = [
   {
@@ -29,7 +29,7 @@ proxy_gw_vm = [
     "private_ip" : "10.88.127.100",
     "tag" : "EC2"
   },
-/*  {
+  /*  {
     "application_name" : "proxy-gw-02",
     "instance_type" : "t3.small",
     "ami" : "ubuntu22",
@@ -48,7 +48,7 @@ monitor_vm = [
     "instance_type" : "t3a.medium",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
-    "volume_size" : "60",
+    "volume_size" : "70",
     "subnet_id" : "subnet-0ae72c2068513e76b",
     "private_ip" : "10.88.127.99",
   },
