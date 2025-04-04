@@ -42,11 +42,6 @@ main_records = {
       values = ["10.10.50.137", ]
     },
     {
-      # HAP CORE
-      name   = "vn-sc-hap-core",
-      values = ["10.10.50.100", ]
-    },
-    {
       # HAP SC LOCAL
       name   = "vn-sc-hap-local",
       values = ["10.10.50.69", ]
@@ -100,11 +95,6 @@ main_records = {
   #     # Kube Ingress K3S-LUMPROD
   #     name   = "vn-sc-ing-lumprod",
   #     values = ["10.10.50.121", ]
-  #   },
-  #   {
-  #     # HAP CORE
-  #     name   = "vn-sc-hap-core",
-  #     values = ["10.10.50.100", ]
   #   },
   #   {
   #     # HAP SC LOCAL
@@ -175,26 +165,6 @@ cluster_cname_records = {
       ]
     },
     {
-      # 10.10.50.100 - HAP CORE
-      canonical_name = "vn-sc-hap-core.lumigame.com"
-      cname_records = [
-        "haproxy-gw",
-        "haproxy-k8s",
-        "awsapi",
-        "deployapi-aws",
-        "deployapi-eks",
-        "echo",
-        "echo2",
-        "eks-ingress",
-        "eks-zabbix",
-        "es",
-        "jaeger-collector-eks",
-        "notification-bot",
-        "portainereks",
-        "vn-zabbix",
-      ]
-    },
-    {
       # 10.10.50.69 - HAP SC LOCAL
       canonical_name = "vn-sc-hap-local.lumigame.com"
       cname_records = [
@@ -252,15 +222,6 @@ cluster_cname_records = {
   #       "trivy",
   #       "portainer",
   #       "deployapi-k3s"
-  #     ]
-  #   },
-  #   {
-  #     # 10.10.50.100 - HAP CORE
-  #     canonical_name = "vn-sc-hap-core.luminetsoft.com"
-  #     cname_records = [
-  #       "deployapi-k8s",
-  #       "haproxy-gw",
-  #       "haproxy-k8s"
   #     ]
   #   },
 
