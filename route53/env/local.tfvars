@@ -89,39 +89,39 @@ main_records = {
     },
   ]
 
-  "luminetsoft.com" = [
-    {
-      # Wildcard mapping
-      name   = "*",
-      values = ["10.10.50.145", ]
-    },
-    {
-      # Kube Ingress K3S-LUMPROD
-      name   = "vn-sc-ing-lumprod",
-      values = ["10.10.50.121", ]
-    },
-    {
-      # HAP CORE
-      name   = "vn-sc-hap-core",
-      values = ["10.10.50.100", ]
-    },
-    {
-      # HAP SC LOCAL
-      name   = "vn-sc-hap-local",
-      values = ["10.10.50.69", ]
-    },
+  # "luminetsoft.com" = [
+  #   {
+  #     # Wildcard mapping
+  #     name   = "*",
+  #     values = ["10.10.50.145", ]
+  #   },
+  #   {
+  #     # Kube Ingress K3S-LUMPROD
+  #     name   = "vn-sc-ing-lumprod",
+  #     values = ["10.10.50.121", ]
+  #   },
+  #   {
+  #     # HAP CORE
+  #     name   = "vn-sc-hap-core",
+  #     values = ["10.10.50.100", ]
+  #   },
+  #   {
+  #     # HAP SC LOCAL
+  #     name   = "vn-sc-hap-local",
+  #     values = ["10.10.50.69", ]
+  #   },
 
-    {
-      # WAN LUMPROD
-      name   = "vn-sc-wan-lumprod",
-      values = ["202.78.231.54", ]
-    },
-    {
-      # WAN SWARM SC LOCAL
-      name   = "vn-sc-wan-swlocal",
-      values = ["202.78.231.51", ]
-    }
-  ]
+  #   {
+  #     # WAN LUMPROD
+  #     name   = "vn-sc-wan-lumprod",
+  #     values = ["202.78.231.54", ]
+  #   },
+  #   {
+  #     # WAN SWARM SC LOCAL
+  #     name   = "vn-sc-wan-swlocal",
+  #     values = ["202.78.231.51", ]
+  #   }
+  # ]
 }
 
 
@@ -243,43 +243,43 @@ cluster_cname_records = {
     }
   ],
 
-  "luminetsoft.com" = [
-    {
-      # 10.10.50.121 - Kube Ingress K3S-LUMPROD
-      canonical_name = "vn-sc-ing-lumprod.luminetsoft.com"
-      cname_records = [
-        "trivy",
-        "portainer",
-        "deployapi-k3s"
-      ]
-    },
-    {
-      # 10.10.50.100 - HAP CORE
-      canonical_name = "vn-sc-hap-core.luminetsoft.com"
-      cname_records = [
-        "deployapi-k8s",
-        "haproxy-gw",
-        "haproxy-k8s"
-      ]
-    },
+  # "luminetsoft.com" = [
+  #   {
+  #     # 10.10.50.121 - Kube Ingress K3S-LUMPROD
+  #     canonical_name = "vn-sc-ing-lumprod.luminetsoft.com"
+  #     cname_records = [
+  #       "trivy",
+  #       "portainer",
+  #       "deployapi-k3s"
+  #     ]
+  #   },
+  #   {
+  #     # 10.10.50.100 - HAP CORE
+  #     canonical_name = "vn-sc-hap-core.luminetsoft.com"
+  #     cname_records = [
+  #       "deployapi-k8s",
+  #       "haproxy-gw",
+  #       "haproxy-k8s"
+  #     ]
+  #   },
 
-    {
-      # 202.78.231.54 - WAN LUMPROD
-      canonical_name = "vn-sc-wan-lumprod.luminetsoft.com",
-      cname_records = [
-        "hub",
-        "hubbk"
-      ]
-    },
-    {
-      # 202.78.231.51 - WAN SWARM SC LOCAL
-      canonical_name = "vn-sc-wan-swlocal.luminetsoft.com",
-      cname_records = [
-        "bots",
-        "chinese-poker",
-        "whoami"
-      ]
-    }
-  ]
+  #   {
+  #     # 202.78.231.54 - WAN LUMPROD
+  #     canonical_name = "vn-sc-wan-lumprod.luminetsoft.com",
+  #     cname_records = [
+  #       "hub",
+  #       "hubbk"
+  #     ]
+  #   },
+  #   {
+  #     # 202.78.231.51 - WAN SWARM SC LOCAL
+  #     canonical_name = "vn-sc-wan-swlocal.luminetsoft.com",
+  #     cname_records = [
+  #       "bots",
+  #       "chinese-poker",
+  #       "whoami"
+  #     ]
+  #   }
+  # ]
 }
 
