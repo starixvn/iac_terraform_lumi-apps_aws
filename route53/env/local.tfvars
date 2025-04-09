@@ -91,27 +91,6 @@ main_records = {
       name   = "*",
       values = ["10.10.50.145", ]
     },
-  #   {
-  #     # Kube Ingress K3S-LUMPROD
-  #     name   = "vn-sc-ing-lumprod",
-  #     values = ["10.10.50.121", ]
-  #   },
-  #   {
-  #     # HAP SC LOCAL
-  #     name   = "vn-sc-hap-local",
-  #     values = ["10.10.50.69", ]
-  #   },
-
-  #   {
-  #     # WAN LUMPROD
-  #     name   = "vn-sc-wan-lumprod",
-  #     values = ["202.78.231.54", ]
-  #   },
-  #   {
-  #     # WAN SWARM SC LOCAL
-  #     name   = "vn-sc-wan-swlocal",
-  #     values = ["202.78.231.51", ]
-  #   }
   ]
 }
 
@@ -146,7 +125,6 @@ cluster_cname_records = {
         "sentry-k8s",
         "deployapi-k3s",
         "deploy-test",
-        "deploy",
       ]
     },
     {
@@ -186,7 +164,6 @@ cluster_cname_records = {
         "n8n",
         "rancher",
         "deploy",
-        "sentry"
       ]
     },
     {
