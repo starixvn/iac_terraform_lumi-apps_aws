@@ -85,12 +85,12 @@ main_records = {
   ]
 
   #
-  # "luminetsoft.com" = [
-  #   {
-  #     # Wildcard mapping
-  #     name   = "*",
-  #     values = ["10.10.50.145", ]
-  #   },
+  "vivadzo.com" = [
+    {
+      # Wildcard mapping
+      name   = "*",
+      values = ["10.10.50.145", ]
+    },
   #   {
   #     # Kube Ingress K3S-LUMPROD
   #     name   = "vn-sc-ing-lumprod",
@@ -112,7 +112,7 @@ main_records = {
   #     name   = "vn-sc-wan-swlocal",
   #     values = ["202.78.231.51", ]
   #   }
-  # ]
+  ]
 }
 
 
