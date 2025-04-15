@@ -169,7 +169,6 @@ cluster_cname_records = {
       # 202.78.231.51 - WAN SWARM SC LOCAL
       canonical_name = "vn-sc-wan-swlocal.lumigame.com",
       cname_records = [
-        "whoami",
         "sentry",
       ]
     },
