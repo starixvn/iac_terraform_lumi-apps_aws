@@ -150,6 +150,7 @@ cluster_cname_records = {
         "sonarqube",
         "rocketor-api",
         "plane",
+        "sentry",
       ]
     },
 
@@ -168,9 +169,9 @@ cluster_cname_records = {
     {
       # 202.78.231.51 - WAN SWARM SC LOCAL
       canonical_name = "vn-sc-wan-swlocal.lumigame.com",
-      cname_records = [
-        "sentry",
-      ]
+      # cname_records = [
+      #   "sentry",
+      # ]
     },
     {
       # 202.78.231.34 - WAN K8S SC LOCAL
