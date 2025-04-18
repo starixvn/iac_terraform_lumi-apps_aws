@@ -82,6 +82,11 @@ main_records = {
       name   = "nats",
       values = ["10.10.50.122", ]
     },
+    {
+      # Public ALL
+      name = "vn-sc-all-lumprod",
+      values = ["202.78.231.54", ]
+    }
   ]
 
   #
@@ -161,7 +166,6 @@ cluster_cname_records = {
         "hub",
         "hubbk",
         "npm",
-        "n8n",
         "rancher",
         "deploy",
       ]
@@ -260,7 +264,14 @@ cluster_cname_records = {
         "l1-games3",
         "bots",
       ]
-    }
+    },
+    {
+      # 202.78.231.54 - WAN LUMPROD
+      canonical_name = "vn-sc-all-lumprod.lumigame.com"
+      cname_records = [
+        "n8n",
+      ]
+    },
   ],
 
   # "luminetsoft.com" = [
