@@ -85,7 +85,7 @@ main_records = {
     {
       # Public ALL
       name = "vn-sc-all-lumprod",
-      values = ["202.78.231.54", ]
+      values = ["202.78.231.48", ]
     }
   ]
 
