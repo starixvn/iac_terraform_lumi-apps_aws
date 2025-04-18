@@ -265,13 +265,13 @@ cluster_cname_records = {
         "bots",
       ]
     },
-    {
-      # 202.78.231.54 - WAN LUMPROD
-      canonical_name = "vn-sc-all-lumprod.lumigame.com"
-      cname_records = [
-        "n8n",
-      ]
-    },
+    # {
+    #   # 202.78.231.54 - WAN LUMPROD
+    #   canonical_name = "vn-sc-all-lumprod.lumigame.com"
+    #   cname_records = [
+    #     "n8n",
+    #   ]
+    # },
   ],
 
   # "luminetsoft.com" = [
