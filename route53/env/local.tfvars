@@ -84,7 +84,7 @@ main_records = {
     },
     {
       # Public ALL
-      name = "vn-sc-all-lumprod",
+      name   = "vn-sc-all-lumprod",
       values = ["202.78.231.48", ]
     }
   ]
@@ -130,6 +130,7 @@ cluster_cname_records = {
         "sentry-k8s",
         "deployapi-k3s",
         "deploy-test",
+        "n8n-test",
       ]
     },
     {
