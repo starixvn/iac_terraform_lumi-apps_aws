@@ -131,6 +131,7 @@ cluster_cname_records = {
         "deployapi-k3s",
         "deploy-test",
         "n8n-test",
+        "deploy-test1",
       ]
     },
     {
