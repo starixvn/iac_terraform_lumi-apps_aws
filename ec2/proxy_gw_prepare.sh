@@ -22,9 +22,9 @@ sudo service ssh restart
 
 ##### HAPROXY
 sudo apt update
-sudo add-apt-repository ppa:vbernat/haproxy-2.6 -y
+sudo add-apt-repository ppa:vbernat/haproxy-3.0 -y
 sudo apt update
-sudo apt install -y haproxy=2.6.\*
+sudo apt install -y haproxy=3.0.\*
 sudo systemctl enable haproxy
 sudo rm -f /etc/haproxy/haproxy.cfg
 sudo mkdir -p /etc/haproxy/maps/
