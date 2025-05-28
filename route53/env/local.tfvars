@@ -131,7 +131,6 @@ cluster_cname_records = {
         "deployapi-k3s",
         "deploy-test",
         "n8n-test",
-        "deploy-test1",
       ]
     },
     {
@@ -265,6 +264,8 @@ cluster_cname_records = {
         "l1-games2",
         "l1-games3",
         "bots",
+        "l1-seal-hot-league-wall-client-demo1",
+        "l1-standalone-live-page-local1",
       ]
     },
     {
