@@ -131,6 +131,7 @@ cluster_cname_records = {
         "deployapi-k3s",
         "deploy-test",
         "n8n-test",
+        "sonarqube",
       ]
     },
     {
@@ -153,7 +154,6 @@ cluster_cname_records = {
       canonical_name = "vn-sc-hap-local.lumigame.com"
       cname_records = [
         "haproxy",
-        "sonarqube",
         "rocketor-api",
         "plane",
         "sentry",
