@@ -83,6 +83,11 @@ main_records = {
       values = ["10.10.50.122", ]
     },
     {
+      # defectdojo
+      name   = "defectdojo",
+      values = ["10.18.200.193", ]
+    },
+    {
       # Public ALL
       name   = "vn-sc-all-lumprod",
       values = ["202.78.231.48", ]
