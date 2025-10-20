@@ -137,6 +137,7 @@ cluster_cname_records = {
         "deploy-test",
         "n8n-test",
         "sonarqube",
+        "backstage",
       ]
     },
     {
